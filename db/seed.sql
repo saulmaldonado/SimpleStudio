@@ -126,6 +126,10 @@ lesson_length = $4,
 lesson_notes = $5
 WHERE lesson_id = $6
 
+-- delete_lesson.sql
+DELETE FROM lessons
+WHERE lesson_id = $1
+
 --- Assignments
 
 --- add_assignment.sql
@@ -156,6 +160,10 @@ log_time = $2,
 log_material = $3
 WHERE log_id = $4
 
+-- delete_log.sql
+DELETE FROM logs
+WHERE log_id = $1
+
 --- Payments
 
 -- add_payments.sql
@@ -168,6 +176,10 @@ SET payment_amount = $1,
 payment_duedate = $2,
 payment_ispaid = $3
 WHERE payment_id = $4
+
+-- delete_payment.sql
+DELETE FROM payments
+WHERE payment_id = $1
 
 -- Teacher
 
@@ -199,25 +211,23 @@ WHERE student_id = $1
 SELECT * FROM logs
 WHERE student_id = $1
 
--- get_all_payments.sql
-SELECT * FROM payments
-WHERE student_id = $1
 
 
 -- group_all_students_by_teacher.sql
 SELECT student_first_name, student_last_name
 FROM students
-GROUP BY teacher_id
+WHERE teacher_id = $1
 
--- get_all_payments_for_student.sql
+-- get_all_payments_by_student.sql
 SELECT p.* FROM payments p
 INNER JOIN lessons l ON p.lesson_id = l.lesson_id
 WHERE l.student_id = $1
 
--- get_all_unpaid_payments_for_student.sql
+-- get_all_payments_by_teacher.sql
 SELECT p.* FROM payments p
 INNER JOIN lessons l ON p.lesson_id = l.lesson_id
-WHERE l.student_id = $1 AND p.payment_ispaid = false
+INNER JOIN students s ON s.student_id = l.student_id
+WHERE s.teacher_id = $1
 
 
 
