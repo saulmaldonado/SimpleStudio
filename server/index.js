@@ -8,6 +8,7 @@ const app = express()
 //Controllers
 const ac = require('./Controllers/authController')
 const t = require('./Controllers/teacherController')
+const s = require('./Controllers/studentController')
 
 //middleware
 app.use(express.json())
@@ -60,15 +61,15 @@ app.get('/api/teacher/:teacher_id/assignments', t.getAllAssignmentsForTeacher )
 app.get('/api/teacher/:teacher_id/payments', t.getAllPaymentsForTeacher )
 
 // //POST
-// app.post('/api/teacher/:teacher_id/student/:student_id', assignStudent)
+app.post('/api/teacher/:teacher_id/student/:student_id', t.assignStudent)
 
 // //DELETE
-// app.delete('/api/teacher/:teacher_id/student/:student_id', unassignStudent)
+app.delete('/api/teacher/student/:student_id', t.unassignStudent)
 
 // //studentController
 
 // //GET
-// app.get('/api/student/:student_id/teacher', getTeacherForStudent)
+app.get('/api/student/:student_id/teacher', s.getTeacherforStudent)
 // app.get('/api/student/:student_id/lessons', getAllLessons)
 // app.get('/api/student/:student_id/assignments', getAllAssignments)
 // app.get('/api/student/:student_id/logs', getAllLogs)

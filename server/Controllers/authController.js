@@ -160,6 +160,7 @@ module.exports = {
             res.status(400).json('student does not exist')
         } else {
             res.status(200).json({
+                id: user.student_id,
                 first_name: user.student_first_name,
                 last_name: user.student_last_name,
                 email: user.student_email,
