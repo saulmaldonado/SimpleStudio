@@ -1,5 +1,5 @@
 module.exports = {
-    isTeacher:  async(req, res) => {
+    isTeacher:  async(req, res, next) => {
         if(!req.session.user.account_type === 'teacher'){
             res.status(401).json('You are not a teacher')
         } else {
@@ -7,7 +7,7 @@ module.exports = {
         }
     },
 
-    isStudent: async(req, res) => {
+    isStudent: async(req, res, next) => {
         if(!req.session.user.account_type === 'student'){
             res.status(401).json('You are not a student')
         } else {

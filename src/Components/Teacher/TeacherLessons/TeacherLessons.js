@@ -6,8 +6,6 @@ import TeacherAgenda from '../TeacherHomePage/TeacherAgenda'
 export default function TeacherLessons(){
     return(
         <div>
-            <TopBar />
-            <NavBarTeacher /> 
             <div>TeacherLessons</div>
             <TeacherLessonForm /> 
             <div>Calendar</div>

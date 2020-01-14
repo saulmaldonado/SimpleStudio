@@ -14,8 +14,7 @@ export default class StudentLogs extends React.Component{
     render(){
         return(
             <div>
-                <TopBar />
-                <NavBarStudent />
+
                 <div>StudentLogs</div>
                 <NewPracticeLog />
                 <EditPracticeLog />

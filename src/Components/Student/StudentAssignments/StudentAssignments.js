@@ -12,8 +12,7 @@ export default class StudentAssignments extends React.Component{
     render(){
         return(
             <div>
-                <TopBar />
-                <NavBarStudent />
+
                 <div>StudentAssignments</div>
                 
             </div>

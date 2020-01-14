@@ -8,8 +8,6 @@ import InvoicesPaid from './InvoicesPaid'
 export default function TeacherPayments(){
     return(
         <div>
-            <TopBar />
-            <NavBarTeacher />
             <div>TeacherPayments</div>
             <TeacherPaymentInvoiceForm />
             <InvoicesPaid />

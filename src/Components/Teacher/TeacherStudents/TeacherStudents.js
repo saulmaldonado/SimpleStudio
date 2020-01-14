@@ -13,13 +13,9 @@ export default class TeacherStudents extends React.Component{
     render(){
         return(
             <div>
-                <TopBar />
-                <NavBarTeacher />
-                
                 <div>TeacherStudents</div>
 
                 <StudentProfile /> 
-
             </div>
         )
     }

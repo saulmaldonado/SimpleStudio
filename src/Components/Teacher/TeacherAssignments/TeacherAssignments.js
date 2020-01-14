@@ -14,8 +14,6 @@ export default class TeacherAssignments extends React.Component{
     render(){
         return(
             <div>
-                <TopBar />
-                <NavBarTeacher /> 
                 <div>TeacherAssignments</div>
                 <StudentSelectorAssignments /> 
                 <TeacherAssignmentsContainer />

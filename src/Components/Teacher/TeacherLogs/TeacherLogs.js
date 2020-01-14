@@ -1,6 +1,7 @@
 import React from 'react'
 import TopBar from '../../TopBar/TopBar'
 import NavBarTeacher from '../../NavBar/NavBarTeacher'
+import StudentSelectorLogs from './StudentSelectorLogs'
 
 export default class TeacherLogs extends React.Component{
     constructor(){
@@ -12,11 +13,8 @@ export default class TeacherLogs extends React.Component{
     render(){
         return(
             <div>
-                <TopBar />
-                <NavBarTeacher />
                 <div>TeacherLogs</div>
-                <StudentSelector />
-                
+                <StudentSelectorLogs />
             </div>
         )
     }
