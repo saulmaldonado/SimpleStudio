@@ -25,6 +25,8 @@ module.exports = {
                 email: user.teacher_email,
                 first_name:user.teacher_first_name,
                 last_name: user.teacher_last_name,
+                account_type: 'teacher'
+
             }
 
             res.status(200).json(req.session.user)
@@ -56,6 +58,8 @@ module.exports = {
                 email: user.student_email,
                 first_name:user.student_first_name,
                 last_name: user.student_last_name,
+                account_type: 'student'
+
             }
 
             res.status(200).json(req.session.user)
@@ -85,6 +89,7 @@ module.exports = {
                     email: user.teacher_email,
                     first_name:user.teacher_first_name,
                     last_name: user.teacher_last_name,
+                    account_type: 'teacher'
                 }
             }
 
@@ -116,6 +121,8 @@ module.exports = {
                     email: user.student_email,
                     first_name: user.student_first_name,
                     last_name: user.student_last_name,
+                    account_type: 'student'
+
                 }
             }
             res.status(200).json(req.session.user)

@@ -9,6 +9,10 @@ const app = express()
 const ac = require('./Controllers/authController')
 const t = require('./Controllers/teacherController')
 const s = require('./Controllers/studentController')
+const le = require('./Controllers/lessonController')
+const lo = require('./Controllers/logsController')
+const as = require('./Controllers/assignmentController')
+const p = require('./Controllers/paymentController')
 
 //middleware
 app.use(express.json())
@@ -70,44 +74,55 @@ app.delete('/api/teacher/student/:student_id', t.unassignStudent)
 
 // //GET
 app.get('/api/student/:student_id/teacher', s.getTeacherforStudent)
-// app.get('/api/student/:student_id/lessons', getAllLessons)
-// app.get('/api/student/:student_id/assignments', getAllAssignments)
-// app.get('/api/student/:student_id/logs', getAllLogs)
-// app.get('/api/student/:student_id/payments', getAllPayments)
+app.get('/api/student/:student_id/lessons', s.getAllLessons)
+app.get('/api/student/:student_id/assignments', s.getAllAssignments)
+app.get('/api/student/:student_id/logs', s.getAllLogs)
+app.get('/api/student/:student_id/payments', s.getAllPayments)
 
 // //lessonController
 
 // //POST
-// app.post('/api/lesson', createLesson)
+app.post('/api/lesson', le.createLesson)
 
 // //PUT
-// app.post('/api/lesson/:id', editLesson)
+app.put('/api/lesson/:lesson_id', le.editLesson)
 
 // //DELETE
-// app.post('/api/lesson/:id', deleteLesson)
+app.delete('/api/lesson/:lesson_id', le.deleteLesson)
 
 // //logController
 
 // //POST
-// app.post('/api/log', createLog)
+app.post('/api/log', lo.createLog)
 
 // //PUT
-// app.put('/api/log/:id', editLog)
+app.put('/api/log/:log_id', lo.editLog)
 
 // //DELETE
-// app.delete('/api/lod/:id', deleteLog)
+app.delete('/api/log/:log_id', lo.deleteLog)
+
+//assignmentController
+
+//POST
+app.post('/api/assignment', as.createAssignment)
+
+//PUT
+app.put('/api/assignment/:assignment_id', as.editAssignment)
+
+//DELETE
+app.delete('/api/assignment/:assignment_id', as.deleteAssignment)
 
 
 // //paymentController
 
 // //POST
-// app.post('/api/payment', createPayment)
+app.post('/api/payment', p.createPayment)
 
 // //PUT
-// app.put('/api/payment/:id', editPayment)
+app.put('/api/payment/:payment_id', p.editPayment)
 
 // //DELETE
-// app.delete('/api/payment/:id', deletePayment)
+app.delete('/api/payment/:payment_id', p.deletePayment)
 
 
 
