@@ -1,6 +1,5 @@
 import React from 'react'
-import TopBar from '../../TopBar/TopBar'
-import NavBarStudent from '../../NavBar/NavBarStudent'
+
 import NewPracticeLog from './NewPracticeLog'
 import EditPracticeLog from './EditPracticeLog'
 

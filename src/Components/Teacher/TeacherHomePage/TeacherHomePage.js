@@ -14,7 +14,6 @@ export default function TeacherHomePage(){
     return(
         <div>
             <NavBarTeacher />
-   
             <Switch>
                 <Route exact path='/teacher' render={() => {
                     return(
@@ -25,7 +24,6 @@ export default function TeacherHomePage(){
                         </div>
                     )
                 }} />
-
                 <Route path='/teacher/lessons' component={TeacherLessons} />
                 <Route path='/teacher/logs' component={TeacherLogs} />
                 <Route path='/teacher/payments' component={TeacherPayments} />

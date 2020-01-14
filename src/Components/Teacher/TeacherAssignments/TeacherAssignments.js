@@ -1,6 +1,5 @@
 import React from 'react'
-import TopBar from '../../TopBar/TopBar'
-import NavBarTeacher  from '../../NavBar/NavBarTeacher'
+
 import StudentSelectorAssignments from './StudentSelectorAssignments'
 import TeacherAssignmentsContainer from './TeacherAssignmentsContainer'
 

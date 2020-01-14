@@ -25,9 +25,12 @@ module.exports = {
                 email: user.teacher_email,
                 first_name:user.teacher_first_name,
                 last_name: user.teacher_last_name,
+                phone: user.teacher_phone,
                 account_type: 'teacher'
-
             }
+
+            console.log(req.session.user)
+
 
             res.status(200).json(req.session.user)
         }
@@ -58,9 +61,12 @@ module.exports = {
                 email: user.student_email,
                 first_name:user.student_first_name,
                 last_name: user.student_last_name,
+                phone: user.student_phone,
                 account_type: 'student'
 
             }
+
+            console.log(req.session.user)
 
             res.status(200).json(req.session.user)
         }
@@ -73,7 +79,6 @@ module.exports = {
 
         const result = await db.auth.check_for_teacher_email(email)
         const user = result[0]
-
 
         if(!user){
             res.status(400).json('email or password is incorrect')
@@ -92,6 +97,9 @@ module.exports = {
                     account_type: 'teacher'
                 }
             }
+
+            console.log(req.session.user)
+
 
             res.status(200).json(req.session.user)
 
@@ -121,16 +129,22 @@ module.exports = {
                     email: user.student_email,
                     first_name: user.student_first_name,
                     last_name: user.student_last_name,
+                    phone: user.student_phone,
                     account_type: 'student'
 
                 }
             }
+
+            console.log(req.session.user)
+
             res.status(200).json(req.session.user)
         }
     },
 
     logout: async(req, res) => {
         req.session.destroy()
+        console.log(req.session.user)
+
         res.sendStatus(200)
     },
 

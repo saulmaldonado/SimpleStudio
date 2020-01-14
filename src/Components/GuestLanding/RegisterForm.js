@@ -1,6 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import {registerTeacher} from '../../redux/reducers/teacherAuthReducer'
+import {registerStudent} from '../../redux/reducers/studentAuthReducer'
 
-export default class RegisterForm extends React.Component{
+    class RegisterForm extends React.Component{
     constructor(){
         super()
         this.state={
@@ -8,6 +11,7 @@ export default class RegisterForm extends React.Component{
             lastName: '',
             email: '',
             password:'',
+            phone:'',
             accountType:''
         }
     }
@@ -19,30 +23,65 @@ export default class RegisterForm extends React.Component{
     }
 
 
-    handleButton = (e) => {
+
+    handleRegisterTeacher = (e) => {
+        const {registerTeacher} = this.props
+        const {firstName, lastName, email, password, phone} = this.state
+
+        registerTeacher({firstName, lastName, email, password, phone})
+
         this.setState({
             firstName: '',
             lastName: '',
             email: '',
             password:'',
+            phone: '',
+            accountType:''
+        })
+    }
+
+    handleRegisterStudent = (e) => {
+        const {registerStudent} = this.props
+        const {firstName, lastName, email, phone, password} = this.state
+
+        registerStudent({firstName, lastName, email, password, phone})
+
+        this.setState({
+            firstName: '',
+            lastName: '',
+            email: '',
+            password:'',
+            phone: '',
             accountType:''
         })
     }
 
     render(){
-        const {firstName, lastName, email, password, accountType} = this.state
-        console.log(this.state);
+        const {firstName, lastName, email, password, phone} = this.state
+        console.log(this.props)
         return(
             <div>
-                <h1>RegisterForm</h1>
+                <h1>Welcome!</h1>
+                <h2>New User? Register!</h2>
                 <input placeholder='First Name' name='firstName' onChange={this.handleInputChange} value={firstName} />
                 <input placeholder='Last Name' name='lastName' onChange={this.handleInputChange} value={lastName}/>
                 <input placeholder='Email' name='email' onChange={this.handleInputChange} value={email}/>
+                <input placeholder='Phone' name='phone' onChange={this.handleInputChange} value={phone}/>
                 <input placeholder='Password' name='password' onChange={this.handleInputChange} type='password' value={password}/>
+                <h3>I am a :</h3>
                 <input name='accountType' type='radio' value='Student' onChange={this.handleInputChange} />Student
                 <input name='accountType' type='radio' value='Teacher' onChange={this.handleInputChange} />Teacher
-                <button onClick={this.handleButton}>Register</button>
+                <button onClick={this.state.accountType === 'Teacher' ? this.handleRegisterTeacher : this.handleRegisterStudent}>Register</button>
             </div>
         )
     }
 }
+
+const mapStateToProps = reduxState => {
+    return {
+        teacher: reduxState.teacherAuthReducer,
+        student: reduxState.studentAuthReducer
+    }
+}
+
+export default connect(mapStateToProps, {registerTeacher, registerStudent})(RegisterForm)

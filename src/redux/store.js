@@ -1,14 +1,16 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import promiseMiddleware from 'redux-promise-middleware'
-import reducer from './reducer'
 
 //imported reducers
+import teacherAuthReducer from './reducers/teacherAuthReducer'
+import studentAuthReducer from './reducers/studentAuthReducer'
 
 
 //rootReducer
 
 const rootReducer = combineReducers ({
-    reducer: reducer
+    teacherAuthReducer,
+    studentAuthReducer
 })
 
 export default createStore(rootReducer, applyMiddleware(promiseMiddleware))
