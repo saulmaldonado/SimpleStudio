@@ -4,12 +4,14 @@ const initialState = {
     students: [],
     lessons: [],
     logs: [],
+    payments:[],
     loading: false
 }
 
 const GET_ALL_LESSONS = 'GET_ALL_LESSONS'
 const GET_ALL_STUDENTS = 'GET_ALL_STUDENTS'
 const GET_ALL_LOGS = 'GET_ALL_LOGS'
+const GET_ALL_PAYMENTS = 'GET_ALL_PAYMENTS'
 
 export function getAllLessonsForTeacher(teacher_id){
     return {
@@ -33,6 +35,14 @@ export function getAllLogsForTeacher(teacher_id){
         payload: axios.get(`/api/teacher/${teacher_id}/logs`)
                         .then(res => res.data)
     }
+}
+
+export function getAllPaymentsForTeacher(teacher_id){
+  return {
+    type: GET_ALL_PAYMENTS,
+    payload: axios.get(`/api/teacher/${teacher_id}/payments`)
+                    .then(res => res.data)
+  }
 }
 
 
@@ -91,6 +101,21 @@ export default function reducer(state = initialState, action){
               return {
                 ...state,
                 logs: payload,
+                loading: false
+              }
+            }
+
+            case `${GET_ALL_PAYMENTS}_PENDING`: {
+              return {
+                ...state,
+                loading: true
+              }
+            }
+
+            case `${GET_ALL_PAYMENTS}_FULFILLED`: {
+              return {
+                ...state,
+                payments: payload,
                 loading: false
               }
             }

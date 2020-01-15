@@ -78,6 +78,7 @@ app.get('/api/student/:student_id/lessons', s.getAllLessons)
 app.get('/api/student/:student_id/assignments', s.getAllAssignments)
 app.get('/api/student/:student_id/logs', s.getAllLogs)
 app.get('/api/student/:student_id/payments', s.getAllPayments)
+app.get('/api/student/:student_id/payments/due', s.getAllPaymentsDue)
 
 // //lessonController
 

@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {registerTeacher} from '../../redux/reducers/teacherAuthReducer'
 import {registerStudent} from '../../redux/reducers/studentAuthReducer'
-import { Redirect } from 'react-router-dom'
 
 
     class RegisterForm extends React.Component{
@@ -76,7 +75,6 @@ import { Redirect } from 'react-router-dom'
         //     )
         // }
 
-        console.log(this.props)
         return(
             <div>
                 {/* <Redirect to='/' /> */}

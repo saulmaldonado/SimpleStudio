@@ -7,9 +7,9 @@ import TeacherLogs from '../TeacherLogs/TeacherLogs'
 import TeacherPayments from '../TeacherPayments/TeacherPayments'
 import TeacherStudents from '../TeacherStudents/TeacherStudents'
 import TeacherAssignments from '../TeacherAssignments/TeacherAssignments'
+import TeacherNewPayments from './TeacherNewPayments'
 import { Route, Switch } from 'react-router-dom'
 import {connect} from 'react-redux'
-import {getAllLessonsForTeacher} from '../../../redux/reducers/teacherReducer'
  
 
 function TeacherHomePage (props){
@@ -23,6 +23,7 @@ function TeacherHomePage (props){
                             <h1>Welcome! {`${props.teacher.teacher_first_name} ${props.teacher.teacher_last_name}`} </h1>
                             <TeacherAgenda />
                             <TeacherNewLogs />
+                            <TeacherNewPayments />
                         </div>
                     )
                 }} />

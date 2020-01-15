@@ -8,6 +8,7 @@ import StudentPayments from '../StudentPayments/StudentPayments'
 import StudentTeacher from '../StudentTeacher/StudentTeacher'
 import StudentAssignments from '../StudentAssignments/StudentAssignments'
 import { Switch, Route } from 'react-router-dom'
+import NewPaymentsStudents from './NewPaymentsStudents'
 
 export default function StudentHomePage(){
     return(
@@ -20,7 +21,7 @@ export default function StudentHomePage(){
                             <div>StudentHomePage</div>
                             <StudentSchedule />
                             <NewAssignments />
-                            <div>Stats</div>
+                            <NewPaymentsStudents /> 
                         </div>
                     )
                 }}/>

@@ -9,7 +9,16 @@ export default class PaymentBlock extends React.Component{
     }
     render(){
         return(
-            <div>PaymentBlock</div>
+            <div>
+                <div>
+                    <p>Payment ID: {this.props.paymentId}</p>
+                    <p>Student Name: {this.props.studentName}</p>
+                </div>
+                <div>
+                    <p>Payment Requested: {this.props.paymentDate}</p>
+                    <p>Payment Total: {this.props.paymentAmount}</p>
+                </div>
+            </div>
         )
     }
 }

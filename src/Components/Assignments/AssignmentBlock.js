@@ -9,7 +9,17 @@ export default class AssignmentBlock extends React.Component{
     }
     render(){
         return(
-            <div>AssignmentBlock</div>
+            <div>
+                <div>Assignment:</div>
+                <div>
+                    <p> {this.props.assignmentTitle} </p>
+                    <p> {this.props.assignmentDueDate} </p>
+                </div>
+                <div>
+                    <p> {this.props.assignmentRequirements} </p>
+                </div>
+
+            </div>
         )
     }
 }

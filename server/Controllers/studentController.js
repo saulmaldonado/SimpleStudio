@@ -25,6 +25,7 @@ module.exports = {
         }
     },
     getAllAssignments: async(req, res) => {
+        console.log('getAllAssignments')
         const {student_id} = req.params
         const db = req.app.get('db')
 
@@ -33,6 +34,7 @@ module.exports = {
         if(!result){
             res.status(400).json('Student has no assignments.')
         } else {
+            console.log(result)
             res.status(200).json(result)
         }
     },
@@ -56,6 +58,19 @@ module.exports = {
 
         if(!result){
             res.status(400).json('Student has no payment history')
+        } else {
+            res.status(200).json(result)
+        }
+    },
+    getAllPaymentsDue: async(req, res) => {
+        const {student_id} = req.params
+
+        const db = req.app.get('db')
+
+        const result = await db.student.get_all_payments_due(student_id)
+
+        if(!result[0]){
+            res.status(400).json('Student has no payments due')
         } else {
             res.status(200).json(result)
         }
