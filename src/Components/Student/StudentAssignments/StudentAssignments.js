@@ -1,4 +1,5 @@
 import React from 'react'
+import StudentAssignmentsContainer from './StudentAssignmentsContainer'
 
 
 export default class StudentAssignments extends React.Component{
@@ -13,7 +14,7 @@ export default class StudentAssignments extends React.Component{
             <div>
 
                 <div>StudentAssignments</div>
-                
+                <StudentAssignmentsContainer /> 
             </div>
         )
     }

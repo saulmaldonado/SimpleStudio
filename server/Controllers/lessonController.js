@@ -29,5 +29,19 @@ module.exports = {
 
         res.sendStatus(200)
 
+    },
+
+    getLesson: async(req, res) => {
+        const {lesson_id} = req.params
+
+        const db = req.app.get('db')
+
+        let result = await db.lesson.get_lesson(lesson_id)
+
+        if(!result[0]){
+            res.status(400).json('lesson does not exist.')
+        } else {
+            res.status(200).json(result[0])
+        }
     }
 }

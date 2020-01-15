@@ -81,6 +81,8 @@ app.get('/api/student/:student_id/payments', s.getAllPayments)
 app.get('/api/student/:student_id/payments/due', s.getAllPaymentsDue)
 
 // //lessonController
+//GET
+app.get('/api/lesson/:lesson_id', le.getLesson)
 
 // //POST
 app.post('/api/lesson', le.createLesson)
