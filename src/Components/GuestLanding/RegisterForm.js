@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {registerTeacher} from '../../redux/reducers/teacherAuthReducer'
 import {registerStudent} from '../../redux/reducers/studentAuthReducer'
+import { Redirect } from 'react-router-dom'
+
 
     class RegisterForm extends React.Component{
     constructor(){
@@ -36,7 +38,7 @@ import {registerStudent} from '../../redux/reducers/studentAuthReducer'
             email: '',
             password:'',
             phone: '',
-            accountType:''
+            accountType: ''
         })
     }
 
@@ -52,15 +54,32 @@ import {registerStudent} from '../../redux/reducers/studentAuthReducer'
             email: '',
             password:'',
             phone: '',
-            accountType:''
+            accountType: ''
         })
     }
 
     render(){
         const {firstName, lastName, email, password, phone} = this.state
+
+        // if(this.props.student.student_id){
+        //     return (
+        //     <div>
+        //         <button onClick={this.handleStudentLogout}>Logout</button>
+        //         <Redirect to='/student' />
+        //     </div>)
+        // } else if(this.props.teacher.teacher_id){
+        //     return (
+        //         <div>
+        //             <button onClick={this.handleTeacherLogout}>Logout</button>
+        //             <Redirect to='/teacher' />
+        //         </div>
+        //     )
+        // }
+
         console.log(this.props)
         return(
             <div>
+                {/* <Redirect to='/' /> */}
                 <h1>Welcome!</h1>
                 <h2>New User? Register!</h2>
                 <input placeholder='First Name' name='firstName' onChange={this.handleInputChange} value={firstName} />

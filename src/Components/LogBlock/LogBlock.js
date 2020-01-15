@@ -9,7 +9,16 @@ export default class LogBlock extends React.Component{
     }
     render(){
         return(
-            <div>LogBlock</div>
+            <div>
+                <div>
+                    <p>Student: {this.props.studentName}</p>
+                    <p>{this.props.logDate}</p>
+                </div>
+                <div>
+                    <p> {this.props.logData} </p>
+                </div>
+
+            </div>
         )
     }
 }

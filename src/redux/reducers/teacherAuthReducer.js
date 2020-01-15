@@ -11,22 +11,28 @@ const initialState = {
 
 const REGISTER_TEACHER = 'REGISTER_TEACHER'
 const LOGIN_TEACHER = 'LOGIN_TEACHER'
+const LOGOUT_TEACHER = 'LOGOUT_TEACHER'
 
 export function registerTeacher(newTeacher){
-    let data = axios.post('/auth/teacher', newTeacher)
-                    .then(res => res.data)
     return {
         type: REGISTER_TEACHER,
-        payload: data
+        payload: axios.post('/auth/teacher', newTeacher)
+        .then(res => res.data)
     }
 }
 
 export function loginTeacher(teacher){
-    let data = axios.post('/auth/teacher/login', teacher)
-                    .then(res => res.data)
     return {
         type: LOGIN_TEACHER,
-        payload: data
+        payload: axios.post('/auth/teacher/login', teacher)
+        .then(res => res.data)
+    }
+}
+
+export function logoutTeacher(){
+    return{
+        type: LOGOUT_TEACHER,
+        payload: axios.get('/auth/logout')
     }
 }
 
@@ -53,6 +59,14 @@ export default function reducer(state = initialState, action ){
             }
         }
 
+        case`${REGISTER_TEACHER}_REJECTED`: {
+            alert(payload.response.data)
+            return {
+                ...state,
+                loading: false
+            }
+        }
+
         case `${LOGIN_TEACHER}_PENDING`: {
             return {
                 ...state,
@@ -68,6 +82,32 @@ export default function reducer(state = initialState, action ){
                 teacher_last_name: payload.last_name,
                 teacher_email: payload.email,
                 teacher_phone: payload.phone,
+                loading: false
+            }
+        }
+
+        case`${LOGIN_TEACHER}_REJECTED`: {
+            alert(payload.response.data)
+            return {
+                ...state,
+                loading: false
+            }
+        }
+
+        case `${LOGOUT_TEACHER}_PENDING`: {
+            return {
+                ...state,
+                loading: true
+            }
+        }
+
+        case `${LOGOUT_TEACHER}_FULFILLED`: {
+            return {
+                teacher_id: null,
+                teacher_first_name: '',
+                teacher_last_name: '',
+                teacher_email: '',
+                teacher_phone: '',
                 loading: false
             }
         }

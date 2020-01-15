@@ -1,7 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {loginTeacher} from '../../redux/reducers/teacherAuthReducer'
-import {loginStudent} from '../../redux/reducers/studentAuthReducer'
+import {loginTeacher, logoutTeacher} from '../../redux/reducers/teacherAuthReducer'
+import {loginStudent, logoutStudent} from '../../redux/reducers/studentAuthReducer'
+import { Redirect } from 'react-router-dom'
 
 class Name extends React.Component{
     constructor(){
@@ -27,8 +28,7 @@ class Name extends React.Component{
 
         this.setState({
             email: '',
-            password: '',
-            accountType: ''
+            password: ''
         })
     }
     handleLoginStudent = (e) => {
@@ -39,17 +39,49 @@ class Name extends React.Component{
 
         this.setState({
             email: '',
-            password: '',
-            accountType: ''
+            password: ''
         })
+    }
+
+    handleStudentLogout = (e) => {
+        const {logoutStudent} = this.props
+        
+        logoutStudent()
+
+
+    }
+
+    handleTeacherLogout = (e) => {
+
+        const {logoutTeacher} = this.props
+
+        logoutTeacher()
+
+
     }
     
     
     render(){
         const {email, password} = this.state
-        console.log(this.state)
+
+        if(this.props.student.student_id){
+            return (
+            <div>
+                <button onClick={this.handleStudentLogout}>Logout</button>
+                <Redirect to='/student' />
+            </div>)
+        } else if(this.props.teacher.teacher_id){
+            return (
+                <div>
+                    <button onClick={this.handleTeacherLogout}>Logout</button>
+                    <Redirect to='/teacher' />
+                </div>
+            )
+        }
+
         return(
             <div>
+                <Redirect to='/' />
                 <div>Login</div>
                 <input placeholder='Email' name='email' onChange={this.handleInputChange} value={email}/>
                 <input placeholder='Password' name='password' type='password' onChange={this.handleInputChange} value={password}/>
@@ -69,4 +101,4 @@ const mapStateToProps = reduxState => {
     }
 }
 
-export default connect(mapStateToProps, {loginTeacher, loginStudent})(Name)
+export default connect(mapStateToProps, {loginTeacher, loginStudent, logoutTeacher, logoutStudent})(Name)

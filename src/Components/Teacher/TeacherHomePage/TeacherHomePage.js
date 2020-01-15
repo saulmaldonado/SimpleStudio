@@ -8,9 +8,11 @@ import TeacherPayments from '../TeacherPayments/TeacherPayments'
 import TeacherStudents from '../TeacherStudents/TeacherStudents'
 import TeacherAssignments from '../TeacherAssignments/TeacherAssignments'
 import { Route, Switch } from 'react-router-dom'
+import {connect} from 'react-redux'
+import {getAllLessonsForTeacher} from '../../../redux/reducers/teacherReducer'
  
 
-export default function TeacherHomePage(){
+function TeacherHomePage (props){
     return(
         <div>
             <NavBarTeacher />
@@ -18,7 +20,7 @@ export default function TeacherHomePage(){
                 <Route exact path='/teacher' render={() => {
                     return(
                         <div>
-                            <div>TeacherHomePage</div>
+                            <h1>Welcome! {`${props.teacher.teacher_first_name} ${props.teacher.teacher_last_name}`} </h1>
                             <TeacherAgenda />
                             <TeacherNewLogs />
                         </div>
@@ -34,3 +36,11 @@ export default function TeacherHomePage(){
         </div>
     )
 }
+
+const mapStateToProps = (reduxState) => {
+    return {
+        teacher: reduxState.teacherAuthReducer
+    }
+}
+
+export default connect(mapStateToProps)(TeacherHomePage)
