@@ -95,6 +95,9 @@ app.delete('/api/lesson/:lesson_id', le.deleteLesson)
 
 // //logController
 
+//GET
+app.get('/api/log/:log_id', lo.getLog)
+
 // //POST
 app.post('/api/log', lo.createLog)
 

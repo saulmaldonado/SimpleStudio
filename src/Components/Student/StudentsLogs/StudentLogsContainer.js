@@ -25,8 +25,6 @@ class StudentLogsContainer extends React.Component{
                     return <LogBlockStudent key={i} logCount={i + 1} logDate={ele.log_date} logTime={ele.log_time} logData={ele.log_material} />
                 })}
                
-                <div>Logs Submitted</div>
-                <div>minutes practiced</div>
             </div>
         )
     }

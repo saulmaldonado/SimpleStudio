@@ -7,6 +7,7 @@ import studentAuthReducer from './reducers/studentAuthReducer'
 import teacherReducer from './reducers/teacherReducer'
 import studentReducer from './reducers/studentReducer'
 import lessonReducer from './reducers/lessonReducer'
+import logsReducer from './reducers/logsReducer'
 
 
 //rootReducer
@@ -16,7 +17,8 @@ const rootReducer = combineReducers ({
     studentAuthReducer,
     teacherReducer,
     studentReducer,
-    lessonReducer
+    lessonReducer,
+    logsReducer
 })
 
 export default createStore(rootReducer, applyMiddleware(promiseMiddleware))
