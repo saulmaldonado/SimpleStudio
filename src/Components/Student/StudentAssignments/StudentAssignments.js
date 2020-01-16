@@ -12,8 +12,6 @@ export default class StudentAssignments extends React.Component{
     render(){
         return(
             <div>
-
-                <div>StudentAssignments</div>
                 <StudentAssignmentsContainer /> 
             </div>
         )

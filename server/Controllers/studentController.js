@@ -44,6 +44,8 @@ module.exports = {
 
         const result = await db.student.get_all_logs(student_id)
 
+        console.log(result)
+
         if(!result){
             res.status(400).json('Student has no Practice Logs')
         } else {
