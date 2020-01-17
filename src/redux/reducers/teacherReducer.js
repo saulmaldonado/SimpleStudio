@@ -5,6 +5,8 @@ const initialState = {
     lessons: [],
     logs: [],
     payments:[],
+    paymentsPaid: [],
+    paymentsUnpaid: [],
     selectedStudent:[],
     loading: false
 }
@@ -13,6 +15,8 @@ const GET_ALL_LESSONS = 'GET_ALL_LESSONS'
 const GET_ALL_STUDENTS = 'GET_ALL_STUDENTS'
 const GET_ALL_LOGS = 'GET_ALL_LOGS'
 const GET_ALL_PAYMENTS = 'GET_ALL_PAYMENTS'
+const GET_ALL_PAID = 'GET_ALL_PAID'
+const GET_ALL_UNPAID = 'GET_ALL_UNPAID'
 const GET_STUDENT = 'GET_STUDENT'
 
 export function getStudent(student_id){
@@ -53,6 +57,26 @@ export function getAllPaymentsForTeacher(teacher_id){
     payload: axios.get(`/api/teacher/${teacher_id}/payments`)
                     .then(res => res.data)
   }
+}
+
+export function getAllUnpaidPaymentsForTeacher(teacher_id){
+    return{
+      type: GET_ALL_UNPAID,
+      payload: axios.get(`/api/teacher/${teacher_id}/payments/unpaid`)
+                .then(res => res.data)
+
+
+    }
+}
+
+export function getAllPaidPaymentsForTeacher(teacher_id){
+      return {
+        type: GET_ALL_PAID,
+        payload: axios.get(`/api/teacher/${teacher_id}/payments/paid`)
+                    .then(res => res.data)
+
+      }
+
 }
 
 
@@ -149,6 +173,47 @@ export default function reducer(state = initialState, action){
               return {
                 ...state,
                 selectedStudent:`Student does not exist`,
+                loading: false
+              }
+            }
+
+            case `${GET_ALL_PAID}_PENDING`: {
+              return {
+                ...state,
+                loading: true
+              }
+            }
+
+            case `${GET_ALL_PAID}_FULFILLED`: {
+              return {
+                ...state,
+                paymentsPaid: payload,
+                loading: false
+              }
+            }
+            case `${GET_ALL_PAID}_REJECTED`: {
+              return {
+                ...state,
+                loading: false
+              }
+            }
+
+            case `${GET_ALL_UNPAID}_PENDING`: {
+              return {
+                ...state,
+                loading: true
+              }
+            }
+            case `${GET_ALL_UNPAID}_FULFILLED`: {
+              return {
+                ...state,
+                paymentsUnpaid: payload,
+                loading: false
+              }
+            }
+            case `${GET_ALL_UNPAID}_REJECTED`: {
+              return {
+                ...state,
                 loading: false
               }
             }

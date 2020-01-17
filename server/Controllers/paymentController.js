@@ -26,5 +26,18 @@ module.exports = {
         await db.payment.delete_payment(payment_id)
 
         res.sendStatus(200)
+    },
+    getPayment: async(req, res) => {
+        const {payment_id} = req.params
+
+        const db = req.app.get('db')
+
+        const result = await db.payment.get_payment(payment_id)
+
+        if(!result[0]){
+            res.status(400).json('Payment does not exist')
+        } else {
+            res.status(200).json(result[0])
+        }
     }
 }

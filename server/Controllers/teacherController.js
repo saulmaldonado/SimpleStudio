@@ -116,5 +116,31 @@ module.exports = {
         })
 
         res.status(200).json(students)
+     },
+     getAllPaymentsPaid: async(req, res) => {
+         const {teacher_id} = req.params
+
+         const db = req.app.get('db')
+
+         const result = await db.teacher.get_all_payments_paid(teacher_id)
+
+         if(!result[0]){
+             res.status(400).json('Teacher has no payments')
+         } else {
+            res.status(200).json(result)
+         }
+     },
+     getAllPaymentsUnpaid: async(req, res) => {
+        const {teacher_id} = req.params
+
+        const db = req.app.get('db')
+
+        const result = await db.teacher.get_all_payments_paid(teacher_id)
+
+        if(!result[0]){
+            res.status(400).json('Teacher has no unpaid invoices')
+        } else {
+           res.status(200).json(result)
+        } 
      }
 }

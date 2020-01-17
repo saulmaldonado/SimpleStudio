@@ -63,6 +63,8 @@ app.get('/api/teacher/:teacher_id/lessons', t.getAllLessonsForTeacher)
 app.get('/api/teacher/:teacher_id/logs', t.getAllLogsForTeacher)
 app.get('/api/teacher/:teacher_id/assignments', t.getAllAssignmentsForTeacher )
 app.get('/api/teacher/:teacher_id/payments', t.getAllPaymentsForTeacher )
+app.get('/api/teacher/:teacher_id/payments/paid', t.getAllPaymentsPaid)
+app.get('/api/teacher/:teacher_id/payments/unpaid', t.getAllPaymentsUnpaid)
 
 // //POST
 app.post('/api/teacher/:teacher_id/student/:student_id', t.assignStudent)
@@ -123,6 +125,8 @@ app.delete('/api/assignment/:assignment_id', as.deleteAssignment)
 
 
 // //paymentController
+//GET
+app.get('/api/payment/:payment_id', p.getPayment)
 
 // //POST
 app.post('/api/payment', p.createPayment)
