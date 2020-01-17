@@ -23,7 +23,7 @@ class InvoicesPaid extends React.Component{
             <div>
                 <div>InvoicesNotPaid</div>
                 <div>
-                    {this.props.payments.map((ele, i) => {
+                    {typeof this.props.payments === 'string' ? <div>Teacher has no payments</div> : this.props.payments.map((ele, i) => {
                         return <PaymentBlock key={i} paymentId={ele.payment_id} studentName={`${ele.student_first_name} ${ele.student_last_name} `} paymentDate={ele.payment_date} paymentAmount={ele.payment_amount} />
                     })}
                     

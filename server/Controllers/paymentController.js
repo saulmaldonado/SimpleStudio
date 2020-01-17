@@ -1,10 +1,10 @@
 module.exports = {
     createPayment: async(req, res) => {
-        const {payment_amount, payment_duedate, lesson_id} = req.body
+        const {payment_amount, payment_duedate, lesson_id, payment_date} = req.body
 
         const db = req.app.get('db')
 
-        const result = await db.payment.create_payment(lesson_id, payment_amount, payment_duedate, false)
+        const result = await db.payment.create_payment(lesson_id, payment_amount, payment_duedate, payment_date)
 
         res.status(200).json(result)
     },

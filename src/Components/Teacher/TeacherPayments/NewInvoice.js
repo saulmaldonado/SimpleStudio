@@ -1,15 +1,76 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import {createPayment} from '../../../redux/reducers/paymentReducer'
 
-export default class NewInvoice extends React.Component{
+class NewInvoice extends React.Component{
     constructor(){
         super()
         this.state={
-
+            payment_amount: null,
+            payment_duedate: '',
+            payment_date: '',
+            lesson_id: null
         }
     }
+
+    handelInputChange = (e) => {
+      this.setState({
+          [e.target.name]: e.target.value 
+      })
+    }
+
+    createNewPayment = () => {
+        const { payment_amount,
+            payment_duedate,
+            payment_ispaid,
+            payment_date,
+            lesson_id } = this.state
+
+        let newPayment = {
+            payment_amount: +payment_amount,
+            payment_duedate,
+            payment_date,
+            lesson_id: +lesson_id
+        }
+
+        this.props.createPayment(newPayment)
+
+        alert('Payment has been created')
+
+        this.setState({
+            payment_amount: '',
+            payment_duedate: '',
+            payment_date: '',
+            lesson_id: ''
+        })
+    }
+
     render(){
+        console.log(this.state)
+        console.log(this.props)
+        const { payment_amount,
+            payment_duedate,
+            payment_ispaid,
+            payment_date,
+            lesson_id } = this.state
         return(
-            <div>NewInvoice</div>
+            <div>
+                <div>NewInvoice</div>
+                <div>
+                    <input placeholder='Amount' name='payment_amount' value={payment_amount} onChange={this.handelInputChange} />
+                    <input placeholder='Due Date' name='payment_duedate' value={payment_duedate} onChange={this.handelInputChange} />
+                    <input placeholder='Invoice Date' name='payment_date' value={payment_date} onChange={this.handelInputChange} />
+                    <input placeholder='Lesson ID' name='lesson_id' value={lesson_id} onChange={this.handelInputChange} />
+                    <button onClick={this.createNewPayment} ></button>
+                </div>
+            </div>
         )
     }
 }
+const mapStateToProps = (reduxState) => {
+    return {
+        teacher: reduxState.TeacherAuthReducer
+    }
+}
+
+export default connect (mapStateToProps, {createPayment})(NewInvoice)

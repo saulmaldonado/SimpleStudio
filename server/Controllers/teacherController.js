@@ -120,9 +120,13 @@ module.exports = {
      getAllPaymentsPaid: async(req, res) => {
          const {teacher_id} = req.params
 
+         console.log(teacher_id)
+
          const db = req.app.get('db')
 
          const result = await db.teacher.get_all_payments_paid(teacher_id)
+
+         console.log(result)
 
          if(!result[0]){
              res.status(400).json('Teacher has no payments')
@@ -135,7 +139,11 @@ module.exports = {
 
         const db = req.app.get('db')
 
-        const result = await db.teacher.get_all_payments_paid(teacher_id)
+        const result = await db.teacher.get_all_payments_unpaid(teacher_id)
+
+
+        console.log(result)
+
 
         if(!result[0]){
             res.status(400).json('Teacher has no unpaid invoices')

@@ -194,6 +194,7 @@ export default function reducer(state = initialState, action){
             case `${GET_ALL_PAID}_REJECTED`: {
               return {
                 ...state,
+                paymentsPaid: payload.response.data,
                 loading: false
               }
             }
@@ -214,6 +215,7 @@ export default function reducer(state = initialState, action){
             case `${GET_ALL_UNPAID}_REJECTED`: {
               return {
                 ...state,
+                paymentsUnpaid: payload.response.data,
                 loading: false
               }
             }
