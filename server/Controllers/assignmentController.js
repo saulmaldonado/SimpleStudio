@@ -53,7 +53,7 @@ module.exports = {
         if(!result[0]){
             res.status(400).json('Assignment does not exist')
         } else {
-            res.status(200).json(result)
+            res.status(200).json(result[0])
         }
     }
 

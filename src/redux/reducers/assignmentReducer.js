@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-initialState = {
+const initialState = {
     assignments: [],
     loading: false
 }
@@ -14,6 +14,7 @@ export function getAssignment(assignment_id){
     return{
         type: GET_ASSIGNMENT,
         payload: axios.get(`/api/assignment/${assignment_id}`)
+                        .then(res => res.data)
     }
 }
 
