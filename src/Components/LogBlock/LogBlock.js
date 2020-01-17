@@ -15,6 +15,7 @@ export default class LogBlock extends React.Component{
                     <p>{this.props.logDate}</p>
                 </div>
                 <div>
+                    <p> {this.props.logTime} </p>
                     <p> {this.props.logData} </p>
                 </div>
 

@@ -109,6 +109,9 @@ app.delete('/api/log/:log_id', lo.deleteLog)
 
 //assignmentController
 
+//GET
+app.get('/api/assignment/:assignment_id', as.getAssignment)
+
 //POST
 app.post('/api/assignment', as.createAssignment)
 

@@ -4,15 +4,22 @@ import TeacherLessonForm from './TeacherLessonsForm'
 import TeacherAgenda from '../TeacherHomePage/TeacherAgenda'
 import LessonDisplay from './LessonDisplay'
 import { Route, Switch } from 'react-router-dom'
+import RescheduleLessonTeacher from './RescheduleLessonTeacher'
 export default function TeacherLessons(){
     return(
         <div>
             <div>TeacherLessons</div>
-            <TeacherLessonForm /> 
+
+            <Switch>
+                <Route path='/teacher/lessons/edit/:id' component={RescheduleLessonTeacher} />
+                <Route path='/teacher/lessons' component={TeacherLessonForm} />
+            </Switch>
+
             <Switch>
                 <Route path='/teacher/lessons/:id'  component={LessonDisplay}/>
                 <Route path='/teacher/lessons' render={() => {return(<div>Calendar</div>)} }/>
             </Switch>
+            
             <TeacherAgenda />
         </div>
     )

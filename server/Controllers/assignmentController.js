@@ -42,6 +42,19 @@ module.exports = {
         
         res.sendStatus(200)
     
+    },
+    getAssignment: async (req, res) => {
+        const {assignment_id} = req.params
+
+        const db = req.app.get('db')
+
+        const result = await db.assignment.get_assignment(assignment_id)
+
+        if(!result[0]){
+            res.status(400).json('Assignment does not exist')
+        } else {
+            res.status(200).json(result)
+        }
     }
 
 }

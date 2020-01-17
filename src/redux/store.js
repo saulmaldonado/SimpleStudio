@@ -8,6 +8,7 @@ import teacherReducer from './reducers/teacherReducer'
 import studentReducer from './reducers/studentReducer'
 import lessonReducer from './reducers/lessonReducer'
 import logsReducer from './reducers/logsReducer'
+import assignmentReducer from './reducers/assignmentReducer'
 
 
 //rootReducer
@@ -18,7 +19,8 @@ const rootReducer = combineReducers ({
     teacherReducer,
     studentReducer,
     lessonReducer,
-    logsReducer
+    logsReducer,
+    assignmentReducer
 })
 
 export default createStore(rootReducer, applyMiddleware(promiseMiddleware))
