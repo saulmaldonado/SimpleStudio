@@ -16,6 +16,7 @@ export default class LessonBlockForStudents extends React.Component{
                 </div>
                 <div>
                     <p>Length: {this.props.lessonLength} mins</p>
+                    <p>Notes: {this.props.lessonNotes} </p>
                 </div>
             </div>
         )

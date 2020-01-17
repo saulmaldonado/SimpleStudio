@@ -1,7 +1,7 @@
 import React from 'react'
-import LessonBlock from '../../LessonBlock/LessonBlock'
 import {getLesson, editLesson} from '../../../redux/reducers/lessonReducer'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class RescheduleLessonStudent extends React.Component{
     constructor(){
@@ -47,25 +47,39 @@ class RescheduleLessonStudent extends React.Component{
         let updatedLesson = {
             lesson_type,
             lesson_time,
-            lesson_length,
+            lesson_length: +lesson_length,
             lesson_notes
         }
 
         this.props.editLesson(this.props.match.params.id, updatedLesson)
-        this.props.getLesson(this.props.match.params.id)
+
+
+        this.props.history.push('/student/lessons')
+
+        
     }
 
 
 
     render(){
-        console.log(this.props.lesson)
-        console.log(this.state)
+
         return(
             <div>
                 <div>Reschedule lesson {this.props.match.params.id} </div>
                 <input name='lesson_time' placeholder='Date and Time' value={this.state.lesson_time} onChange={this.handelInputChange}/>
                 <input name='lesson_length' placeholder='Length in Minutes' value={this.state.lesson_length} onChange={this.handelInputChange}/>
-                <button onClick={this.saveChanges}>Save Changes</button>
+                <Link to='/student/lessons'><button onClick={this.saveChanges}>Save Changes</button></Link>
+
+                <div>
+                    <div>
+                        <p>{this.state.lesson_type} Lesson:</p>
+                        <p> {this.state.lesson_time}</p>
+                    </div>
+                    <div>
+                        <p>Length: {this.state.lesson_length} mins</p>
+                        <p>Notes: {this.state.lesson_notes} </p>
+                    </div>
+                </div>
 
             </div>
         )

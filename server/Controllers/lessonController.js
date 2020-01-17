@@ -36,7 +36,8 @@ module.exports = {
 
         const db = req.app.get('db')
 
-        let result = await db.lesson.get_lesson(lesson_id)
+        let result = await db.lesson.get_lesson(+lesson_id)
+
 
         if(!result[0]){
             res.status(400).json('lesson does not exist.')

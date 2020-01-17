@@ -17,7 +17,7 @@ export default class TeacherProfile extends React.Component{
                     <div>Teacher Phone: {this.props.teacherPhone} </div>
                 </div>
                 <div>
-                    <img src='http://www.diversegreen.org/wp-content/uploads/2015/09/photo-not-available-clip-art1.png' alt='placeholder image' width='200px' height='200px'></img>
+                    <img src='http://www.diversegreen.org/wp-content/uploads/2015/09/photo-not-available-clip-art1.png' alt='default' width='200px' height='200px'></img>
                 </div>
             </div>
         )

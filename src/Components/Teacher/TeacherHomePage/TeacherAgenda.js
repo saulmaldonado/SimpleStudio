@@ -20,7 +20,6 @@ class TeacherAgenda extends React.Component{
 
     render(){
         let today = new Date()
-        console.log(this.props)
         return(
             <div>
                 <div>Your Agenda:</div>

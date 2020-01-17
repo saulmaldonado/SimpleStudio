@@ -9,7 +9,12 @@ export default class TeacherLessonForm extends React.Component{
     }
     render(){
         return(
-            <div>TeacherLessonForm</div>
+            <div>
+                <p>TeacherLessonForm</p>
+
+                
+
+            </div>
         )
     }
 }

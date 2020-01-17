@@ -83,11 +83,11 @@ class Name extends React.Component{
             <div>
                 <Redirect to='/' />
                 <div>Login</div>
-                <input placeholder='Email' name='email' onChange={this.handleInputChange} value={email}/>
-                <input placeholder='Password' name='password' type='password' onChange={this.handleInputChange} value={password}/>
-                <input type='radio' name='accountType' value='Student' onChange={this.handleInputChange}/> Student
-                <input type='radio' name='accountType' value='Teacher' onChange={this.handleInputChange}/> Teacher
-                <button onClick={this.state.accountType === 'Teacher' ? this.handleLoginTeacher : this.handleLoginStudent}>Login</button>
+                    <input placeholder='Email' name='email' onChange={this.handleInputChange} value={email}/>
+                    <input placeholder='Password' name='password' type='password' autoComplete='on' onChange={this.handleInputChange} value={password}/>
+                    <input type='radio' name='accountType' value='Student' onChange={this.handleInputChange}/> Student
+                    <input type='radio' name='accountType' value='Teacher' onChange={this.handleInputChange}/> Teacher
+                    <input type='submit' value='Login' onClick={this.state.accountType === 'Teacher' ? this.handleLoginTeacher : this.handleLoginStudent}/>
             </div>
             
         )

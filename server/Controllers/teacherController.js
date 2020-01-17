@@ -82,6 +82,8 @@ module.exports = {
      assignStudent: async(req, res) => {
          const {teacher_id, student_id} = req.params
 
+    
+
          const db = req.app.get('db')
 
          const result = await db.teacher.assign_student(teacher_id, student_id)
@@ -89,18 +91,10 @@ module.exports = {
          if(!result){
              res.status(400).json('Student does not exist')
          } else {
-            let students = result.map(ele => {
-                return {
-                    id: ele.student_id,
-                    first_name: ele.student_first_name,
-                    last_name: ele.student_last_name,
-                    email: ele.student_email,
-                    phone: ele.student_phone,
-                    teacher_id: ele.teacher_id
-                }
-            })
-    
-            res.status(200).json(students)
+
+            let student = result[0]
+
+            res.status(200).json(`${student.student_first_name} ${student.student_last_name} has been added`)
          }
      },
      unassignStudent: async(req, res) => {

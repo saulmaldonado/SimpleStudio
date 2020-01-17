@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {editLog, getLog, deleteLog} from '../../../redux/reducers/logsReducer'
-import { Redirect } from 'react-router-dom'
 
  class EditPracticeLog extends React.Component{
     constructor(){
@@ -51,6 +50,8 @@ import { Redirect } from 'react-router-dom'
         })
 
         alert('Practice log has been updated!')
+
+        this.props.history.push('/student/logs')
     }
 
     deleteLog = () => {

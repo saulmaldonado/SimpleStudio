@@ -15,6 +15,12 @@ class StudentLogsContainer extends React.Component{
         this.props.getAllLogsForStudent(this.props.student.student_id)
     }
 
+    componentDidUpdate(prevProps){
+        if(prevProps.logs !== this.props.logs){
+            this.props.getAllLogsForStudent(this.props.student.student_id)
+        }
+    }
+
     render(){
         console.log(this.props)
         return(

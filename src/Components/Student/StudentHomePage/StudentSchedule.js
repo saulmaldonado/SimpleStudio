@@ -2,6 +2,7 @@ import React from 'react'
 import LessonBlockForStudents from '../../LessonBlock/LessonBlockForStudents'
 import {connect} from 'react-redux'
 import {getAllLessons} from '../../../redux/reducers/studentReducer'
+import { withRouter } from 'react-router-dom'
 
 class StudentSchedule extends React.Component{
     constructor(){
@@ -12,15 +13,17 @@ class StudentSchedule extends React.Component{
     }
 
     componentDidMount(){
-        this.props.getAllLessons(this.props.student.student_id)
-    }
+            this.props.getAllLessons(this.props.student.student_id)
+        }
+
+    
 
     render(){
         return(
             <div>
                 <div>StudentSchedule</div>
                 {this.props.lessons.map((ele, i) => {
-                    return <LessonBlockForStudents key={i} lessonType={ele.lesson_type} lessonDate={ele.lesson_time} lessonLength={ele.lesson_length}/>
+                    return <LessonBlockForStudents key={i} lessonType={ele.lesson_type} lessonDate={ele.lesson_time} lessonLength={ele.lesson_length} lessonNotes={ele.lesson_notes ? ele.lesson_notes : 'none.'}/>
                 })}
             </div>
         )
@@ -35,4 +38,4 @@ const mapStateToProps = (reduxState) => {
 }
 
 
-export default connect(mapStateToProps, {getAllLessons})(StudentSchedule)
+export default withRouter(connect(mapStateToProps, {getAllLessons})(StudentSchedule))

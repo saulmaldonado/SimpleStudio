@@ -12,6 +12,8 @@ export default class StudentLessons extends React.Component{
 
         }
     }
+
+
     render(){
         return(
             <div>
@@ -19,10 +21,10 @@ export default class StudentLessons extends React.Component{
                 <Switch>
                     <Route path='/student/lessons/edit/:id' component={RescheduleLessonStudent}/>
                     <Route path='/student/lessons/:id' component={StudentShowLesson}/>
+                    <Route path='/student/lessons' component={StudentSchedule} /> />
                 </Switch>
 
                 <div>Calendar</div>
-                <StudentSchedule />
             </div>
         )
     }

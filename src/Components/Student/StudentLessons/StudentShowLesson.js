@@ -1,5 +1,4 @@
 import React from 'react'
-import LessonBlock from '../../LessonBlock/LessonBlock'
 import {getLesson} from '../../../redux/reducers/lessonReducer'
 import { connect } from 'react-redux'
 import LessonBlockDetailed from '../../LessonBlock/LessonBlockDetailed'

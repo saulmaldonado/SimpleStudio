@@ -5,6 +5,7 @@ const initialState = {
     lessons: [],
     logs: [],
     payments:[],
+    selectedStudent:[],
     loading: false
 }
 
@@ -12,6 +13,15 @@ const GET_ALL_LESSONS = 'GET_ALL_LESSONS'
 const GET_ALL_STUDENTS = 'GET_ALL_STUDENTS'
 const GET_ALL_LOGS = 'GET_ALL_LOGS'
 const GET_ALL_PAYMENTS = 'GET_ALL_PAYMENTS'
+const GET_STUDENT = 'GET_STUDENT'
+
+export function getStudent(student_id){
+  return {
+    type: GET_STUDENT,
+    payload: axios.get(`/auth/student/${student_id}`)
+                      .then(res => res.data)
+  }
+}
 
 export function getAllLessonsForTeacher(teacher_id){
     return {
@@ -116,6 +126,29 @@ export default function reducer(state = initialState, action){
               return {
                 ...state,
                 payments: payload,
+                loading: false
+              }
+            }
+
+            case `${GET_STUDENT}_PENDING`: {
+              return {
+                ...state,
+                loading: true
+              }
+            }
+
+            case `${GET_STUDENT}_FULFILLED`: {
+              return {
+                ...state,
+                selectedStudent: payload,
+                loading: false
+              }
+            }
+
+            case `${GET_STUDENT}_REJECTED`: {
+              return {
+                ...state,
+                selectedStudent:`Student does not exist`,
                 loading: false
               }
             }
