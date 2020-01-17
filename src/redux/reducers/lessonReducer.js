@@ -6,6 +6,7 @@ const initialState = {
 }
 
 const GET_LESSON = 'GET_LESSON'
+const NEW_LESSON = 'NEW_LESSON'
 
 export function getLesson(lesson_id){
     return{
@@ -21,6 +22,14 @@ export function editLesson(lesson_id, updatedLesson){
         payload: axios.put(`/api/lesson/${lesson_id}`, updatedLesson)
                         .then(res => res.data)
     }
+}
+
+export function createLesson(newLesson){
+  return {
+      type: NEW_LESSON,
+      payload: axios.post('/api/lesson', newLesson)
+                  .then(res => res.data)
+  }
 }
 
 export default function reducer(state = initialState, action){
@@ -50,7 +59,30 @@ export default function reducer(state = initialState, action){
             lessons: 'error',
             loading: false
           }
-        }   
+        }  
+        
+        case `${NEW_LESSON}_PENDING`: {
+          return {
+            ...state,
+            loading: true
+        
+          }
+        }
+
+        case `${NEW_LESSON}_FULFILLED`: {
+          return {
+            ...state,
+            students: payload,
+            loading:false
+          }
+        }
+
+        case `${NEW_LESSON}_REJECTED`: {
+          return {
+            ...state,
+            loading: false
+          }
+        }
         
 
 

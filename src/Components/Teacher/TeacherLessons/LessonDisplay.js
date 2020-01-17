@@ -12,6 +12,13 @@ class LessonDisplay extends React.Component{
 
     componentDidMount(){
         this.props.getLesson(this.props.match.params.id)
+        }
+
+
+    componentDidUpdate(prevProps){
+        if(prevProps.match.params.id !== this.props.match.params.id){
+            this.props.getLesson(this.props.match.params.id)
+        }
     }
 
 
@@ -21,13 +28,13 @@ class LessonDisplay extends React.Component{
             <div>
                 <p>LessonDisplay</p>
 
-                <div>
-                    {/* <p> {this.props.lessons.lesson_type} Lesson: </p>
-                    <p> Student: {`${this.props.lessons.student_first_name} ${this.props.lessons.student_last_name}`} </p>
-                    <p> {this.props.lessons.lesson_time} </p>
-                    <p> {this.props.lessons.lesson_length} minutes </p>
-                    <p> {this.props.lessons.lesson_notes} </p> */}
-                </div>
+                {this.props.lesson === 'error' ? 'Lesson does not exist': <div>
+                    <p> {this.props.lesson.lesson_type} Lesson: </p>
+                    <p> Student: {`${this.props.lesson.student_first_name} ${this.props.lesson.student_last_name}`} </p>
+                    <p> {this.props.lesson.lesson_time} </p>
+                    <p> {this.props.lesson.lesson_length} minutes </p>
+                    <p> Notes: {this.props.lesson.lesson_notes ? this.props.lesson.lesson_notes : 'none.' } </p>
+                </div>}
 
             </div>
         )
