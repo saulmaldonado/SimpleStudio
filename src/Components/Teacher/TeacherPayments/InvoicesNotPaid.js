@@ -2,6 +2,7 @@ import React from 'react'
 import UnpaidPaymentBlockTeacher from '../../Payments/UnpaidPaymentBlockTeacher'
 import { connect } from 'react-redux'
 import {getAllUnpaidPaymentsForTeacher} from '../../../redux/reducers/teacherReducer'
+import { withRouter } from 'react-router-dom'
 
 
 class InvoicesNotPaid extends React.Component{
@@ -15,6 +16,18 @@ class InvoicesNotPaid extends React.Component{
     componentDidMount(){
         this.props.getAllUnpaidPaymentsForTeacher(this.props.teacher.teacher_id)
     }
+
+    // shouldComponentUpdate(nextProps){
+    //     if(nextProps.payments.length === this.props.payments.length){
+    //         this.props.getAllUnpaidPaymentsForTeacher(this.props.teacher.teacher_id)
+    //     }
+    // }
+
+    // componentDidUpdate(prevProps){
+    //     if(prevProps.payments.length !== this.props.payments.length){
+    //         this.props.getAllUnpaidPaymentsForTeacher(this.props.teacher.teacher_id)
+    //     }
+    // }
 
 
     render(){
@@ -41,4 +54,4 @@ const mapStateToProps = (reduxState) => {
     }
 }   
 
-export default connect (mapStateToProps, {getAllUnpaidPaymentsForTeacher})(InvoicesNotPaid)
+export default withRouter(connect (mapStateToProps, {getAllUnpaidPaymentsForTeacher})(InvoicesNotPaid))
