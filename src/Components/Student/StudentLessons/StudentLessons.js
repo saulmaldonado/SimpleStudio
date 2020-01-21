@@ -4,6 +4,7 @@ import StudentSchedule from '../StudentHomePage/StudentSchedule'
 import RescheduleLessonStudent from './RescheduleLessonStudent'
 import { Switch, Route } from 'react-router-dom'
 import StudentShowLesson from './StudentShowLesson'
+import StudentCalendar from './StudentCalendar'
 
 export default class StudentLessons extends React.Component{
     constructor(){
@@ -24,7 +25,7 @@ export default class StudentLessons extends React.Component{
                     <Route path='/student/lessons' component={StudentSchedule} /> />
                 </Switch>
 
-                <div>Calendar</div>
+                <StudentCalendar />
             </div>
         )
     }

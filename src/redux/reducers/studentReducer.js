@@ -58,7 +58,6 @@ export function getTeacherForStudent(student_id){
 }
 
 export function getAllLogsForStudent(student_id){
-  console.log('getAlllogs')
   return{
     type: GET_ALL_LOGS,
     payload: axios.get(`/api/student/${student_id}/logs`)

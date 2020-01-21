@@ -22,7 +22,7 @@ class StudentSchedule extends React.Component{
         return(
             <div>
                 <div>StudentSchedule</div>
-                {this.props.lessons.map((ele, i) => {
+                {!this.props.lessons.length ? <div>You have no lessons scheduled</div> : this.props.lessons.map((ele, i) => {
                     return <LessonBlockForStudents key={i} lessonType={ele.lesson_type} lessonDate={ele.lesson_time} lessonLength={ele.lesson_length} lessonNotes={ele.lesson_notes ? ele.lesson_notes : 'none.'}/>
                 })}
             </div>

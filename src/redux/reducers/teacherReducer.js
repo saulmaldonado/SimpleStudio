@@ -95,14 +95,13 @@ export default function reducer(state = initialState, action){
             case `${GET_ALL_LESSONS}_FULFILLED`: {
                 return {
                     ...state,
-                    lessons: payload,
+                    lessons: [...payload],
                     loading: false
 
                 }
             }
 
             case `${GET_ALL_LESSONS}_REJECTED`: {
-                alert(payload.response.data)
               return {
                 ...state,
                 loading: false

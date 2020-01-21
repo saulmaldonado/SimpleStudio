@@ -28,6 +28,7 @@
     "reactjs-popup": "^1.5.0",
     "redux": "^4.0.5",
     "redux-promise-middleware": "^6.1.2",
+    "stripe": "^8.4.0",
     "tippy.js": "^5.1.4"
   },
   "scripts": {

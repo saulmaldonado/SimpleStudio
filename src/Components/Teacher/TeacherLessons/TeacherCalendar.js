@@ -1,7 +1,7 @@
 import React from 'react'
 import {getAllLessonsForTeacher} from '../../../redux/reducers/teacherReducer'
 import {getStudentsForTeacher} from '../../../redux/reducers/teacherReducer'
-import {editLesson, createLesson} from '../../../redux/reducers/lessonReducer'
+import {editLesson, createLesson, deleteLesson} from '../../../redux/reducers/lessonReducer'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
@@ -29,7 +29,8 @@ class TeacherCalendar extends React.Component{
             lesson_length:'',
             lesson_notes:'',
             student_id: '',
-            open: false 
+            open: false,
+            deleteMode: false
 
         }
     }
@@ -39,6 +40,36 @@ class TeacherCalendar extends React.Component{
         this.props.getAllLessonsForTeacher(this.props.teacher.teacher_id)
         this.props.getStudentsForTeacher(this.props.teacher.teacher_id)
         this.parseLessons()
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.lessons.length !== this.props.lessons.length){
+            this.props.getAllLessonsForTeacher(this.props.teacher.teacher_id)
+            this.parseLessons()
+        }
+    }
+
+    updateCalender = () =>{
+        this.props.getAllLessonsForTeacher(this.props.teacher.teacher_id)
+        this.parseLessons()
+    }
+
+    toggleToCancel = () => {
+        this.setState({
+            deleteMode: !this.state.deleteMode
+        })
+    }
+
+    cancelLesson = (info) => {
+
+        if(this.state.deleteMode){
+            if(window.confirm('Are you sure you want to cancel this lesson?') === true){
+                this.props.deleteLesson(info.event.id)
+                this.updateCalender()
+            }
+        }
+
+
     }
     
 
@@ -61,7 +92,6 @@ class TeacherCalendar extends React.Component{
 
         this.openPopup()
 
-        console.log(this.state)
     } 
 
     parseLessons = () => {
@@ -164,9 +194,7 @@ class TeacherCalendar extends React.Component{
 
         this.props.createLesson(newLesson)
         
-        this.props.getAllLessonsForTeacher(this.props.teacher.teacher_id)
-        this.parseLessons()
-
+        
         this.setState({
             lesson_time:'',
             lesson_type:'',
@@ -176,6 +204,8 @@ class TeacherCalendar extends React.Component{
             open: false 
         })
 
+        console.log(this.props.lessons)
+        this.updateCalender()
     }
 
     handelInputChange = (e) => {
@@ -213,7 +243,7 @@ class TeacherCalendar extends React.Component{
                     </div>
                 </Popup>
                 <FullCalendar   defaultView='dayGridMonth' 
-                                header={{left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay'}} 
+                                header={{left: 'prev,next today' , center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay'}} 
                                 editable={true} 
                                 plugins={[ dayGridPlugin, interactionPlugin, timeGridPlugin ]} 
                                 events={[...this.state.lessons]} 
@@ -222,7 +252,9 @@ class TeacherCalendar extends React.Component{
                                 eventResize={this.resizeLesson}
                                 selectable={true}
                                 select={this.selectTime}
+                                eventClick={this.cancelLesson}
                                 />
+                                <button onClick={this.toggleToCancel} >Toggle to Cancel Lesson</button>
             </div>
 
         )
@@ -238,4 +270,4 @@ const mapStateToProps = (reduxState) => {
 }
 
 
-export default connect (mapStateToProps, {getAllLessonsForTeacher, editLesson, getStudentsForTeacher, createLesson})(TeacherCalendar)
+export default connect (mapStateToProps, {getAllLessonsForTeacher, editLesson, getStudentsForTeacher, createLesson, deleteLesson})(TeacherCalendar)

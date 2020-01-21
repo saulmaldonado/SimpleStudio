@@ -7,6 +7,7 @@ const initialState = {
 
 const GET_LESSON = 'GET_LESSON'
 const NEW_LESSON = 'NEW_LESSON'
+const DELETE_LESSON = 'DELETE_LESSON'
 
 export function getLesson(lesson_id){
     return{
@@ -32,6 +33,14 @@ export function createLesson(newLesson){
   }
 }
 
+export function deleteLesson(lesson_id){
+  return {
+    type: DELETE_LESSON,
+    payload: axios.delete(`/api/lesson/${lesson_id}`)
+                  .then(res => res.data)
+  }
+}
+
 export default function reducer(state = initialState, action){
     const { payload, type } = action
 
@@ -47,7 +56,7 @@ export default function reducer(state = initialState, action){
         case `${GET_LESSON}_FULFILLED`: {
           return {
             ...state,
-            lessons: payload,
+            lessons: [...payload],
             loading: false
           }
         }
@@ -72,12 +81,29 @@ export default function reducer(state = initialState, action){
         case `${NEW_LESSON}_FULFILLED`: {
           return {
             ...state,
-            students: payload,
             loading:false
           }
         }
 
         case `${NEW_LESSON}_REJECTED`: {
+          return {
+            ...state,
+            loading: false
+          }
+        }
+        case `${DELETE_LESSON}_PENDING`: {
+          return {
+            ...state,
+            loading: true
+          }
+        }
+        case `${DELETE_LESSON}_FULFILLED`: {
+          return {
+            ...state,
+            loading: false
+          }
+        }
+        case `${DELETE_LESSON}_REJECTED`: {
           return {
             ...state,
             loading: false

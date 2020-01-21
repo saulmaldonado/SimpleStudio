@@ -13,7 +13,6 @@ export default function TeacherLessons(){
 
             <Switch>
                 <Route path='/teacher/lessons/edit/:id' component={RescheduleLessonTeacher} />
-                <Route path='/teacher/lessons' component={TeacherLessonForm} />
             </Switch>
 
             <Switch>

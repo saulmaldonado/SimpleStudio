@@ -3,6 +3,9 @@ import LessonBlock from '../../LessonBlock/LessonBlock'
 import {getAllLessonsForTeacher, getStudentsForTeacher} from '../../../redux/reducers/teacherReducer'
 import {connect} from 'react-redux'
 
+var moment = require('moment')
+
+
 class TeacherAgenda extends React.Component{
     constructor(){
         super()
@@ -19,15 +22,14 @@ class TeacherAgenda extends React.Component{
 
 
     render(){
-        let today = new Date()
         return(
             <div>
                 <div>Your Agenda:</div>
                 <div> 
-                {today.getMonth() + 1}-{today.getDate()}-{today.getFullYear()}
+                {moment().format('llll')}
                 </div>
                 {this.props.teacherInfo.lessons.map((ele, i) => {
-                    return <LessonBlock key={i} lessonType={ele.lesson_type} lessonTime={ele.lesson_time} lessonLength={ele.lesson_length} studentName={`${ele.student_first_name} ${ele.student_last_name}`} /> 
+                    return <LessonBlock key={i} lessonType={ele.lesson_type} lessonTime={moment(ele.lesson_time).format('llll')} lessonLength={ele.lesson_length} studentName={`${ele.student_first_name} ${ele.student_last_name}`} /> 
                 })}
             </div>
         )

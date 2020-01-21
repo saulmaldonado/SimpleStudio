@@ -2,6 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {getLesson} from '../../../redux/reducers/lessonReducer'
 
+var moment = require('moment')
+
+
+
+
 class LessonDisplay extends React.Component{
     constructor(){
         super()
@@ -31,7 +36,7 @@ class LessonDisplay extends React.Component{
                 {this.props.lesson === 'error' ? 'Lesson does not exist': <div>
                     <p> {this.props.lesson.lesson_type} Lesson: </p>
                     <p> Student: {`${this.props.lesson.student_first_name} ${this.props.lesson.student_last_name}`} </p>
-                    <p> {this.props.lesson.lesson_time} </p>
+                    <p> {moment(this.props.lesson.lesson_time).format('llll')} </p>
                     <p> {this.props.lesson.lesson_length} minutes </p>
                     <p> Notes: {this.props.lesson.lesson_notes ? this.props.lesson.lesson_notes : 'none.' } </p>
                 </div>}
