@@ -73,8 +73,8 @@ class TeacherAssignmentForms extends React.Component{
             assignment_source, 
             assignment_page, 
             assignment_requirements,
-            assignment_duedate,
-            student_id } = this.state
+            assignment_duedate
+            } = this.state
 
         return(
             <div>

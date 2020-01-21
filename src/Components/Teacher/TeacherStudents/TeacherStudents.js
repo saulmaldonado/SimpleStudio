@@ -1,8 +1,6 @@
 import React from 'react'
 import StudentProfile from './StudentProfile'
 import StudentSelector from './StudentSelector'
-import {getStudentsForTeacher} from '../../../redux/reducers/teacherReducer'
-import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 
 export default class TeacherStudents extends React.Component{

@@ -1,7 +1,6 @@
 import React from 'react'
 import LogBlock from '../../LogBlock/LogBlock'
 import {getAllLogsForStudent} from '../../../redux/reducers/studentReducer'
-import {getStudent} from '../../../redux/reducers/teacherReducer'
 import { connect } from 'react-redux'
 
 class TeacherLogsContainer extends React.Component{

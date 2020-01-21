@@ -1,6 +1,5 @@
 import React from 'react'
-import { Route, Switch, Link } from 'react-router-dom'
-import AssignmentEditBlock from '../Teacher/TeacherAssignments/AssignmentEditBlock'
+import { Link } from 'react-router-dom'
 
 export default class AssignmentBlockDetailed extends React.Component{
     constructor(){

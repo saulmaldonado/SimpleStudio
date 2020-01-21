@@ -27,7 +27,6 @@ class NewInvoice extends React.Component{
     createNewPayment = () => {
         const { payment_amount,
             payment_duedate,
-            payment_ispaid,
             payment_date,
             lesson_id } = this.state
 
@@ -40,7 +39,7 @@ class NewInvoice extends React.Component{
 
         this.props.createPayment(newPayment)
 
-        alert('Payment has been created')
+        alert('Invoice has been created')
 
         this.setState({
             payment_amount: '',
@@ -51,11 +50,8 @@ class NewInvoice extends React.Component{
     }
 
     render(){
-        console.log(this.state)
-        console.log(this.props)
         const { payment_amount,
             payment_duedate,
-            payment_ispaid,
             payment_date,
             lesson_id } = this.state
         return(

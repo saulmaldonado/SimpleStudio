@@ -24,6 +24,9 @@ class Name extends React.Component{
         const {loginTeacher} = this.props
         const {email, password} = this.state
 
+        e.preventDefault()
+
+
         loginTeacher({email, password})
 
         this.setState({
@@ -34,6 +37,9 @@ class Name extends React.Component{
     handleLoginStudent = (e) => {
         const {loginStudent} = this.props
         const {email, password} = this.state
+
+        e.preventDefault()
+
 
         loginStudent({email, password})
 
@@ -83,11 +89,13 @@ class Name extends React.Component{
             <div>
                 <Redirect to='/' />
                 <div>Login</div>
-                    <input placeholder='Email' name='email' onChange={this.handleInputChange} value={email}/>
+                <form autoComplete='on' onSubmit={this.state.accountType === 'Teacher' ? this.handleLoginTeacher : this.handleLoginStudent} >
+                    <input type='email'  placeholder='Email' name='email' onChange={this.handleInputChange} value={email}/>
                     <input placeholder='Password' name='password' type='password' autoComplete='on' onChange={this.handleInputChange} value={password}/>
                     <input type='radio' name='accountType' value='Student' onChange={this.handleInputChange}/> Student
                     <input type='radio' name='accountType' value='Teacher' onChange={this.handleInputChange}/> Teacher
-                    <input type='submit' value='Login' onClick={this.state.accountType === 'Teacher' ? this.handleLoginTeacher : this.handleLoginStudent}/>
+                    <input  type='submit' value='Login' />
+                </form>
             </div>
             
         )

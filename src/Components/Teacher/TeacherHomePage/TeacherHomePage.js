@@ -20,7 +20,7 @@ function TeacherHomePage (props){
                 <Route exact path='/teacher' render={() => {
                     return(
                         <div>
-                            {/* <h1>Welcome! {`${props.teacher.teacher_first_name} ${props.teacher.teacher_last_name}`} </h1> */}
+                            <h1>Welcome! {`${props.teacher.teacher_first_name} ${props.teacher.teacher_last_name}`} </h1>
                             <TeacherAgenda />
                             <TeacherNewLogs />
                             <TeacherNewPayments />
