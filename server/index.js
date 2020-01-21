@@ -13,8 +13,10 @@ const le = require('./Controllers/lessonController')
 const lo = require('./Controllers/logsController')
 const as = require('./Controllers/assignmentController')
 const p = require('./Controllers/paymentController')
+const st = require('./Controllers/stripeController')
 
 //middleware
+app.use(require('body-parser').text())
 app.use(express.json())
 app.use(session({
   secret: SESSION_SECRET,
@@ -133,10 +135,15 @@ app.post('/api/payment', p.createPayment)
 
 // //PUT
 app.put('/api/payment/:payment_id', p.editPayment)
+app.put('/api/payment/pay/:payment_id', p.payPayment)
 
 // //DELETE
 app.delete('/api/payment/:payment_id', p.deletePayment)
 
+
+//Stripe
+
+app.post('/charge', st.charge)
 
 
 

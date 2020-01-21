@@ -1,6 +1,8 @@
 import React from 'react'
 import StudentInvoiceHistory from './StudentInvoiceHistory'
 import StudentNewInvoices from './StudentNewInvoices'
+import { Route } from 'react-router-dom'
+import Checkout from '../../Payments/Checkout'
 
 
 export default class StudentPayments extends React.Component{
@@ -14,8 +16,11 @@ export default class StudentPayments extends React.Component{
         return(
             <div>
                 <div>StudentPayments</div>
-                <StudentInvoiceHistory />
-                <StudentNewInvoices />
+                <Route path='/student/payments'>
+                    <StudentInvoiceHistory />
+                    <StudentNewInvoices />
+                </Route>
+                <Route path='/student/payments/pay/:id' component={Checkout} />
             </div>
         )
     }

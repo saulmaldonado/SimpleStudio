@@ -39,5 +39,14 @@ module.exports = {
         } else {
             res.status(200).json(result[0])
         }
+    },
+    payPayment: async(req, res) => {
+        const {payment_id} = req.params
+
+        const db = req.app.get('db')
+
+        const result = await db.payment.pay_payment(payment_id)
+
+        res.status(200).json(result)
     }
 }

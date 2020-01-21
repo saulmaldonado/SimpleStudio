@@ -9,6 +9,7 @@ const GET_PAYMENT = 'GET_PAYMENT'
 const NEW_PAYMENT = 'NEW_PAYMENT'
 const EDIT_PAYMENT = 'EDIT_PAYMENT'
 const DELETE_PAYMENT = 'DELETE_PAYMENT'
+const PAY_PAYMENT = 'PAY_PAYMENT'
 
 export function getPayment(payment_id){
     return {
@@ -40,6 +41,14 @@ export function deletePayment(payment_id){
         payload: axios.put(`/api/payment/${payment_id}`)
                         .then(res => res.data)
     }
+}
+
+export function payPayment(payment_id){
+  return {
+    type: PAY_PAYMENT,
+    payload: axios.put(`/api/payment/pay/${payment_id}`)
+                    .then(res => res.data)
+  }
 }
 
 export default function reducer(state = initialState, action){
@@ -124,9 +133,20 @@ export default function reducer(state = initialState, action){
             loading: false
           }
         }
-        
-
-
+        case `${PAY_PAYMENT}_PENDING`: {
+          return {
+            ...state,
+            loading: true
+          }
+        }
+        case `${PAY_PAYMENT}_FULFILLED`: {
+          return {
+            ...state,
+            payments: payload,
+            loading: false
+          }
+        }
+      
         default:
             return state
     }
