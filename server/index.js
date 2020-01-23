@@ -14,6 +14,7 @@ const lo = require('./Controllers/logsController')
 const as = require('./Controllers/assignmentController')
 const p = require('./Controllers/paymentController')
 const st = require('./Controllers/stripeController')
+const n = require('./Controllers/notificationsController')
 
 //middleware
 app.use(require('body-parser').text())
@@ -41,6 +42,7 @@ massive(CONNECTION_STRING)
 //GET
 app.get('/auth/teacher/:id', ac.getTeacher)
 app.get('/auth/student/:id', ac.getStudent)
+app.get('/auth/student', ac.getStudentByEmail)
 app.get('/auth/logout', ac.logout)
 
 //POST
@@ -121,6 +123,7 @@ app.post('/api/assignment', as.createAssignment)
 
 //PUT
 app.put('/api/assignment/:assignment_id', as.editAssignment)
+app.put(`/api/assignment/complete/:assignment_id`, as.markAssignmentAsComplete)
 
 //DELETE
 app.delete('/api/assignment/:assignment_id', as.deleteAssignment)
@@ -144,6 +147,15 @@ app.delete('/api/payment/:payment_id', p.deletePayment)
 //Stripe
 
 app.post('/charge', st.charge)
+
+// Notifications
+app.get('/student/notifications/:student_id', n.getNotificationsForStudent)
+app.post('/student/notifications/:student_id', n.CreateNotificationForStudent)
+app.get('/teacher/notifications/:student_id', n.getNotificationsForTeacher)
+app.post('/teacher/notifications/:student_id', n.CreateNotificationForTeacher)
+app.delete('/student/notifications/:notification_id', n.deleteNotificationForStudent)
+app.delete('/teacher/notifications/:notification_id', n.deleteNotificationForTeacher)
+
 
 
 

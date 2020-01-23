@@ -2,6 +2,7 @@ import React from 'react'
 import {getAllLessonsForTeacher} from '../../../redux/reducers/teacherReducer'
 import {getStudentsForTeacher} from '../../../redux/reducers/teacherReducer'
 import {editLesson, createLesson, deleteLesson} from '../../../redux/reducers/lessonReducer'
+import {CreateNotificationForStudent} from '../../../redux/reducers/studentReducer'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
@@ -49,8 +50,8 @@ class TeacherCalendar extends React.Component{
         }
     }
 
-    updateCalender = () =>{
-        this.props.getAllLessonsForTeacher(this.props.teacher.teacher_id)
+    updateCalender = async() =>{
+        await this.props.getAllLessonsForTeacher(this.props.teacher.teacher_id)
         this.parseLessons()
     }
 
@@ -60,16 +61,14 @@ class TeacherCalendar extends React.Component{
         })
     }
 
-    cancelLesson = (info) => {
+    cancelLesson = async(info) => {
 
         if(this.state.deleteMode){
             if(window.confirm('Are you sure you want to cancel this lesson?') === true){
-                this.props.deleteLesson(info.event.id)
+                await this.props.deleteLesson(info.event.id)
                 this.updateCalender()
             }
         }
-
-
     }
     
 
@@ -95,10 +94,11 @@ class TeacherCalendar extends React.Component{
     } 
 
     parseLessons = () => {
-        let lessons = []
-        this.props.lessons.map((ele, i) => {
-            lessons.push({title: `${ele.lesson_type} Lesson with ${ele.student_first_name}`, id: ele.lesson_id, start: ele.lesson_time, end: moment(ele.lesson_time).add(ele.lesson_length, 'minutes').format(moment.HTML5_FMT.DATETIME_LOCAL)})
+
+        let lessons = this.props.lessons.map((ele, i) => {
+            return {title: `${ele.lesson_type} Lesson with ${ele.student_first_name}`, id: ele.lesson_id, start: ele.lesson_time, end: moment(ele.lesson_time).add(ele.lesson_length, 'minutes').format(moment.HTML5_FMT.DATETIME_LOCAL)}
         })
+
         this.setState({lessons: lessons})
     }
 
@@ -117,10 +117,13 @@ class TeacherCalendar extends React.Component{
             date.revert()
         }
 
+        let prevLessonTime = this.props.lessons.find(ele => ele.lesson_id == date.event.id).lesson_time
         let lesson_type = this.props.lessons.find(ele => ele.lesson_id == date.event.id).lesson_type
         let lesson_time = moment(date.event.start).format(moment.HTML5_FMT.DATETIME_LOCAL)
         let lesson_length = moment.duration(moment(date.event.end).diff(moment(date.event.start))).as('minutes')
         let lesson_notes = this.props.lessons.find(ele => ele.lesson_id == date.event.id).lesson_notes
+        let student_id = this.props.lessons.find(ele => ele.lesson_id == date.event.id).student_id
+
 
         let editedLesson = {
             lesson_type,
@@ -134,6 +137,15 @@ class TeacherCalendar extends React.Component{
         this.props.editLesson(lesson_id, editedLesson)
 
         this.props.getAllLessonsForTeacher(this.props.teacher.teacher_id)
+
+        let newNotification = {
+            notification_type: 'lesson_rescheduled',
+            notification_title: 'A lesson has been rescheduled',
+            notification_body: `The ${lesson_type} lesson for ${moment(prevLessonTime).format('llll')} has been rescheduled to ${moment(date.event.start).format('llll')} - ${moment(date.event.end).format('LT')} .`,
+            teacher_id: this.props.teacher.teacher_id
+        }
+
+        this.props.CreateNotificationForStudent(student_id, newNotification)
 
 
     }
@@ -156,6 +168,7 @@ class TeacherCalendar extends React.Component{
         let lesson_time = moment(date.event.start).format(moment.HTML5_FMT.DATETIME_LOCAL)
         let lesson_length = moment.duration(moment(date.event.end).diff(moment(date.event.start))).as('minutes')
         let lesson_notes = this.props.lessons.find(ele => ele.lesson_id == date.event.id).lesson_notes
+        let student_id = this.props.lessons.find(ele => ele.lesson_id == date.event.id).student_id
 
         let editedLesson = {
             lesson_type,
@@ -166,16 +179,23 @@ class TeacherCalendar extends React.Component{
 
         let lesson_id = +date.event.id
 
-        console.log(editedLesson)
-
         this.props.editLesson(lesson_id, editedLesson)
 
         this.props.getAllLessonsForTeacher(this.props.teacher.teacher_id)
 
+        let newNotification = {
+            notification_type: 'lesson_resized',
+            notification_title: 'A lesson has been rescheduled',
+            notification_body: `The ${lesson_type} lesson for ${moment(lesson_time).format('LL')} has been rescheduled to ${moment(date.event.start).format('LT')} - ${moment(date.event.end).format('LT')} .`,
+            teacher_id: this.props.teacher.teacher_id
+        }
+
+        this.props.CreateNotificationForStudent(student_id, newNotification)
+
 
     }
 
-    scheduleLesson = () => {
+    scheduleLesson = async() => {
         const {
         lesson_time,
         lesson_type,
@@ -192,8 +212,14 @@ class TeacherCalendar extends React.Component{
             lesson_notes
         }
 
-        this.props.createLesson(newLesson)
+        await this.props.createLesson(newLesson)
         
+        let newNotification = {
+            notification_type: 'lesson_created',
+            notification_title: 'A new lesson has been scheduled',
+            notification_body: `A new ${lesson_type} lesson has been scheduled for ${moment(lesson_time).format('LL')} from  ${moment(lesson_time).format('LT')} - ${moment(lesson_time).add(lesson_length, 'minutes').format('LT')} .`,
+            teacher_id: this.props.teacher.teacher_id
+        }
         
         this.setState({
             lesson_time:'',
@@ -204,7 +230,11 @@ class TeacherCalendar extends React.Component{
             open: false 
         })
 
-        console.log(this.props.lessons)
+
+        this.props.CreateNotificationForStudent(student_id, newNotification)
+
+        
+
         this.updateCalender()
     }
 
@@ -270,4 +300,4 @@ const mapStateToProps = (reduxState) => {
 }
 
 
-export default connect (mapStateToProps, {getAllLessonsForTeacher, editLesson, getStudentsForTeacher, createLesson, deleteLesson})(TeacherCalendar)
+export default connect (mapStateToProps, {getAllLessonsForTeacher, editLesson, getStudentsForTeacher, createLesson, deleteLesson, CreateNotificationForStudent})(TeacherCalendar)

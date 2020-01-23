@@ -55,6 +55,13 @@ module.exports = {
         } else {
             res.status(200).json(result[0])
         }
-    }
+    },
+    markAssignmentAsComplete: async (req, res) => {
+        const {assignment_id} = req.params
+        const db = req.app.get('db')
 
+        await db.assignment.complete_assignment(assignment_id)
+
+        res.sendStatus(200)
+    }
 }

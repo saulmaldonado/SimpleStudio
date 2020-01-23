@@ -6,12 +6,6 @@ import StudentLogsContainer from './StudentLogsContainer'
 import { Route, Switch } from 'react-router-dom'
 
 export default class StudentLogs extends React.Component{
-    constructor(){
-        super()
-        this.state={
-
-        }
-    }
     render(){
         return(
             <div>

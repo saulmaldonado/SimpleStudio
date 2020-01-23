@@ -16,11 +16,11 @@ export default class StudentPayments extends React.Component{
         return(
             <div>
                 <div>StudentPayments</div>
+                <Route path='/student/payments/pay/:id' component={Checkout} />
                 <Route path='/student/payments'>
                     <StudentInvoiceHistory />
                     <StudentNewInvoices />
                 </Route>
-                <Route path='/student/payments/pay/:id' component={Checkout} />
             </div>
         )
     }

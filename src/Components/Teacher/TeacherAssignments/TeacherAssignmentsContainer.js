@@ -19,6 +19,10 @@ class TeacherAssignmentsContainer extends React.Component{
             this.props.getStudent(this.props.match.params.id)
         }
 
+        updateAssignments = () =>{
+            this.props.getAllAssignments(this.props.match.params.id)
+        }
+
         componentDidUpdate(prevProps){
             if(prevProps.match.params.id !== this.props.match.params.id){
                 this.props.getAllAssignments(this.props.match.params.id)
@@ -38,7 +42,7 @@ class TeacherAssignmentsContainer extends React.Component{
 
                                     <div>
                                         {!this.props.assignments.length ? <div>Students has no assignments</div> : this.props.assignments.map((ele, i) => {
-                                            return <AssignmentBlockDetailed id={ele.assignment_id} key={i} assignmentCount={i + 1} assignmentTitle={ele.assignment_title} assignmentSource={ele.assignment_source} assignmentComposer={ele.assignment_composer} assignmentPage={ele.assignment_page} assignmentRequirements={ele.assignment_requirements} assignmentDueDate={ele.assignment_duedate} assignmentCompleted={ele.assignment_completed}  /> 
+                                            return <AssignmentBlockDetailed updateAssignments={this.updateAssignments} id={ele.assignment_id} key={i} assignmentCount={i + 1} assignmentTitle={ele.assignment_title} assignmentSource={ele.assignment_source} assignmentComposer={ele.assignment_composer} assignmentPage={ele.assignment_page} assignmentRequirements={ele.assignment_requirements} assignmentDueDate={ele.assignment_duedate} assignmentCompleted={ele.assignment_completed}  /> 
                 
                                         })}
                                     </div>

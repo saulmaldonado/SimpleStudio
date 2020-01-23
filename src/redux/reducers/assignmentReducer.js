@@ -9,6 +9,7 @@ const GET_ASSIGNMENT = 'GET_ASSIGNMENT'
 const NEW_ASSIGNMENT = 'NEW_ASSIGNMENT'
 const EDIT_ASSIGNMENT = 'EDIT_ASSIGNMENT'
 const DELETE_ASSIGNMENT = 'DELETE_ASSIGNMENT'
+const COMPLETE_ASSIGNMENT = 'COMPLETE_ASSIGNMENT'
 
 export function getAssignment(assignment_id){
     return{
@@ -38,6 +39,13 @@ export function deleteAssignment(assignment_id){
         type: DELETE_ASSIGNMENT,
         payload: axios.delete(`/api/assignment/${assignment_id}`)
     }
+}
+
+export function markAssignmentAsComplete(assignment_id){
+  return {
+    type: COMPLETE_ASSIGNMENT,
+    payload: axios.post(`/api/assignment/${assignment_id}`)
+  }
 }
 
 export default function reducer(state = initialState, action){
@@ -110,7 +118,18 @@ export default function reducer(state = initialState, action){
             loading: false
           }
         }
-        
+        case `${COMPLETE_ASSIGNMENT}_PENDING`: {
+          return {
+            ...state,
+            loading: true
+          }
+        }
+        case `${COMPLETE_ASSIGNMENT}_FULFILLED`: {
+          return {
+            ...state,
+            loading: false
+          }
+        }
 
 
         default:

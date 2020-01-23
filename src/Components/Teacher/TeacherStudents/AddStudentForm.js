@@ -1,25 +1,43 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import {CreateNotificationForStudent} from '../../../redux/reducers/studentReducer'
 
 class AddStudentForm extends React.Component{
     constructor(){
         super()
         this.state={
-            studentID: null
+            student_email: ''
         }
     }
 
-    addStudent = () => {
-        const {studentID} = this.state
+    addStudent =  () => {
+        const {student_email} = this.state
 
-        if(!studentID){
-            return alert('invalid id')
-        }
-        axios.post(`/api/teacher/${this.props.teacher.teacher_id}/student/${+this.state.studentID}`)
-                    .then(res => alert(res.data))
+         axios.get(`/auth/student?student_email=${student_email}`)
+                    .then(res => {
+                        const studentFound = res.data
 
-        this.props.updateStudentList()
+                        if(studentFound.teacher_id){
+                           return alert('Student already has teacher')
+                        }
+
+                        const newNotification = {
+                            notification_type: 'Assign student to Teacher',
+                            notification_title: `${this.props.teacher.teacher_first_name} ${this.props.teacher.teacher_last_name} would like to add you as their student`,
+                            notification_body: `${this.props.teacher.teacher_first_name} ${this.props.teacher.teacher_last_name} has requested to add you as their student. Confirm this request to begin scheduling lessons, receive assignment, and make payments online`,
+                            teacher_id: this.props.teacher.teacher_id
+                        }
+
+                        console.log(studentFound.student_id, newNotification)
+                
+                        if(window.confirm(`Are you sure you want to request to add ${studentFound.student_first_name} ${studentFound.student_last_name} as a student`) === true){
+                            this.props.CreateNotificationForStudent(studentFound.student_id, newNotification)
+                        }
+                    })
+
+                    .catch(res => {alert (res.response.data)})
+
     }
 
     handelInputChange = (e) => {
@@ -38,7 +56,7 @@ class AddStudentForm extends React.Component{
                 <div>Add Student</div>
                 
                 <div>
-                    <input name='studentID' placeholder='Enter Student ID' onChange={this.handelInputChange}/>
+                    <input name='student_email' placeholder={`Enter Student's email`} value={this.state.student_email} onChange={this.handelInputChange}/>
                     <button onClick={this.addStudent}>Invite</button>
                 </div>
 
@@ -54,4 +72,4 @@ const mapStateToProps = (reduxState) => {
     }
 }
 
-export default connect(mapStateToProps)(AddStudentForm)
+export default connect(mapStateToProps, {CreateNotificationForStudent})(AddStudentForm)

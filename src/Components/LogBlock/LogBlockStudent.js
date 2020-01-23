@@ -1,22 +1,18 @@
 import React from 'react'
 
-export default class LogBlock extends React.Component{
-    constructor(){
-        super()
-        this.state={
+const moment = require('moment')
 
-        }
-    }
+export default class LogBlock extends React.Component{
     render(){
         return(
             <div>
                 <div>
                     <p>Practice Log #{this.props.logCount}:</p>
-                    <p>{this.props.logDate}</p>
+                    <p>{moment(this.props.logDate).format('llll')}</p>
                 </div>
                 <div>
-                    <p> {this.props.logTime} </p>
-                    <p> {this.props.logData} </p>
+                    <p> Practiced for {this.props.logTime} minutes </p>
+                    <p> What I practiced: {this.props.logData} </p>
                 </div>
 
             </div>

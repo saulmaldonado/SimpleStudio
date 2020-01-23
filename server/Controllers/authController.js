@@ -230,5 +230,23 @@ module.exports = {
         await db.auth.delete_teacher(id)
 
         res.status(200).json('teacher deleted')
+    },
+
+    getStudentByEmail: async(req, res) => {
+        const {student_email} = req.query
+
+        console.log(student_email)
+
+        const db = req.app.get('db')
+
+        const result = await db.auth.get_student_by_email(student_email)
+
+        console.log(result[0])
+
+        if(!result[0]){
+            res.status(400).json('Student does not have an account. Please invite this student to register.')
+        } else { 
+            res.status(200).json(result[0])
+        }
     }
 }

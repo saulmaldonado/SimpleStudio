@@ -5,8 +5,8 @@ module.exports = {
 
         const result = await db.student.get_teacher(student_id)
 
-        if(!result){
-            res.status(400).json('Student does not have a teacher')
+        if(!result[0]){
+            res.status(400).json('You have not been assigned to a teacher')
         } else {
             res.status(200).json(result[0])
         }
@@ -18,7 +18,7 @@ module.exports = {
         const result = await db.student.get_all_lessons(student_id)
 
         if(!result){
-            res.status(400).json('Student has no lessons')
+            res.status(400).json('You have no lessons scheduled')
         } else {
 
             res.status(200).json(result)
@@ -44,10 +44,8 @@ module.exports = {
 
         const result = await db.student.get_all_logs(student_id)
 
-        console.log(result)
-
-        if(!result){
-            res.status(400).json('Student has no Practice Logs')
+        if(!result[0]){
+            res.status(400).json('You have not submitted a Practice Log.')
         } else {
             res.status(200).json(result)
         }
@@ -59,7 +57,7 @@ module.exports = {
         const result = await db.student.get_all_payments(student_id)
 
         if(!result){
-            res.status(400).json('Student has no payment history')
+            res.status(400).json('You have no payment history.')
         } else {
             res.status(200).json(result)
         }
@@ -72,7 +70,7 @@ module.exports = {
         const result = await db.student.get_all_payments_due(student_id)
 
         if(!result[0]){
-            res.status(400).json('Student has no payments due')
+            res.status(400).json('You have no payments due.')
         } else {
             res.status(200).json(result)
         }

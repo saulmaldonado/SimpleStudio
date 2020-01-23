@@ -2,6 +2,7 @@ import React from 'react'
 import AssignmentBlock from '../../Assignments/AssignmentBlock'
 import { connect } from 'react-redux'
 import {getAllAssignments} from '../../../redux/reducers/studentReducer'
+import { toast, ToastContainer } from 'react-toastify'
 
 class NewAssignments extends React.Component{
     constructor(){
@@ -11,6 +12,10 @@ class NewAssignments extends React.Component{
         }
     }
 
+    notify = () => {
+        toast('Wow so easy!')
+    }
+
     componentDidMount(){
         this.props.getAllAssignments(this.props.student.student_id)
     }
@@ -18,7 +23,9 @@ class NewAssignments extends React.Component{
         return(
             <div>
                 <div>NewAssignments</div>
-                {this.props.assignments.map((ele, i) => {
+                <button onClick={this.notify} ></button>
+                <ToastContainer />
+                {!this.props.assignments.length ?<div>You have no assignments.</div> : this.props.assignments.map((ele, i) => {
                     return <AssignmentBlock key={i} assignmentTitle={ele.assignment_title} assignmentDueDate={ele.assignment_duedate} assignmentRequirements={ele.assignment_requirements}/>
                 })}
             </div>

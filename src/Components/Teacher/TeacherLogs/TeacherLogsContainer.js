@@ -2,6 +2,7 @@ import React from 'react'
 import LogBlock from '../../LogBlock/LogBlock'
 import {getAllLogsForStudent} from '../../../redux/reducers/studentReducer'
 import { connect } from 'react-redux'
+import moment from 'moment'
 
 class TeacherLogsContainer extends React.Component{
     constructor(){
@@ -21,16 +22,30 @@ class TeacherLogsContainer extends React.Component{
         }
     }
 
+    timePracticedThisWeek = () => {
+       const startOfWeek = moment().startOf('isoWeek')
+       const endOfWeek = moment().endOf('isoWeek')
 
+       let logsThisWeek = this.props.logs.filter(ele => {
+           return moment(ele.log_date).isBetween(startOfWeek, endOfWeek)
+       })
 
+       let totalMinPracticed = logsThisWeek.reduce((acc, current) => {
+            return acc + current.log_time
+       }, 0)
+
+       return totalMinPracticed
+    }
 
     render(){
         console.log(this.props)
+        
         return(
             <div>
                 <div>TeacherLogsContainer</div>
+                <div>Time practiced this week: {typeof this.props.logs === 'string' ? 0: this.timePracticedThisWeek()}</div>
 
-                {!this.props.logs.length ? <div>Student had no logs</div> : this.props.logs.map((ele, i) => {
+                {typeof this.props.logs === 'string' ? <div>Student has not submitted a log</div> : this.props.logs.map((ele, i) => {
                     return <LogBlock key={i} studentName={`${ele.student_first_name} ${ele.student_last_name}`} logDate={ele.log_date} logTime={ele.log_time} logData={ele.log_material} />
                 })}
 

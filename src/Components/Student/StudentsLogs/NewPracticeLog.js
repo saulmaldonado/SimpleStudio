@@ -1,12 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {addLog} from '../../../redux/reducers/logsReducer'
+import {getAllLogsForStudent} from '../../../redux/reducers/studentReducer'
+
+const moment = require('moment')
 
 class NewPracticeLog extends React.Component{
     constructor(){
         super()
         this.state={
-            log_date: '',
+            log_date: moment().format(moment.HTML5_FMT.DATETIME_LOCAL),
             log_time: '',
             log_material: ''
         }
@@ -18,8 +21,11 @@ class NewPracticeLog extends React.Component{
       })
     }
 
-    submitLog = () => {
+    submitLog = (e) => {
         const {log_date, log_time, log_material} = this.state
+
+        e.preventDefault()
+
 
         if(+log_time < 0 || !+log_time){
            return alert('Minutes practiced must be number greater then 0')
@@ -31,24 +37,32 @@ class NewPracticeLog extends React.Component{
             log_material,
             student_id: this.props.student.student_id
         }
-        this.props.addLog(newLog)
 
-        this.setState({
-            log_date: '',
-            log_time: '',
-            log_material: ''
-        })
-        alert('Practice Log Submitted!')
+        if(window.confirm('Are you sure you want to submit this practice log?') === true){
+            this.props.addLog(newLog)
+    
+            this.setState({
+                log_date: '',
+                log_time: '',
+                log_material: ''
+            })
+            alert('Practice Log Submitted!')
+
+            this.props.getAllLogsForStudent(this.props.student.student_id)
+
+        }
     }
 
     render(){
         return(
             <div>
                 <div>NewPracticeLog</div>
-                <input name='log_date' value={this.state.log_date} onChange={this.handelInputChange} placeholder='Date'/>
-                <input name='log_time' value={this.state.log_time} onChange={this.handelInputChange} placeholder='Minutes Practiced'/>
-                <input name='log_material' value={this.state.log_material} onChange={this.handelInputChange} placeholder='What did you practice?'/>
-                <button onClick={this.submitLog}>Submit Log</button>
+                <form onChange={this.handelInputChange} onSubmit={this.submitLog}>
+                    <input name='log_date' value={this.state.log_date} onChange={this.handelInputChange} type='datetime-local' placeholder='Date' require='true'/>
+                    <input type='number' name='log_time' min='5' step='5' value={this.state.log_time} onChange={this.handelInputChange} placeholder='Minutes Practiced' require='true'/>
+                    <textarea name='log_material' value={this.state.log_material} onChange={this.handelInputChange} placeholder='What did you practice?' require='true'/>
+                    <input type='submit' value='Submit Practice Log'/>
+                </form>
             </div>
         )
     }
@@ -61,4 +75,4 @@ const mapStateToProps = (reduxState) => {
     }
 }
 
-export default connect(mapStateToProps, {addLog})(NewPracticeLog)
+export default connect(mapStateToProps, {addLog, getAllLogsForStudent})(NewPracticeLog)

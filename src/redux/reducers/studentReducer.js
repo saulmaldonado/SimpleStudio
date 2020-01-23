@@ -7,6 +7,7 @@ const initialState = {
     teacher:[],
     payments:[],
     logs:[],
+    notifications:[],
     loading: false
 }
 
@@ -16,6 +17,9 @@ const GET_ALL_PAYMENTS_DUE = 'GET_ALL_PAYMENTS_DUE'
 const GET_TEACHER = 'GET_TEACHER'
 const GET_ALL_PAYMENTS = 'GET_ALL_PAYMENTS'
 const GET_ALL_LOGS = 'GET_ALL_LOGS'
+const GET_NOTIFICATIONS = 'GET_NOTIFICATIONS'
+const NEW_NOTIFICATION = 'NEW_NOTIFICATION'
+const DELETE_NOTIFICATION = 'DELETE_NOTIFICATION'
 
 
 export function getAllLessons (student_id) {
@@ -64,6 +68,32 @@ export function getAllLogsForStudent(student_id){
                     .then(res => res.data)
   }
 }
+
+export function getNotificationsForStudent(student_id){
+  return {
+    type: GET_NOTIFICATIONS,
+    payload: axios.get(`student/notifications/${student_id}`)
+                    .then(res => res.data)
+  }
+}
+
+export function CreateNotificationForStudent(student_id, newNotification){
+  return {
+    type: NEW_NOTIFICATION,
+    payload: axios.post(`student/notifications/${student_id}`, newNotification)
+                      .then(res => res.data)
+  }
+}
+
+export function deleteNotificationForStudent(notification_id){
+  return {
+    type: DELETE_NOTIFICATION,
+    payload: axios.delete(`student/notifications/${notification_id}`)
+                    .then(res => res.data)
+  }
+}
+
+
 
 export default function reducer(state = initialState, action){
     const { payload, type } = action
@@ -198,6 +228,51 @@ export default function reducer(state = initialState, action){
           return {
             ...state,
             logs: payload.response.data,
+            loading: false
+          }
+        }
+
+        case `${GET_NOTIFICATIONS}_PENDING`: {
+          return {
+            ...state,
+            loading: true
+          }
+        }
+
+        case `${GET_NOTIFICATIONS}_FULFILLED`: {
+          return {
+            ...state,
+            notifications: payload,
+            loading: false
+          }
+        }
+
+        case `${NEW_NOTIFICATION}_PENDING`: {
+          return {
+            ...state,
+            loading: true
+          }
+        }
+
+        case `${NEW_NOTIFICATION}_FULFILLED`: {
+          return {
+            ...state,
+            notifications: payload,
+            loading: false
+          }
+        }
+
+        case `${DELETE_NOTIFICATION}_PENDING`: {
+          return {
+            ...state,
+            loading: true
+          }
+        }
+
+        case `${DELETE_NOTIFICATION}_FULFILLED`: {
+          return {
+            ...state,
+            notifications: payload,
             loading: false
           }
         }

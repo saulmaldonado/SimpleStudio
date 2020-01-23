@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {loginTeacher, logoutTeacher} from '../../redux/reducers/teacherAuthReducer'
 import {loginStudent, logoutStudent} from '../../redux/reducers/studentAuthReducer'
 import { Redirect } from 'react-router-dom'
+import NotificationFeedStudent from './NotificationFeedStudent'
 
 class Name extends React.Component{
     constructor(){
@@ -26,7 +27,6 @@ class Name extends React.Component{
 
         e.preventDefault()
 
-
         loginTeacher({email, password})
 
         this.setState({
@@ -39,7 +39,6 @@ class Name extends React.Component{
         const {email, password} = this.state
 
         e.preventDefault()
-
 
         loginStudent({email, password})
 
@@ -74,6 +73,7 @@ class Name extends React.Component{
             return (
             <div>
                 <button onClick={this.handleStudentLogout}>Logout</button>
+                <NotificationFeedStudent />
                 <Redirect to='/student' />
             </div>)
         } else if(this.props.teacher.teacher_id){
@@ -90,9 +90,9 @@ class Name extends React.Component{
                 <Redirect to='/' />
                 <div>Login</div>
                 <form autoComplete='on' onSubmit={this.state.accountType === 'Teacher' ? this.handleLoginTeacher : this.handleLoginStudent} >
-                    <input type='email'  placeholder='Email' name='email' onChange={this.handleInputChange} value={email}/>
-                    <input placeholder='Password' name='password' type='password' autoComplete='on' onChange={this.handleInputChange} value={password}/>
-                    <input type='radio' name='accountType' value='Student' onChange={this.handleInputChange}/> Student
+                    <input type='email' label='Email' autoComplete='on' placeholder='Email' name='email' onChange={this.handleInputChange} value={email} required/>
+                    <input placeholder='Password' label='Password' autoComplete='on' name='password' type='password'  onChange={this.handleInputChange} value={password} required/>
+                    <input type='radio' name='accountType' value='Student' onChange={this.handleInputChange} required/> Student
                     <input type='radio' name='accountType' value='Teacher' onChange={this.handleInputChange}/> Teacher
                     <input  type='submit' value='Login' />
                 </form>
