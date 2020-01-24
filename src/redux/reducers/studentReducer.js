@@ -246,6 +246,13 @@ export default function reducer(state = initialState, action){
             loading: false
           }
         }
+        case `${GET_NOTIFICATIONS}_REJECTED`: {
+          return {
+            ...state,
+            notifications: payload.response.data,
+            loading: false
+          }
+        }
 
         case `${NEW_NOTIFICATION}_PENDING`: {
           return {

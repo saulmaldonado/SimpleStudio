@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {addLog} from '../../../redux/reducers/logsReducer'
 import {getAllLogsForStudent} from '../../../redux/reducers/studentReducer'
+import {CreateNotificationForTeacher} from '../../../redux/reducers/teacherReducer'
 
 const moment = require('moment')
 
@@ -50,6 +51,12 @@ class NewPracticeLog extends React.Component{
 
             this.props.getAllLogsForStudent(this.props.student.student_id)
 
+            this.props.CreateNotificationForTeacher(this.props.student.teacher_id, {
+                notification_type: 'new_practice_log',
+                notification_title: `New practice log`,
+                notification_body: `${this.props.student.student_first_name} ${this.props.student.student_last_name} has submitted a new practice log and has practiced for ${newLog.log_time} minutes.`,
+                student_id: this.props.student.student_id
+            })
         }
     }
 
@@ -75,4 +82,4 @@ const mapStateToProps = (reduxState) => {
     }
 }
 
-export default connect(mapStateToProps, {addLog, getAllLogsForStudent})(NewPracticeLog)
+export default connect(mapStateToProps, {addLog, getAllLogsForStudent, CreateNotificationForTeacher})(NewPracticeLog)

@@ -3,4 +3,5 @@ VALUES($1, $2, $3, $4, $5, $6);
 
 SELECT * FROM student_notifications
 WHERE student_id = $6
+ORDER BY notification_id DESC
 

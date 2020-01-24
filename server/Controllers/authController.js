@@ -130,6 +130,7 @@ module.exports = {
                     first_name: user.student_first_name,
                     last_name: user.student_last_name,
                     phone: user.student_phone,
+                    teacher_id: user.teacher_id,
                     account_type: 'student'
 
                 }

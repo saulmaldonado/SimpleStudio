@@ -17,7 +17,6 @@ class NotificationFeedStudent extends React.Component{
 
 
     render(){
-        console.log(this.props)
         return(
             <div>
                 <i className="fas fa-bell">
@@ -33,7 +32,8 @@ class NotificationFeedStudent extends React.Component{
 const mapStateToProps = (reduxState) => {
     return {
         student: reduxState.studentAuthReducer,
-        notifications: reduxState.teacherReducer.notifications       
+        notifications: reduxState.studentReducer.notifications,
+        notifications2: reduxState.teacherReducer.notifications   
     }
 }
 

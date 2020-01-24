@@ -2,6 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {editLog, getLog, deleteLog} from '../../../redux/reducers/logsReducer'
 import {getAllLogsForStudent} from '../../../redux/reducers/studentReducer'
+import {CreateNotificationForTeacher} from '../../../redux/reducers/teacherReducer'
+
+const moment = require('moment')
 
  class EditPracticeLog extends React.Component{
     constructor(){
@@ -58,6 +61,13 @@ import {getAllLogsForStudent} from '../../../redux/reducers/studentReducer'
 
             this.props.getAllLogsForStudent(this.props.student.student_id)
 
+            this.props.CreateNotificationForTeacher(this.props.student.teacher_id, {
+                notification_type: 'edited_practice_log',
+                notification_title: `${this.props.student.student_first_name} edited their practice log`,
+                notification_body: `${this.props.student.student_first_name} ${this.props.student.student_last_name} has edited their practice log from ${this.props.logs.log_date}.`,
+                student_id: this.props.student.student_id
+            })
+
             this.props.history.push('/student/logs')
         }
     }
@@ -93,7 +103,6 @@ import {getAllLogsForStudent} from '../../../redux/reducers/studentReducer'
     }
 
     render(){
-        console.log(this.props)
         return(
             <div>
                 <div>EditPracticeLog</div>
@@ -116,4 +125,4 @@ const mapStateToProps = (reduxState) => {
         logs: reduxState.logsReducer.logs[0]
     }
 }
-export default connect(mapStateToProps, {editLog, getLog, deleteLog, getAllLogsForStudent})(EditPracticeLog)
+export default connect(mapStateToProps, {editLog, getLog, deleteLog, getAllLogsForStudent, CreateNotificationForTeacher})(EditPracticeLog)

@@ -7,12 +7,11 @@ class TeacherLessonForm extends React.Component{
     constructor(){
         super()
         this.state={
-            studentId: null,
-            lessonDate: '',
-            lessonLength:'',
-            lessonType:'',
-            lessonNotes:''
-
+            student_id: null,
+            lesson_time: '',
+            lesson_length:'',
+            lesson_type:'',
+            lesson_notes:''
         }
     }
 
@@ -27,23 +26,23 @@ class TeacherLessonForm extends React.Component{
     }
 
     createNewLesson = () => {
-        const { studentId, lessonType, lessonDate, lessonLength, lessonNotes } = this.state
+        const { student_id, lesson_type, lesson_time, lesson_length, lesson_notes } = this.state
 
         let newLesson = {
-            student_id: +studentId,
-            lesson_type: lessonType,
-            lesson_time: lessonDate,
-            lesson_length: lessonLength,
-            lesson_notes: lessonNotes
+            student_id: +student_id,
+            lesson_type: lesson_type,
+            lesson_time: lesson_time,
+            lesson_length: lesson_length,
+            lesson_notes: lesson_notes
         }
 
         this.props.createLesson(newLesson)
 
         this.setState({
-            lessonDate: '',
-            lessonLength:'',
-            lessonType:'',
-            lessonNotes:''
+            lesson_time: '',
+            lesson_length:'',
+            lesson_type:'',
+            lesson_notes:''
         })
 
         alert('Lesson has been created')
@@ -54,21 +53,21 @@ class TeacherLessonForm extends React.Component{
 
     render(){
 
-        const {lessonDate, lessonLength, lessonType, lessonNotes} = this.state
+        const {lesson_time, lesson_length, lesson_type, lesson_notes} = this.state
         return(
             <div>
                 <p>TeacherLessonForm</p>
 
                 <div>
-                    <select name='studentId' onChange={this.handelInputChange}>
+                    <select name='student_id' onChange={this.handelInputChange}>
                         <option></option>
                         {this.props.students.map((ele, i) => <option  key={i} value={ele.id}> {ele.first_name} {ele.last_name} </option>)}  
                     </select>
 
-                    <input name='lessonDate' placeholder='Lesson Date and Time' value={lessonDate} onChange={this.handelInputChange}/>
-                    <input name='lessonLength' placeholder='Length in minutes' value={lessonLength} onChange={this.handelInputChange}/>
-                    <input name='lessonType' placeholder='Lesson Type' value={lessonType} onChange={this.handelInputChange}/>
-                    <input name='lessonNotes' placeholder='Notes' value={lessonNotes} onChange={this.handelInputChange}/>
+                    <input name='lesson_time' placeholder='Lesson Date and Time' value={lesson_time} onChange={this.handelInputChange}/>
+                    <input name='lesson_length' placeholder='Length in minutes' value={lesson_length} onChange={this.handelInputChange}/>
+                    <input name='lesson_type' placeholder='Lesson Type' value={lesson_type} onChange={this.handelInputChange}/>
+                    <input name='lesson_notes' placeholder='Notes' value={lesson_notes} onChange={this.handelInputChange}/>
                     <button onClick={this.createNewLesson}>Create New Lesson</button>
                 </div>
                 

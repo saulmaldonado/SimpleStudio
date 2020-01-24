@@ -4,6 +4,7 @@ import {loginTeacher, logoutTeacher} from '../../redux/reducers/teacherAuthReduc
 import {loginStudent, logoutStudent} from '../../redux/reducers/studentAuthReducer'
 import { Redirect } from 'react-router-dom'
 import NotificationFeedStudent from './NotificationFeedStudent'
+import NotificationFeedTeacher from './NotificationFeedTeacher'
 
 class Name extends React.Component{
     constructor(){
@@ -80,6 +81,7 @@ class Name extends React.Component{
             return (
                 <div>
                     <button onClick={this.handleTeacherLogout}>Logout</button>
+                    <NotificationFeedTeacher />
                     <Redirect to='/teacher' />
                 </div>
             )
@@ -94,7 +96,7 @@ class Name extends React.Component{
                     <input placeholder='Password' label='Password' autoComplete='on' name='password' type='password'  onChange={this.handleInputChange} value={password} required/>
                     <input type='radio' name='accountType' value='Student' onChange={this.handleInputChange} required/> Student
                     <input type='radio' name='accountType' value='Teacher' onChange={this.handleInputChange}/> Teacher
-                    <input  type='submit' value='Login' />
+                    <input  type='submit' value='Login' disabled={ !this.state.email || !this.state.password || !this.state.accountType ? true : false} />
                 </form>
             </div>
             

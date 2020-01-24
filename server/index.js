@@ -151,8 +151,8 @@ app.post('/charge', st.charge)
 // Notifications
 app.get('/student/notifications/:student_id', n.getNotificationsForStudent)
 app.post('/student/notifications/:student_id', n.CreateNotificationForStudent)
-app.get('/teacher/notifications/:student_id', n.getNotificationsForTeacher)
-app.post('/teacher/notifications/:student_id', n.CreateNotificationForTeacher)
+app.get('/teacher/notifications/:teacher_id', n.getNotificationsForTeacher)
+app.post('/teacher/notifications/:teacher_id', n.CreateNotificationForTeacher)
 app.delete('/student/notifications/:notification_id', n.deleteNotificationForStudent)
 app.delete('/teacher/notifications/:notification_id', n.deleteNotificationForTeacher)
 

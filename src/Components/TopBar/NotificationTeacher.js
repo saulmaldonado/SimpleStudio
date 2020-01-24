@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import {deleteNotificationForStudent} from '../../redux/reducers/studentReducer'
+import {deleteNotificationForTeacher} from '../../redux/reducers/teacherReducer'
 
 const moment = require('moment')
 
@@ -13,12 +13,12 @@ class Notification extends React.Component{
         await axios.post(`/api/teacher/${teacher_id}/student/${student_id}`)
                             .then(res => {
                                 alert('You have been assigned a teacher!')
-                                this.props.deleteNotificationForStudent(notification_id)
+                                this.props.deleteNotificationForTeacher(notification_id)
                             })
     }
 
     closeNotification = (notification_id) => {
-        this.props.deleteNotificationForStudent(notification_id)
+        this.props.deleteNotificationForTeacher(notification_id)
     }
 
     
@@ -52,4 +52,4 @@ class Notification extends React.Component{
     }
 }
 
-export default connect(null, {deleteNotificationForStudent})(Notification)
+export default connect(null, {deleteNotificationForTeacher})(Notification)

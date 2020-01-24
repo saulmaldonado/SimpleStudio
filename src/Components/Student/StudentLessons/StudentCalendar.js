@@ -5,11 +5,10 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import tippy from 'tippy.js'
-import 'tippy.js/dist/tippy.css'
 import '../../../../node_modules/@fullcalendar/core/main.css'
 import'../../../../node_modules/@fullcalendar/daygrid/main.css'
 import '../../../../node_modules/@fullcalendar/timegrid/main.css'
+
 
 var moment = require('moment')
 
@@ -45,7 +44,7 @@ class StudentCalendar extends React.Component{
     parseLessons = () => {
         let lessons = []
         this.props.lessons.map((ele, i) => {
-            lessons.push({title: `${ele.lesson_type} Lesson`, id: ele.lesson_id, start: ele.lesson_time, end: moment(ele.lesson_time).add(ele.lesson_length, 'minutes').format(moment.HTML5_FMT.DATETIME_LOCAL)})
+          return lessons.push({title: `${ele.lesson_type} Lesson`, id: ele.lesson_id, start: ele.lesson_time, end: moment(ele.lesson_time).add(ele.lesson_length, 'minutes').format(moment.HTML5_FMT.DATETIME_LOCAL)})
         })
         this.setState({lessons: lessons})
     }
@@ -59,7 +58,6 @@ class StudentCalendar extends React.Component{
                                 header={{left: 'prev,next today' , center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay'}} 
                                 plugins={[ dayGridPlugin, interactionPlugin, timeGridPlugin ]} 
                                 events={[...this.state.lessons]} 
-                                eventRender={  function(info){if(info.view.type === 'dayGridMonth'){tippy(info.el, {content: `${info.event.title}, ${moment(info.event.start).format('LT')}, ${moment.duration(moment(info.event.end).diff(moment(info.event.start))).as('minutes')} minutes ` })}}} 
                                 />
             </div>
         )

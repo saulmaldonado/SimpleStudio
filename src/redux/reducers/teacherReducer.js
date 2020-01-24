@@ -19,9 +19,9 @@ const GET_ALL_PAYMENTS = 'GET_ALL_PAYMENTS'
 const GET_ALL_PAID = 'GET_ALL_PAID'
 const GET_ALL_UNPAID = 'GET_ALL_UNPAID'
 const GET_STUDENT = 'GET_STUDENT'
-const GET_NOTIFICATIONS = 'GET_NOTIFICATIONS'
-const NEW_NOTIFICATION = 'NEW_NOTIFICATION'
-const DELETE_NOTIFICATION = 'DELETE_NOTIFICATION'
+const GET_NOTIFICATIONS_TEACHER = 'GET_NOTIFICATIONS_TEACHER'
+const NEW_NOTIFICATION_TEACHER = 'NEW_NOTIFICATION_TEACHER'
+const DELETE_NOTIFICATION_TEACHER = 'DELETE_NOTIFICATION_TEACHER'
 
 export function getStudent(student_id){
   return {
@@ -85,7 +85,7 @@ export function getAllPaidPaymentsForTeacher(teacher_id){
 
 export function getNotificationsForTeacher(teacher_id){
   return {
-    type: GET_NOTIFICATIONS,
+    type: GET_NOTIFICATIONS_TEACHER,
     payload: axios.get(`/teacher/notifications/${teacher_id}`)
                     .then(res => res.data)
   }
@@ -93,7 +93,7 @@ export function getNotificationsForTeacher(teacher_id){
 
 export function CreateNotificationForTeacher(teacher_id, newNotification){
   return {
-    type: NEW_NOTIFICATION,
+    type: NEW_NOTIFICATION_TEACHER,
     payload: axios.post(`/teacher/notifications/${teacher_id}`, newNotification)
                       .then(res => res.data)
   }
@@ -101,7 +101,7 @@ export function CreateNotificationForTeacher(teacher_id, newNotification){
 
 export function deleteNotificationForTeacher(notification_id){
   return {
-    type: DELETE_NOTIFICATION,
+    type: DELETE_NOTIFICATION_TEACHER,
     payload: axios.delete(`teacher/notifications/${notification_id}`)
                     .then(res => res.data)
   }
@@ -247,14 +247,14 @@ export default function reducer(state = initialState, action){
               }
             }
 
-            case `${GET_NOTIFICATIONS}_PENDING`: {
+            case `${GET_NOTIFICATIONS_TEACHER}_PENDING`: {
               return {
                 ...state,
                 loading: true
               }
             }
     
-            case `${GET_NOTIFICATIONS}_FULFILLED`: {
+            case `${GET_NOTIFICATIONS_TEACHER}_FULFILLED`: {
               return {
                 ...state,
                 notifications: payload,
@@ -262,14 +262,14 @@ export default function reducer(state = initialState, action){
               }
             }
     
-            case `${NEW_NOTIFICATION}_PENDING`: {
+            case `${NEW_NOTIFICATION_TEACHER}_PENDING`: {
               return {
                 ...state,
                 loading: true
               }
             }
     
-            case `${NEW_NOTIFICATION}_FULFILLED`: {
+            case `${NEW_NOTIFICATION_TEACHER}_FULFILLED`: {
               return {
                 ...state,
                 notifications: payload,
@@ -277,14 +277,14 @@ export default function reducer(state = initialState, action){
               }
             }
 
-            case `${DELETE_NOTIFICATION}_PENDING`: {
+            case `${DELETE_NOTIFICATION_TEACHER}_PENDING`: {
               return {
                 ...state,
                 loading: true
               }
             }
     
-            case `${DELETE_NOTIFICATION}_FULFILLED`: {
+            case `${DELETE_NOTIFICATION_TEACHER}_FULFILLED`: {
               return {
                 ...state,
                 notifications: payload,

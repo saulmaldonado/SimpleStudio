@@ -6,6 +6,7 @@ const initialState = {
     student_last_name: '',
     student_email: '',
     student_phone: '',
+    teacher_id: '',
     loading: false
 }
 
@@ -89,6 +90,7 @@ export default function reducer(state = initialState, action ){
                 student_last_name: payload.last_name,
                 student_email: payload.email,
                 student_phone: payload.phone,
+                teacher_id: payload.teacher_id,
                 loading: false
             }
         }
