@@ -56,7 +56,7 @@ export default function reducer(state = initialState, action){
         case `${GET_LESSON}_FULFILLED`: {
           return {
             ...state,
-            lessons: [...payload],
+            lessons: payload,
             loading: false
           }
         }

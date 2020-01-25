@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {createPayment} from '../../../redux/reducers/paymentReducer'
 import {getAllLessonsForTeacher} from '../../../redux/reducers/teacherReducer'
+import {CreateNotificationForStudent} from '../../../redux//reducers/studentReducer'
 
 class NewInvoice extends React.Component{
     constructor(){
@@ -24,7 +25,7 @@ class NewInvoice extends React.Component{
       })
     }
 
-    createNewPayment = () => {
+    createNewPayment = async() => {
         const { payment_amount,
             payment_duedate,
             payment_date,
@@ -37,7 +38,7 @@ class NewInvoice extends React.Component{
             lesson_id: +lesson_id
         }
 
-        this.props.createPayment(newPayment)
+        await this.props.createPayment(newPayment)
 
         alert('Invoice has been created')
 
@@ -81,4 +82,4 @@ const mapStateToProps = (reduxState) => {
     }
 }
 
-export default connect (mapStateToProps, {createPayment , getAllLessonsForTeacher})(NewInvoice)
+export default connect (mapStateToProps, {createPayment , getAllLessonsForTeacher, CreateNotificationForStudent})(NewInvoice)

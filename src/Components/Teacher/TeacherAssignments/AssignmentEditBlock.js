@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {editAssignment, getAssignment} from '../../../redux/reducers/assignmentReducer'
+import {CreateNotificationForStudent} from '../../../redux/reducers/studentReducer'
 
 class AssignmentEditBlock extends React.Component{
     constructor(){
@@ -47,7 +48,7 @@ class AssignmentEditBlock extends React.Component{
       })
     }
 
-    saveChanges = () => {
+    saveChanges = async() => {
         const {
             assignment_title, 
             assignment_composer, 
@@ -68,7 +69,16 @@ class AssignmentEditBlock extends React.Component{
             assignment_completed: assignment_completed === 'true' ? true : false
         }
 
-        this.props.editAssignment(this.props.match.params.id, editedAssignment)
+        await this.props.editAssignment(this.props.match.params.id, editedAssignment)
+
+        let newNotification = {
+                notification_type: 'edited_assignment' ,
+                notification_title: 'An assignment has been edited' ,
+                notification_body: `An assignment due on ${assignment_duedate} has been edited. `,
+                teacher_id: this.props.teacher.teacher_id
+        }
+
+        await this.props.CreateNotificationForStudent(this.props.assignments.student_id, newNotification)
 
         alert('Assignment has been edited')
 
@@ -128,4 +138,4 @@ const mapStateToProps = (reduxState) => {
     }
 }
 
-export default connect(mapStateToProps, {editAssignment, getAssignment})(AssignmentEditBlock)
+export default connect(mapStateToProps, {editAssignment, getAssignment, CreateNotificationForStudent})(AssignmentEditBlock)

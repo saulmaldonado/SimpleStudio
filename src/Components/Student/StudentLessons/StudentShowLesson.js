@@ -2,6 +2,10 @@ import React from 'react'
 import {getLesson} from '../../../redux/reducers/lessonReducer'
 import { connect } from 'react-redux'
 import LessonBlockDetailed from '../../LessonBlock/LessonBlockDetailed'
+import {CreateNotificationForTeacher} from '../../../redux/reducers/teacherReducer'
+import { Link } from 'react-router-dom'
+
+const moment = require('moment')
 
 class StudentShowLesson extends React.Component{
     constructor(){
@@ -21,12 +25,28 @@ class StudentShowLesson extends React.Component{
         }
     }
 
+    cancelLesson = () => {
+
+        let newNotification = {
+            notification_type: 'request_cancel_lesson',
+            notification_title: 'Student requested to cancel lesson.',
+            notification_body: `${this.props.student.student_first_name} has requested to cancel their lesson on ${moment(this.props.lesson.lesson_time).format('llll')}`,
+            student_id: this.props.student.student_id
+        }
+
+        if(window.confirm('Are you sure you want to cancel this lesson?') === true){
+            this.props.CreateNotificationForTeacher(this.props.student.teacher_id, newNotification)
+            alert('Request to cancel lesson has been sent to your teacher for approval.')
+        }
+    }
+
     render(){
         console.log(this.props.lesson)
         return(
             <div>
-                <div>Showing lesson </div>
-                <LessonBlockDetailed  lessonType={this.props.lesson.lesson_type} lessonTime={this.props.lesson.lesson_time} lessonLength={this.props.lesson.lesson_length} lessonNotes={!this.props.lesson.lesson_notes ? 'none.' : this.props.lesson.lesson_notes} />
+                <LessonBlockDetailed  lessonType={this.props.lesson.lesson_type} lessonTime={moment(this.props.lesson.lesson_time ).format('MMM Do, h:mm a')} lessonLength={this.props.lesson.lesson_length} lessonNotes={!this.props.lesson.lesson_notes ? 'none.' : this.props.lesson.lesson_notes} />
+                <Link to={`/student/lessons/edit/${this.props.match.params.id}`} ><button>Edit Lesson</button></Link>
+                <button onClick={this.cancelLesson}>Cancel Lesson</button>
             </div>
         )
     }
@@ -40,4 +60,4 @@ const mapStateToProps = (reduxState) => {
     }
 }
 
-export default connect(mapStateToProps, {getLesson})(StudentShowLesson)
+export default connect(mapStateToProps, {getLesson, CreateNotificationForTeacher})(StudentShowLesson)

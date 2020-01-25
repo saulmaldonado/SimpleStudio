@@ -54,7 +54,7 @@ class StudentCalendar extends React.Component{
         return(
             <div>
                 <div>StudentCalendar</div>
-                <FullCalendar   defaultView='dayGridMonth' 
+                <FullCalendar   defaultView='timeGridWeek' 
                                 header={{left: 'prev,next today' , center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay'}} 
                                 plugins={[ dayGridPlugin, interactionPlugin, timeGridPlugin ]} 
                                 events={[...this.state.lessons]} 

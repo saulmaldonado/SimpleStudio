@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {addAssignment} from '../../../redux/reducers/assignmentReducer'
 import {getStudentsForTeacher} from '../../../redux/reducers/teacherReducer'
+import {CreateNotificationForStudent} from '../../../redux/reducers/studentReducer'
 
 class TeacherAssignmentForms extends React.Component{
     constructor(){
@@ -27,7 +28,7 @@ class TeacherAssignmentForms extends React.Component{
       })
     }
 
-    createNewAssignment = () => {
+    createNewAssignment = async() => {
         const { 
             assignment_title, 
             assignment_composer, 
@@ -48,7 +49,16 @@ class TeacherAssignmentForms extends React.Component{
             assignment_duedate
         }
 
-        this.props.addAssignment(newAssignment)
+        await this.props.addAssignment(newAssignment)
+
+        let newNotification = {
+            notification_type: 'new_assignment' ,
+            notification_title: 'You have a new assignment' ,
+            notification_body: `You have a new assignment to ${assignment_title}. It is due on ${assignment_duedate}. `,
+            teacher_id: this.props.teacher.teacher_id
+        }
+
+        await this.props.CreateNotificationForStudent(student_id, newNotification)
 
         this.setState({
             assignment_title: '', 
@@ -106,4 +116,4 @@ const mapStateToProps = (reduxState) => {
     }
 }
 
-export default connect(mapStateToProps, {addAssignment, getStudentsForTeacher})(TeacherAssignmentForms)
+export default connect(mapStateToProps, {addAssignment, getStudentsForTeacher, CreateNotificationForStudent})(TeacherAssignmentForms)

@@ -52,14 +52,14 @@ module.exports = {
 
     CreateNotificationForTeacher: async(req, res) => {
 
-        const {notification_type, notification_title, notification_body, student_id} = req.body
+        const {notification_type, notification_title, notification_body, student_id, lesson_id, lesson_time, lesson_length} = req.body
         const {teacher_id} = req.params
         const notification_time = moment().format(moment.HTML5_FMT.DATETIME_LOCAL)
 
 
         const db = req.app.get('db')
 
-        const result = await db.notifications.new_notification_for_teacher(notification_type, notification_title, notification_body, notification_time, teacher_id, student_id)
+        const result = await db.notifications.new_notification_for_teacher(notification_type, notification_title, notification_body, notification_time, teacher_id, student_id, lesson_id, lesson_time, lesson_length)
 
         if(!result[0]){
             res.status(400).json('You currently have any notifications')

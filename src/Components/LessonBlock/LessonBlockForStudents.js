@@ -1,5 +1,7 @@
 import React from 'react'
 
+const moment = require('moment')
+
 export default class LessonBlockForStudents extends React.Component{
     constructor(){
         super()
@@ -12,7 +14,7 @@ export default class LessonBlockForStudents extends React.Component{
             <div>
                 <div>
                     <p>{this.props.lessonType} Lesson:</p>
-                    <p> {this.props.lessonDate}</p>
+                    <p> {moment(this.props.lessonDate).format('llll')}</p>
                 </div>
                 <div>
                     <p>Length: {this.props.lessonLength} mins</p>

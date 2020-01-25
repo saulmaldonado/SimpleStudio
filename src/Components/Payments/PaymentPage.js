@@ -5,6 +5,7 @@ import {getPayment, payPayment} from '../../redux/reducers/paymentReducer'
 import {getAllPaymentsDue} from '../../redux/reducers/studentReducer'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
+import {CreateNotificationForTeacher} from '../../redux/reducers/teacherReducer'
 
 
 class PaymentPage extends React.Component{
@@ -25,13 +26,24 @@ class PaymentPage extends React.Component{
 
         if (response.status === 200){
 
-            this.props.payPayment(this.props.payment_id)
+            await this.props.payPayment(this.props.payment_id)
 
-            this.props.getAllPaymentsDue(this.props.student.student_id)
+            let newNotification = {
+                notification_type: 'payment_made',
+                notification_title: 'An invoice has been paid',
+                notification_body: `${this.props.student.student_first_name} has paid off invoice #${this.props.payment_id}`,
+                student_id: this.props.student.student_id
+            }
+
+            await this.props.CreateNotificationForTeacher(this.props.student.teacher_id, newNotification)
+
+            await this.props.getAllPaymentsDue(this.props.student.student_id)
 
             this.setState({complete: true})
 
             this.props.history.push('/student/payments')
+        } else {
+            alert('There was an error processing your payment.')
         }
     }
 
@@ -40,7 +52,7 @@ class PaymentPage extends React.Component{
 
         return(
             <div className='checkout'>
-                <p>Would you like to complete the purchase?</p>
+                <p>Would you like to payoff this invoice?</p>
                 <CardElement />
                 <button onClick={this.submit}>Submit Payment</button>
             </div>
@@ -55,4 +67,4 @@ const mapStateToProps = (reduxState) => {
     }
 }
 
-export default withRouter(injectStripe(connect(mapStateToProps, {getPayment, payPayment, getAllPaymentsDue})(PaymentPage)))
+export default withRouter(injectStripe(connect(mapStateToProps, {getPayment, payPayment, getAllPaymentsDue, CreateNotificationForTeacher})(PaymentPage)))

@@ -34,8 +34,9 @@ class TeacherCalendar extends React.Component{
             lesson_length:'',
             lesson_notes:'',
             student_id: '',
-            input: '',
-            popup: false
+            lesson_id: '',
+            popup: false,
+            editPopup: false
 
         }
     }
@@ -71,25 +72,39 @@ class TeacherCalendar extends React.Component{
         })
     }
 
-    cancelLesson = async(info) => {
-
-        if(this.state.deleteMode){
-            if(window.confirm('Are you sure you want to cancel this lesson?') === true){
-                await this.props.deleteLesson(info.event.id)
-                this.updateCalender()
-            }
-        }
-    }
-
+    
     parseLessons = () => {
-
+        
         let lessons = this.props.lessons.map((ele, i) => {
-            return {title: `${ele.lesson_type} Lesson with ${ele.student_first_name}`, id: ele.lesson_id, start: ele.lesson_time, end: moment(ele.lesson_time).add(ele.lesson_length, 'minutes')}
+            return {title: `${ele.lesson_type} Lesson with ${ele.student_first_name}`, id: ele.lesson_id, start: moment(ele.lesson_time).format(), end: moment(ele.lesson_time).add(ele.lesson_length, 'minutes').format(), lesson_type: ele.lesson_type, lesson_notes: ele.lesson_notes, student_id: ele.student_id }
         })
-
+        
         this.setState({lessons: lessons})
     }
+    
+    cancelLesson = async(event) => {
+            if(window.confirm('Are you sure you want to cancel this lesson?') === true){
 
+                let student_id = this.props.lessons.find(ele => ele.lesson_id == event.id).student_id
+
+
+                let newNotification = {
+                    notification_type: 'lesson_canceled',
+                    notification_title: 'A lesson has been canceled',
+                    notification_body: `The ${event.extendedProps.lesson_type} lesson for ${moment(event.start).format('llll')} has been canceled .`,
+                    teacher_id: this.props.teacher.teacher_id
+                }
+
+
+                await this.props.CreateNotificationForStudent(student_id, newNotification)
+
+                await this.props.deleteLesson(+event.id)
+                await this.updateCalender()
+
+
+
+            }
+    }
     rescheduleLesson = (date) => {
 
         let lessons = this.state.lessons.slice()
@@ -119,6 +134,7 @@ class TeacherCalendar extends React.Component{
             lesson_length,
             lesson_notes,
         }
+        
 
         let lesson_id = +date.event.id
 
@@ -138,7 +154,9 @@ class TeacherCalendar extends React.Component{
 
     }
 
-    resizeLesson = (date) => {
+
+    resizeLesson = async(date) => {
+
         let lessons = this.state.lessons.slice()
 
         lessons.find(ele => ele.id == date.event.id).start = moment(date.event.start)
@@ -167,7 +185,7 @@ class TeacherCalendar extends React.Component{
 
         let lesson_id = +date.event.id
 
-        this.props.editLesson(lesson_id, editedLesson)
+        await this.props.editLesson(lesson_id, editedLesson)
 
         this.props.getAllLessonsForTeacher(this.props.teacher.teacher_id)
 
@@ -209,52 +227,41 @@ class TeacherCalendar extends React.Component{
             teacher_id: this.props.teacher.teacher_id
         }
         
+        
+        await this.props.CreateNotificationForStudent(student_id, newNotification)
+        
+        
+        
+        await this.updateCalender()
+        
         this.setState({
             lesson_time:'',
             lesson_type:'',
             lesson_length: +lesson_length,
             lesson_notes:'',
             student_id: +student_id,
-            open: false 
+            popup: false 
         })
-
-
-        this.props.CreateNotificationForStudent(student_id, newNotification)
-
-        
-
-        this.updateCalender()
     }
 
     handelInputChange = (e) => {
+
       this.setState({
           [e.target.name]: e.target.value 
       })
     }
 
     buttonPressed = ({event, el}) => {
-
-        const content = (
+        let content = (
             <div>
-                <Popover title='title' trigger='click' content={
+                <Popover title={`${event.title}`} trigger='click' content={
                     <div>
-                        <p>{event.title} {moment(event.start).format('ddd, MMM D h:mm a')}</p>
-                        <Popover title='Edit lesson' trigger='click' content={
-                            <div>
-                                <input type='number' name='lesson_length' step='5' placeholder='Lesson length in min.' value={this.state.lesson_length || ''} onChange={this.handelInputChange}  />
-                                <input name='lesson_type' value={this.state.lesson_type} onChange={this.handelInputChange} placeholder='Lesson Type' />
-                                <textarea  name='lesson_notes' value={this.state.lesson_notes} onChange={this.handelInputChange} placeholder='Notes' />
-                            </div>
-                        }>
-                            <Button>Edit</Button>
-                        </Popover>
-                        <Popover title='Delete lesson' click='click'>
-                            <Button>Delete</Button>
-                        </Popover>
+                        <p>{event.title} {`${moment(event.start).format('ddd, MMM D h:mm a')} - ${moment(event.end).format('h:mm a')}`}</p>
+                            <Button onClick={() => this.editButton(event)} >Edit</Button>
+                            <Button onClick={() => this.cancelLesson(event)} >Delete</Button>
                     </div>
                 }>
                     <span className="fc-time">{event.title} <br /> {moment(event.start).format('h:mm a')}</span>
-                    {/* <span className="fc-title">{event.title}</span> */}
                 </Popover>
             </div>
           )
@@ -264,6 +271,75 @@ class TeacherCalendar extends React.Component{
           ReactDOM.render(content, el)
 
           return el
+    }
+
+    rescheduleLessonButton = async() => {
+        const { student_id, lesson_type, lesson_time, lesson_length, lesson_notes, lesson_id } = this.state
+
+
+        let editedLesson = {
+            lesson_type,
+            lesson_time,
+            lesson_length,
+            lesson_notes,
+            lesson_id: +lesson_id,
+            student_id: +student_id
+        }
+
+        if(window.confirm('Are you sure you want to reschedule this lesson?') === true){
+
+            await this.props.editLesson(lesson_id, editedLesson)
+    
+            await this.props.getAllLessonsForTeacher(this.props.teacher.teacher_id)
+    
+            this.setState({
+                lesson_type: '',
+                lesson_time: '',
+                lesson_length: '',
+                lesson_notes: '',
+                lesson_id: '',
+                student_id: '',
+                editPopup: false
+            })
+
+
+        }
+
+
+        console.log(editedLesson)
+        console.log(lesson_id)
+
+
+
+    }
+
+    openEditPopup = () => {
+        this.setState({
+            editPopup: true
+        })
+    }
+
+    closeEditPopup = () => {
+        this.setState({
+            editPopup: false
+        })
+    }
+
+    editButton = (event) => {
+
+            console.log(event)
+  
+
+        this.setState({
+            editPopup: true,
+            lesson_time: moment(event.start),
+            lesson_type: event.extendedProps.lesson_type,
+            lesson_length: moment.duration(moment(event.end).diff(moment(event.start))).as('minutes'),
+            lesson_notes:  event.extendedProps.lesson_notes,
+            lesson_id: event.id,
+            student_id: event.extendedProps.student_id
+        })
+        
     }
 
     createNewLesson = () => {
@@ -314,6 +390,8 @@ class TeacherCalendar extends React.Component{
 
 
 
+
+
     
     
     
@@ -323,18 +401,35 @@ class TeacherCalendar extends React.Component{
         const {lesson_time, lesson_length, lesson_type, lesson_notes} = this.state
 
         return(
+            
             <div>
+                    <Modal
+                        title='Edit Lesson'
+                        visible={this.state.editPopup}
+                        onOk={this.rescheduleLessonButton}
+                        onCancel={this.closeEditPopup}
+                        >
+                            <div>
+                                <DatePicker value={moment(this.state.lesson_time)} format="MMM Do, h:mm a" name='lesson_time' showTime={{ format: 'HH:mm', minuteStep: 15, use12Hours:true}} onChange={this.onChange} onOk={this.onOK} />
+
+                                <input type='number' name='lesson_length' step='15' min='15' placeholder='Lesson length in min.' value={lesson_length}  onChange={this.handelInputChange}  />
+                                <input name='lesson_type' onChange={this.handelInputChange} placeholder='Lesson Type' value={lesson_type} />
+                                <textarea  name='lesson_notes'  onChange={this.handelInputChange} placeholder='Notes' value={lesson_notes} />
+                                <button onClick={this.rescheduleLessonButton}>Save Changes</button>
+                            </div>
+                    </Modal>
 
 
                     <Modal
                         title='Schedule New Lesson'
                         visible={this.state.popup}
-                        onOk={this.closePopup}
+                        onOk={this.scheduleLesson}
                         onCancel={this.closePopup}
+                        
                     >
                         <div>
                             <DatePicker value={moment(this.state.lesson_time)} format="MMM Do, h:mm a" name='lesson_time' showTime={{ format: 'HH:mm', minuteStep: 15, use12Hours:true}} onChange={this.onChange} onOk={this.onOK} />
-                            <input type='number' name='lesson_length' step='5' placeholder='Lesson length in minutes' value={this.state.lesson_length || ''} onChange={this.handelInputChange}  />
+                            <input type='number' name='lesson_length' step='15' min='15' placeholder='Lesson length in minutes' value={this.state.lesson_length || ''} onChange={this.handelInputChange}  />
                             <input name='lesson_type' value={this.state.lesson_type} onChange={this.handelInputChange} placeholder='Lesson Type' />
                             <textarea  name='lesson_notes' value={this.state.lesson_notes} onChange={this.handelInputChange} placeholder='Notes' />
                             <select  name='student_id' onChange={this.handelInputChange}>
@@ -347,7 +442,7 @@ class TeacherCalendar extends React.Component{
                     </Modal>
            
 
-                <FullCalendar   defaultView='dayGridMonth' 
+                <FullCalendar   defaultView='timeGridWeek' 
                                 header={{left: 'prev,next today' , center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay'}} 
                                 editable={true} 
                                 plugins={[ dayGridPlugin, interactionPlugin, timeGridPlugin ]} 
@@ -357,6 +452,9 @@ class TeacherCalendar extends React.Component{
                                 selectable={true}
                                 select={this.selectTimeForNewLesson}
                                 eventRender={this.buttonPressed}
+                                slotDuration={'00:15'}
+                                minTime={'05:00:00'}
+                                maxTime={'23:00:00'}
                                 />
                                 <button onClick={this.toggleToCancel} >Toggle to Cancel Lesson</button>
             </div>
