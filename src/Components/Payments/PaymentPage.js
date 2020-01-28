@@ -6,7 +6,9 @@ import {getAllPaymentsDue} from '../../redux/reducers/studentReducer'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
 import {CreateNotificationForTeacher} from '../../redux/reducers/teacherReducer'
+import {getLesson} from '../../redux/reducers/lessonReducer'
 
+const moment = require('moment')
 
 class PaymentPage extends React.Component{
     constructor(){
@@ -14,6 +16,11 @@ class PaymentPage extends React.Component{
         this.state={
 
         }
+    }
+
+    async componentDidMount(){
+        await this.props.getPayment(this.props.payment_id)
+        this.props.getLesson(this.props.payment.lesson_id)
     }
 
 
@@ -31,7 +38,7 @@ class PaymentPage extends React.Component{
             let newNotification = {
                 notification_type: 'payment_made',
                 notification_title: 'An invoice has been paid',
-                notification_body: `${this.props.student.student_first_name} has paid off invoice #${this.props.payment_id}`,
+                notification_body: `${this.props.student.student_first_name} ${this.props.student_last_name} has paid off invoice ID #${this.props.payment_id}`,
                 student_id: this.props.student.student_id
             }
 
@@ -52,9 +59,15 @@ class PaymentPage extends React.Component{
 
         return(
             <div className='checkout'>
-                <p>Would you like to payoff this invoice?</p>
+                <div>
+                    <p>Invoice ID #: {this.props.payment_id}</p>
+                    <p>Lesson Date: {moment(this.props.lesson.lesson_time).format('lll')}</p>
+             
+
+                </div>
                 <CardElement />
-                <button onClick={this.submit}>Submit Payment</button>
+                <button onClick={this.submit}>Pay ${this.props.payment.payment_amount}</button>
+                <button onClick={() => this.props.history.push('/student/payments')} >Back</button>
             </div>
         )
     }
@@ -63,8 +76,9 @@ class PaymentPage extends React.Component{
 const mapStateToProps = (reduxState) => {
     return {
         student: reduxState.studentAuthReducer,
-        payment: reduxState.paymentReducer.paymentSelected
+        payment: reduxState.paymentReducer.paymentSelected,
+        lesson: reduxState.lessonReducer.lessons
     }
 }
 
-export default withRouter(injectStripe(connect(mapStateToProps, {getPayment, payPayment, getAllPaymentsDue, CreateNotificationForTeacher})(PaymentPage)))
+export default withRouter(injectStripe(connect(mapStateToProps, {getPayment, payPayment, getAllPaymentsDue, CreateNotificationForTeacher, getLesson})(PaymentPage)))

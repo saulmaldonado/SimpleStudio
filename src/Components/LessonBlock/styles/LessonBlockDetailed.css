@@ -1,0 +1,13 @@
+.LessonBlockDetailed {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.lesson-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    font-size: large;
+}

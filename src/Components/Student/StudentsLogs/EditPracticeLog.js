@@ -4,7 +4,8 @@ import {editLog, getLog, deleteLog} from '../../../redux/reducers/logsReducer'
 import {getAllLogsForStudent} from '../../../redux/reducers/studentReducer'
 import {CreateNotificationForTeacher} from '../../../redux/reducers/teacherReducer'
 
-const moment = require('moment')
+import './styles/EditPracticeLog.css'
+
 
  class EditPracticeLog extends React.Component{
     constructor(){
@@ -106,7 +107,7 @@ const moment = require('moment')
         return(
             <div>
                 <div>EditPracticeLog</div>
-                    <form onChange={this.handelInputChange} onSubmit={this.saveChanges}>
+                    <form className='edit-log-form' onChange={this.handelInputChange} onSubmit={this.saveChanges}>
                         <input name='log_date' value={this.state.log_date || ''} onChange={this.handelInputChange} type='datetime-local' require='true'/>
                         <input type='number' name='log_time' min='5' step='5' value={this.state.log_time || ''} onChange={this.handelInputChange} placeholder='Minutes Practiced' require='true'/>
                         <textarea name='log_material' value={this.state.log_material || ''} onChange={this.handelInputChange} placeholder='What did you practice?' require='true'/>

@@ -1,0 +1,22 @@
+.TeacherHomePage{
+    margin-left: 10vw;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.teacherHP-box-1{
+    display: flex;
+    justify-content: space-evenly;
+    height: 42vh;
+
+
+}
+
+.teacherHP-box-2{
+    display:flex;
+    height: 42vh;
+    overflow: hidden;
+    justify-content: space-evenly;
+    
+}

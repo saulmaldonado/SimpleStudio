@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import {registerTeacher} from '../../redux/reducers/teacherAuthReducer'
 import {registerStudent} from '../../redux/reducers/studentAuthReducer'
 
+import './styles/RegisterForm.css'
+
 
     class RegisterForm extends React.Component{
     constructor(){
@@ -13,7 +15,8 @@ import {registerStudent} from '../../redux/reducers/studentAuthReducer'
             email: '',
             password:'',
             phone:'',
-            accountType:''
+            accountType:'',
+            smallLogin: false
         }
     }
 
@@ -68,19 +71,23 @@ import {registerStudent} from '../../redux/reducers/studentAuthReducer'
 
 
         return(
-            <div>
-                <h1>Welcome!</h1>
-                <h2>New User? Register!</h2>
+            <div className='register'>
+                <h1>Simple Studio</h1>
+                <h2>Stop wasting time managing your studio and start teaching </h2>
+                <h3> The one app that manages your students, scheduling, assignments and billing </h3>
+                <h2> Register And Start Today!</h2>
                 <form onSubmit={this.state.accountType === 'Teacher' ? this.handleRegisterTeacher : this.handleRegisterStudent} >
-                    <input placeholder='First Name' name='firstName' onChange={this.handleInputChange} value={firstName} required />
-                    <input placeholder='Last Name' name='lastName' onChange={this.handleInputChange} value={lastName} required/>
-                    <input placeholder='Email' name='email' onChange={this.handleInputChange} value={email} required/>
-                    <input placeholder='Phone' name='phone' onChange={this.handleInputChange} value={phone} />
-                    <input placeholder='Password' name='password' onChange={this.handleInputChange} type='password' value={password} required/>
+                    <input placeholder='First Name' className='input' name='firstName' onChange={this.handleInputChange} value={firstName} required />
+                    <input placeholder='Last Name' className='input'  name='lastName' onChange={this.handleInputChange} value={lastName} required/>
+                    <input placeholder='Email' className='input'  name='email' onChange={this.handleInputChange} value={email} required/>
+                    <input placeholder='Phone' className='input'  name='phone' onChange={this.handleInputChange} value={phone} />
+                    <input autoComplete='on' className='input'  placeholder='Password' name='password' onChange={this.handleInputChange} type='password' value={password} required/>
                     <h3>I am a :</h3>
-                    <input name='accountType' type='radio' value='Student' onChange={this.handleInputChange} required />Student
-                    <input name='accountType' type='radio' value='Teacher' onChange={this.handleInputChange} />Teacher
-                    <input type='submit' value='Login' />
+                    <div className='register-radio'>
+                        <input name='accountType' type='radio' value='Student' onChange={this.handleInputChange} required />Student
+                        <input name='accountType' type='radio' value='Teacher' onChange={this.handleInputChange} />Teacher
+                    </div>
+                    <input type='submit' value='Register' />
                 </form>
             </div>
         )

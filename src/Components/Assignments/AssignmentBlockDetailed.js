@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { connect } from 'react-redux'
 
+import './styles/AssignmentBlockDetailed.css'
+
 class AssignmentBlockDetailed extends React.Component{
     constructor(){
         super()

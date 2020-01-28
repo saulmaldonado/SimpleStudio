@@ -3,6 +3,9 @@ import PaymentBlockStudent from '../../Payments/PaymentBlockStudent'
 import {getAllPayments} from '../../../redux/reducers/studentReducer'
 import { connect } from 'react-redux'
 
+import './styles/StudentInvoiceHistory.css'
+
+
 class StudentInvoiceHistory extends React.Component{
     constructor(){
         super()

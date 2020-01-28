@@ -6,9 +6,6 @@ import {getPayment} from '../../redux/reducers/paymentReducer'
 
 
  class Checkout extends React.Component{
-    constructor(){
-        super()
-    }
 
     componentDidMount(){
         this.props.getPayment(this.props.match.params.id)
@@ -16,7 +13,6 @@ import {getPayment} from '../../redux/reducers/paymentReducer'
 
 
         render(){
-            console.log(this.props)
             return(
             <StripeProvider apiKey="pk_test_PA4jhxW0nTDVFLHQLKcjtxZT00QLDq7e3w" >
                 <div className='example'>

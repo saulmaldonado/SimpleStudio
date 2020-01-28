@@ -1,0 +1,14 @@
+
+.teacher-assignments-title{
+    margin-left: 5vw;
+    margin-top: 10vh;
+}
+
+.teacher-assignments{
+
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    height:80vh ;
+
+}

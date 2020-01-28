@@ -5,6 +5,8 @@ import LessonBlockDetailed from '../../LessonBlock/LessonBlockDetailed'
 import {CreateNotificationForTeacher} from '../../../redux/reducers/teacherReducer'
 import { Link } from 'react-router-dom'
 
+import './styles/StudentShowLesson.css'
+
 const moment = require('moment')
 
 class StudentShowLesson extends React.Component{
@@ -43,10 +45,12 @@ class StudentShowLesson extends React.Component{
     render(){
         console.log(this.props.lesson)
         return(
-            <div>
+            <div className='StudentShowLesson'>
                 <LessonBlockDetailed  lessonType={this.props.lesson.lesson_type} lessonTime={moment(this.props.lesson.lesson_time ).format('MMM Do, h:mm a')} lessonLength={this.props.lesson.lesson_length} lessonNotes={!this.props.lesson.lesson_notes ? 'none.' : this.props.lesson.lesson_notes} />
-                <Link to={`/student/lessons/edit/${this.props.match.params.id}`} ><button>Edit Lesson</button></Link>
-                <button onClick={this.cancelLesson}>Cancel Lesson</button>
+                <div className='buttons '>
+                    <Link to={`/student/lessons/edit/${this.props.match.params.id}`} ><button>Edit Lesson</button></Link>
+                    <button onClick={this.cancelLesson}>Cancel Lesson</button>
+                </div>
             </div>
         )
     }

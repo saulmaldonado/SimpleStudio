@@ -1,9 +1,10 @@
 import React from 'react'
 import StudentInvoiceHistory from './StudentInvoiceHistory'
 import StudentNewInvoices from './StudentNewInvoices'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Checkout from '../../Payments/Checkout'
 
+import './styles/StudentPayments.css'
 
 export default class StudentPayments extends React.Component{
     constructor(){
@@ -14,13 +15,14 @@ export default class StudentPayments extends React.Component{
     }
     render(){
         return(
-            <div>
-                <div>StudentPayments</div>
-                <Route path='/student/payments/pay/:id' component={Checkout} />
-                <Route path='/student/payments'>
-                    <StudentInvoiceHistory />
-                    <StudentNewInvoices />
-                </Route>
+            <div className='StudentPayments' >
+                <Switch>
+                    <Route path='/student/payments/pay/:id' component={Checkout} />
+                    <Route path='/student/payments'>
+                        <StudentInvoiceHistory />
+                        <StudentNewInvoices />
+                    </Route>
+                </Switch>
             </div>
         )
     }

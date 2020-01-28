@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './styles/LessonBlockDetailed.css'
+
 export default class LessonBlockDetailed extends React.Component{
     constructor(){
         super()
@@ -9,9 +11,9 @@ export default class LessonBlockDetailed extends React.Component{
     }
     render(){
         return(
-            <div>
+            <div className='LessonBlockDetailed' >
                 <div>Lesson Details:</div>
-                <div>
+                <div className='lesson-info'>
                     <p> {this.props.lessonType} Lesson </p>
                     <p> Time: {this.props.lessonTime} </p>
                     <p> Length: {this.props.lessonLength} minutes </p>

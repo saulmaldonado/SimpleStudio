@@ -1,0 +1,20 @@
+.StudentTeacher {
+    margin-left: 5vw;
+    margin-top: 10vh;
+    height: 90vh;
+}
+
+.teacher-view {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.teacher-profile{
+    height: 50vh;
+}
+
+.teacher-view .fc-unthemed{
+    width: 50%
+}

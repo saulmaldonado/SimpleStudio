@@ -13,9 +13,11 @@ import '../../../../node_modules/@fullcalendar/timegrid/main.css'
 import { connect } from 'react-redux'
 import ReactDOM from "react-dom";
 
+import './styles/TeacherCalendar.css'
+
 import 'antd/dist/antd.css'
 
-import { Popover, Button, Modal, DatePicker, Tooltip } from 'antd';
+import { Popover, Button, Modal, DatePicker } from 'antd';
 
 
 
@@ -85,7 +87,7 @@ class TeacherCalendar extends React.Component{
     cancelLesson = async(event) => {
             if(window.confirm('Are you sure you want to cancel this lesson?') === true){
 
-                let student_id = this.props.lessons.find(ele => ele.lesson_id == event.id).student_id
+                let student_id = this.props.lessons.find(ele => ele.lesson_id === +event.id).student_id
 
 
                 let newNotification = {
@@ -109,8 +111,8 @@ class TeacherCalendar extends React.Component{
 
         let lessons = this.state.lessons.slice()
     
-        lessons.find(ele => ele.id == date.event.id).start = moment(date.event.start)
-        lessons.find(ele => ele.id == date.event.id).end = moment(date.event.end)
+        lessons.find(ele => ele.id === +date.event.id).start = moment(date.event.start)
+        lessons.find(ele => ele.id === +date.event.id).end = moment(date.event.end)
 
         if(window.confirm('Are you sure you want to reschedule?') === true){
             this.setState({
@@ -120,12 +122,12 @@ class TeacherCalendar extends React.Component{
             date.revert()
         }
 
-        let prevLessonTime = this.props.lessons.find(ele => ele.lesson_id == date.event.id).lesson_time
-        let lesson_type = this.props.lessons.find(ele => ele.lesson_id == date.event.id).lesson_type
+        let prevLessonTime = this.props.lessons.find(ele => ele.lesson_id === +date.event.id).lesson_time
+        let lesson_type = this.props.lessons.find(ele => ele.lesson_id === +date.event.id).lesson_type
         let lesson_time = moment(date.event.start)
         let lesson_length = moment.duration(moment(date.event.end).diff(moment(date.event.start))).as('minutes')
-        let lesson_notes = this.props.lessons.find(ele => ele.lesson_id == date.event.id).lesson_notes
-        let student_id = this.props.lessons.find(ele => ele.lesson_id == date.event.id).student_id
+        let lesson_notes = this.props.lessons.find(ele => ele.lesson_id === +date.event.id).lesson_notes
+        let student_id = this.props.lessons.find(ele => ele.lesson_id === +date.event.id).student_id
 
 
         let editedLesson = {
@@ -159,8 +161,8 @@ class TeacherCalendar extends React.Component{
 
         let lessons = this.state.lessons.slice()
 
-        lessons.find(ele => ele.id == date.event.id).start = moment(date.event.start)
-        lessons.find(ele => ele.id == date.event.id).end = moment(date.event.end)
+        lessons.find(ele => ele.id === +date.event.id).start = moment(date.event.start)
+        lessons.find(ele => ele.id === +date.event.id).end = moment(date.event.end)
 
         if(window.confirm('Are you sure you want to resize lesson length?') === true){
             this.setState({
@@ -170,11 +172,11 @@ class TeacherCalendar extends React.Component{
             date.revert()
         }
 
-        let lesson_type = this.props.lessons.find(ele => ele.lesson_id == date.event.id).lesson_type
+        let lesson_type = this.props.lessons.find(ele => ele.lesson_id === +date.event.id).lesson_type
         let lesson_time = moment(date.event.start)
         let lesson_length = moment.duration(moment(date.event.end).diff(moment(date.event.start))).as('minutes')
-        let lesson_notes = this.props.lessons.find(ele => ele.lesson_id == date.event.id).lesson_notes
-        let student_id = this.props.lessons.find(ele => ele.lesson_id == date.event.id).student_id
+        let lesson_notes = this.props.lessons.find(ele => ele.lesson_id === +date.event.id).lesson_notes
+        let student_id = this.props.lessons.find(ele => ele.lesson_id === +date.event.id).student_id
 
         let editedLesson = {
             lesson_type,
@@ -396,13 +398,11 @@ class TeacherCalendar extends React.Component{
     
     
     render(){
-        console.log(this.props)
-        console.log(this.state)
-        const {lesson_time, lesson_length, lesson_type, lesson_notes} = this.state
+        const { lesson_length, lesson_type, lesson_notes} = this.state
 
         return(
             
-            <div>
+            <div className='calendar-container'>
                     <Modal
                         title='Edit Lesson'
                         visible={this.state.editPopup}
@@ -456,7 +456,6 @@ class TeacherCalendar extends React.Component{
                                 minTime={'05:00:00'}
                                 maxTime={'23:00:00'}
                                 />
-                                <button onClick={this.toggleToCancel} >Toggle to Cancel Lesson</button>
             </div>
 
         )

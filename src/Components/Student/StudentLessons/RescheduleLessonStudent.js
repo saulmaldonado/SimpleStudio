@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import {CreateNotificationForTeacher} from '../../../redux/reducers/teacherReducer'
 import { DatePicker } from 'antd'
 
+import './styles/StudentRescheduleLesson.css'
+
 const moment = require('moment')
 
 class RescheduleLessonStudent extends React.Component{
@@ -47,7 +49,7 @@ class RescheduleLessonStudent extends React.Component{
     }
 
     saveChanges = async() => {
-        const {lesson_type, lesson_time, lesson_length, lesson_notes} = this.state
+        const { lesson_time, lesson_length } = this.state
 
         let newNotification = {
             notification_type: 'request_to_reschedule_lesson',
@@ -82,22 +84,22 @@ class RescheduleLessonStudent extends React.Component{
     render(){
 
         return(
-            <div>
+            <div className='RescheduleLessonStudent'>
                 <div>Reschedule lesson {this.props.match.params.id} </div>
-                <DatePicker value={moment(this.state.lesson_time)} format="MMM Do, h:mm a" name='lesson_time' showTime={{ format: 'HH:mm', minuteStep: 15, use12Hours:true}} onChange={this.onChange} />
-                <input name='lesson_length' placeholder='Length in Minutes' value={this.state.lesson_length} onChange={this.handelInputChange}/>
-                <button onClick={this.saveChanges}>Save Changes</button>
-                <Link to='/student/lessons'> <button>Discard Changes</button> </Link>
+                <div className='input-forms'>
+                    <DatePicker value={moment(this.state.lesson_time)} format="MMM Do, h:mm a" name='lesson_time' showTime={{ format: 'HH:mm', minuteStep: 15, use12Hours:true}} onChange={this.onChange} />
+                    <input name='lesson_length' placeholder='Length in Minutes' value={this.state.lesson_length} onChange={this.handelInputChange}/>
+                </div>
+                <div className='buttons-edit'>
+                    <button onClick={this.saveChanges}>Save Changes</button>
+                    <Link to='/student/lessons'> <button>Discard Changes</button> </Link>
+                </div>
 
-                <div>
-                    <div>
-                        <p>{this.state.lesson_type} Lesson:</p>
-                        <p> {moment(this.state.lesson_time).format('MMM Do, h:mm a')}</p>
-                    </div>
-                    <div>
-                        <p>Length: {this.state.lesson_length} mins</p>
-                        <p>Notes: {!this.state.lesson_notes ? 'none.' : this.state.lesson_notes} </p>
-                    </div>
+                <div className='lesson-info-edit'>
+                    <p>{this.state.lesson_type} Lesson:</p>
+                    <p> {moment(this.state.lesson_time).format('MMM Do, h:mm a')}</p>
+                    <p>Length: {this.state.lesson_length} mins</p>
+                    <p>Notes: {!this.state.lesson_notes ? 'none.' : this.state.lesson_notes} </p>
                 </div>
 
             </div>

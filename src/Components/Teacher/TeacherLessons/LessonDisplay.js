@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {getLesson} from '../../../redux/reducers/lessonReducer'
 
+import './styles/LessonDisplay.css'
+
 var moment = require('moment')
 
 
@@ -30,8 +32,7 @@ class LessonDisplay extends React.Component{
     render(){
         console.log(this.props)
         return(
-            <div>
-                <p>LessonDisplay</p>
+            <div className='teachers-lessons' >
 
                 {this.props.lesson === 'error' ? 'Lesson does not exist': <div>
                     <p> {this.props.lesson.lesson_type} Lesson: </p>

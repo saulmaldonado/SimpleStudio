@@ -10,6 +10,8 @@ import StudentAssignments from '../StudentAssignments/StudentAssignments'
 import { Switch, Route } from 'react-router-dom'
 import NewPaymentsStudents from './NewPaymentsStudents'
 
+import './styles/StudentHomePage.css'
+
 export default function StudentHomePage(){
     return(
         <div>
@@ -17,11 +19,24 @@ export default function StudentHomePage(){
             <Switch>
                 <Route exact path='/student' render={() =>{
                     return(
-                        <div>
-                            <div>StudentHomePage</div>
-                            <StudentSchedule />
-                            <NewAssignments />
-                            <NewPaymentsStudents /> 
+                        <div className='student-homepage'>
+                            <div className='box-1'>
+                                <StudentSchedule />
+                                <div className='student-stats'>
+                                    <div>
+                                        <p>Minutes Practiced this week:</p>
+                                    </div>
+                                    <div>
+                                        <p>Minutes practiced this month:</p>
+                                    </div>
+                                    <div>
+                                        <NewPaymentsStudents /> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='box-2'>
+                                <NewAssignments />
+                            </div>
                         </div>
                     )
                 }}/>

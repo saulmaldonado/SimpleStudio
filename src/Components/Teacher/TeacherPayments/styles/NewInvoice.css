@@ -1,0 +1,7 @@
+.new-invoice-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 70%;
+    text-align: center;
+}

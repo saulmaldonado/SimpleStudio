@@ -3,6 +3,8 @@ import StudentProfile from './StudentProfile'
 import StudentSelector from './StudentSelector'
 import { Route, Switch } from 'react-router-dom'
 
+import './styles/TeacherStudents.css'
+
 export default class TeacherStudents extends React.Component{
     constructor(){
         super()
@@ -13,7 +15,7 @@ export default class TeacherStudents extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className='teacher-students'>
                 <div>
                     <p>TeacherStudents</p>
                     <StudentSelector />

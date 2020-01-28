@@ -1,0 +1,9 @@
+.lesson-block{
+    border: black solid 2px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}

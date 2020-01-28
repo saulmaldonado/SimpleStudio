@@ -1,0 +1,12 @@
+h2 {
+    margin-left: 5vw;
+    margin-top: 10vh;
+    text-align: center;
+}
+
+.teacher-logs {
+
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}

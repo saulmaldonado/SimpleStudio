@@ -1,0 +1,133 @@
+#login {
+    height: 10vh;
+    max-width: 50%;
+    float: right;
+}
+
+#login-form {
+    float: right;
+    width: 40vw;
+    display: flex;
+    height: 100%;
+    justify-content: space-evenly;
+    position: relative;
+
+}
+
+#login-forms {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    max-width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 100%;
+
+}
+
+
+#login-radio {
+    width: 70px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.radio-button{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#login-button{
+    width: 100px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.fa-music {
+    font-size: 2.5rem;
+    margin-top: 20px;
+    margin-left: 20px
+}
+
+#hamburger{
+    display: none;
+}
+
+.logout {
+    display: flex;
+    flex-direction: row-reverse;
+    float: right;
+    align-items: center;
+    justify-content: space-around;
+    width: 40%;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 100%;
+}
+
+#login-form-small{
+    display: none;
+}
+
+
+@media (max-width: 900px){
+
+    #login-form-mini{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%
+
+    }
+
+    #login-form{
+        display: none;
+    }
+ 
+
+    #hamburger{
+        display: block;
+        margin-top: 10px;
+        margin-right: 20px;
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-height: 700px){
+    #hamburger{
+        font-size: 30px;
+    }
+    #login-form{
+        display: none;
+    }
+    #hamburger{
+        display: block;
+        margin-top: 0px;
+        margin-right: 20px;
+        font-size: 2.5rem;
+    }
+
+    .fa-music{
+        font-size: 30px;
+    }
+
+}
+
+@media (max-height: 568px){
+    #hamburger{
+        font-size: 20px;
+        margin-top:10px
+    }
+
+    .fa-music{
+        font-size: 20px;
+        margin-top:13px
+
+    }
+
+}
+
+
+
+
+

@@ -1,4 +1,5 @@
 import React from 'react'
+const moment = require('moment')
 
 export default class PaymentBlock extends React.Component{
     constructor(){
@@ -15,8 +16,8 @@ export default class PaymentBlock extends React.Component{
                     <p>Student Name: {this.props.studentName}</p>
                 </div>
                 <div>
-                    <p>Payment Requested: {this.props.paymentDate}</p>
-                    <p>Payment Total: {this.props.paymentAmount}</p>
+                    <p>Invoice Date: {moment(this.props.paymentDate).format('llll')}</p>
+                    <p>Invoice Total: {this.props.paymentAmount}</p>
                 </div>
             </div>
         )

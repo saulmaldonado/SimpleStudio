@@ -3,6 +3,8 @@ import LessonBlock from '../../LessonBlock/LessonBlock'
 import {getAllLessonsForTeacher, getStudentsForTeacher} from '../../../redux/reducers/teacherReducer'
 import {connect} from 'react-redux'
 
+import '../TeacherHomePage/styles/TeacherAgenda.css'
+
 var moment = require('moment')
 
 
@@ -23,14 +25,16 @@ class TeacherAgenda extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className='teacher-agenda-container'>
                 <div>Your Agenda:</div>
                 <div> 
                 {moment().format('llll')}
                 </div>
-                {this.props.teacherInfo.lessons.map((ele, i) => {
-                    return <LessonBlock key={i} lessonType={ele.lesson_type} lessonTime={moment(ele.lesson_time).format('llll')} lessonLength={ele.lesson_length} studentName={`${ele.student_first_name} ${ele.student_last_name}`} /> 
-                })}
+                <div className='lesson-blocks' >
+                    {this.props.teacherInfo.lessons.map((ele, i) => {
+                        return <LessonBlock key={i} lessonType={ele.lesson_type} lessonTime={moment(ele.lesson_time).format('llll')} lessonLength={ele.lesson_length} studentName={`${ele.student_first_name} ${ele.student_last_name}`} /> 
+                    })}
+                </div>
             </div>
         )
     }

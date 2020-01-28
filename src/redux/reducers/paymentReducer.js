@@ -38,7 +38,7 @@ export function editPayment(payment_id, editedPayment){
 export function deletePayment(payment_id){
     return{
         type: DELETE_PAYMENT,
-        payload: axios.put(`/api/payment/${payment_id}`)
+        payload: axios.delete(`/api/payment/${payment_id}`)
                         .then(res => res.data)
     }
 }

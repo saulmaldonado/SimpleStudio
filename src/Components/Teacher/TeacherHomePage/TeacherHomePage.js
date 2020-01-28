@@ -10,6 +10,8 @@ import TeacherAssignments from '../TeacherAssignments/TeacherAssignments'
 import TeacherNewPayments from './TeacherNewPayments'
 import { Route, Switch } from 'react-router-dom'
 import {connect} from 'react-redux'
+
+import './styles/TeacherHomePage.css'
  
 
 function TeacherHomePage (props){
@@ -19,11 +21,20 @@ function TeacherHomePage (props){
             <Switch>
                 <Route exact path='/teacher' render={() => {
                     return(
-                        <div>
-                            <h1>Welcome! {`${props.teacher.teacher_first_name} ${props.teacher.teacher_last_name}`} </h1>
-                            <TeacherAgenda />
-                            <TeacherNewLogs />
-                            <TeacherNewPayments />
+                        <div className='TeacherHomePage' >
+                        <h1>Welcome! {`${props.teacher.teacher_first_name} ${props.teacher.teacher_last_name}`} </h1>
+                            <div className='teacherHP-box-1' >
+                                <TeacherAgenda />
+                                <div className='weekly-data'>
+                                    <p>Lessons this week:</p>
+                                    <p>Active Students</p>
+                                    <p>This weeks estimated revenue:</p>
+                                </div>
+                            </div>
+                            <div className='teacherHP-box-2' >
+                                <TeacherNewLogs />
+                                <TeacherNewPayments />
+                            </div>
                         </div>
                     )
                 }} />

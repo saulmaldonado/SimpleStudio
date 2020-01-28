@@ -34,7 +34,7 @@ class Notification extends React.Component{
                         <button onClick={() => this.acceptTeacher(teacher_id, student_id, notification_id)}>Accept</button>
                         <button onClick={() => this.closeNotification(notification_id)}>Decline</button>
                     </div>
-                    <p>{moment(notification_time).format('llll')}</p>
+                    <p>{moment(notification_time).fromNow()}</p>
                 </div>
             )
         } else {
@@ -45,7 +45,7 @@ class Notification extends React.Component{
                     <div>
                         <button onClick={() => this.closeNotification(notification_id)}>Close</button>
                     </div>
-                    <p>{moment(notification_time).format('llll')}</p>
+                    <p>{moment(notification_time).fromNow()}</p>
                 </div>
             )
         }

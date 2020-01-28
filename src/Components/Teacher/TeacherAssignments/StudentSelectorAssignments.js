@@ -4,6 +4,10 @@ import { connect } from 'react-redux'
 import {getStudentsForTeacher} from '../../../redux/reducers/teacherReducer'
 import TeacherAssignmentForms from './TeacherAssignmentForms'
 
+import './styles/StudentSelectorAssignments.css'
+
+
+
 class StudentSelectorLogs extends React.Component{
     constructor(){
         super()
@@ -19,7 +23,7 @@ class StudentSelectorLogs extends React.Component{
     render(){
         console.log(this.props)
         return(
-            <div>
+            <div className='student-selector-assignments' >
                 <p>Current Students:</p>
                 <div>
                     {this.props.students.map((ele, i) => {

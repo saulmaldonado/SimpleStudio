@@ -1,0 +1,14 @@
+
+
+.StudentSchedule {
+    width: 50%;
+    margin-right: 100px;
+    box-sizing: border-box;
+    overflow: scroll;
+
+}
+
+.fc-unthemed{
+    width: 70%;
+    height: 90vh;
+}

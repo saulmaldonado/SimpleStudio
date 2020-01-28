@@ -12,8 +12,7 @@ export default class TeacherPaymentInvoiceForm extends React.Component{
     }
     render(){
         return(
-            <div>
-                    <div>TeacherPaymentInvoiceForm</div>
+            <div className='invoice-form' >
                 <Switch>
                     <Route path='/teacher/payments/edit/:id' component={EditInvoice} />
                     <Route path='/teacher/payments' component={NewInvoice} />

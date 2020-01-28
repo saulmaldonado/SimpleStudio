@@ -31,7 +31,6 @@ class Notification extends React.Component{
 
         const {lesson_type, lesson_notes} = this.props.lesson
         const { lesson_time, lesson_length } = this.props
-        console.log(this.props)
         
         let updatedLesson = {
             lesson_type, 
@@ -40,8 +39,6 @@ class Notification extends React.Component{
             lesson_notes
         }
 
-        console.log(updatedLesson)
-
         await this.props.editLesson(this.props.lesson_id, updatedLesson)
 
         await this.props.getAllLessonsForTeacher(this.props.teacher.teacher_id)
@@ -49,11 +46,10 @@ class Notification extends React.Component{
         let newNotification = {
             notification_type: 'lesson_reschedule_request_accepted', 
             notification_title: `Lesson Rescheduled`, 
-            notification_body: `Your request to reschedule a lesson has been accepted. Your lesson on ${moment(this.props.lesson.lesson_time).format('llll')} to ${moment(lesson_time).format('llll')} - ${moment(lesson_time).add(lesson_length, 'm').format('h:mm A')} `, 
+            notification_body: `Your request to reschedule a lesson has been accepted. Your lesson on ${moment(this.props.lesson.lesson_time).format('llll')} has been changed to ${moment(lesson_time).format('llll')} - ${moment(lesson_time).add(lesson_length, 'm').format('h:mm A')} `, 
             teacher_id: this.props.teacher.teacher_id
         } 
 
-        console.log(this.props.lesson.student_id)
 
         await this.props.CreateNotificationForStudent(this.props.student_id, newNotification)
 
@@ -66,8 +62,7 @@ class Notification extends React.Component{
     
 
     render(){
-        console.log(this.props)
-        const {notification_type, notification_title, notification_body, teacher_id, student_id, notification_time, notification_id, lesson_id, lesson_time, lesson_length} = this.props
+        const {notification_type, notification_title, notification_body, teacher_id, student_id, notification_time, notification_id} = this.props
         if(notification_type === 'Assign student to Teacher'){
             return(
                 <div>

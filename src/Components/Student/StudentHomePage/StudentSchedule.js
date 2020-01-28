@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import {getAllLessons} from '../../../redux/reducers/studentReducer'
 import { withRouter, Link } from 'react-router-dom'
 
+import './styles/StudentSchedule.css'
+
 class StudentSchedule extends React.Component{
     constructor(){
         super()
@@ -20,10 +22,10 @@ class StudentSchedule extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className='StudentSchedule'>
                 <div>StudentSchedule</div>
                 {!this.props.lessons.length ? <div>You have no lessons scheduled</div> : this.props.lessons.map((ele, i) => {
-                    return <Link to={`/student/lessons/${ele.lesson_id}`} ><LessonBlockForStudents key={i} lessonType={ele.lesson_type} lessonDate={ele.lesson_time} lessonLength={ele.lesson_length} lessonNotes={ele.lesson_notes ? ele.lesson_notes : 'none.'}/> </Link> 
+                    return <Link key={i} to={`/student/lessons/${ele.lesson_id}`} ><LessonBlockForStudents  lessonType={ele.lesson_type} lessonDate={ele.lesson_time} lessonLength={ele.lesson_length} lessonNotes={ele.lesson_notes ? ele.lesson_notes : 'none.'}/> </Link> 
                 })}
             </div>
         )

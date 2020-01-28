@@ -1,0 +1,14 @@
+.student-homepage{
+    margin-left: 5vw;
+    margin-top: 10vh;
+
+}
+
+.box-1{
+display: flex
+}
+
+
+.student-stats {
+    width: 35vw;
+}

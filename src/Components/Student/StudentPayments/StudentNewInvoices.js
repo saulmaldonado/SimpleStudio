@@ -4,6 +4,10 @@ import {getAllPaymentsDue} from '../../../redux/reducers/studentReducer'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+
+import './styles/StudentNewInvoices.css'
+
+
 class StudentNewInvoices extends React.Component{
     constructor(){
         super()
@@ -27,8 +31,9 @@ class StudentNewInvoices extends React.Component{
         return(
             <div>
                 <div>StudentNewInvoices</div>
+
                 { typeof this.props.payments === 'string' ? <div>No payments are due</div> : this.props.payments.map((ele, i) => {
-                    return <Link key={i} to={`/student/payments/pay/${ele.payment_id}`} ><UnpaidPaymentBlock key={i} paymentId={ele.payment_id} paymentDueDate={ele.payment_duedate} paymentAmount={ele.payment_amount}/></Link>
+                return <Link key={i} to={`/student/payments/pay/${ele.payment_id}`} ><UnpaidPaymentBlock key={i} paymentId={ele.payment_id} paymentDueDate={ele.payment_duedate} paymentAmount={ele.payment_amount}/></Link>
                 })}
             </div>
         )

@@ -1,0 +1,17 @@
+.StudentShowLesson {
+    width: 50%;
+    height: 70vh;
+    margin-right: 100px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+

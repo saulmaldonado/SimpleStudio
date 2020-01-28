@@ -1,0 +1,6 @@
+.StudentPayments{
+    margin-left: 5vw;
+    margin-top: 10vh;
+    display: flex;
+    justify-content: space-evenly;
+}

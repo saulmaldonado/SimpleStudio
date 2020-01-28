@@ -1,0 +1,11 @@
+.teacher-agenda-container{
+    height: 42vh;
+    width: 30%
+
+}
+
+.lesson-blocks{
+    overflow: scroll;
+    height: 40vh;
+
+}

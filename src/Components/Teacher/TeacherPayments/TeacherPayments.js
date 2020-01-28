@@ -3,13 +3,17 @@ import TeacherPaymentInvoiceForm from './TeacherPaymentInvoiceForm'
 import InvoicesNotPaid from './InvoicesNotPaid'
 import InvoicesPaid from './InvoicesPaid'
 
+import './styles/TeacherPayments.css' 
+
 export default function TeacherPayments(){
     return(
-        <div>
-            <div>TeacherPayments</div>
-            <TeacherPaymentInvoiceForm />
-            <InvoicesPaid />
-            <InvoicesNotPaid />
+        <div className= 'teacher-payments-container' >
+            <h2>TeacherPayments</h2>
+            <div className='invoice-container' >
+                <TeacherPaymentInvoiceForm />
+                <InvoicesPaid />
+                <InvoicesNotPaid />
+            </div>
         </div>
     )
 }

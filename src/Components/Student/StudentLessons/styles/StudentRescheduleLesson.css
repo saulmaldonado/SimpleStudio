@@ -1,0 +1,33 @@
+
+.RescheduleLessonStudent{
+    width: 50%;
+    height: 70vh;
+    margin-right: 100px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.lesson-info-edit{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: large;
+}
+
+
+.input-forms{
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.buttons-edit{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}

@@ -4,6 +4,8 @@ import {addAssignment} from '../../../redux/reducers/assignmentReducer'
 import {getStudentsForTeacher} from '../../../redux/reducers/teacherReducer'
 import {CreateNotificationForStudent} from '../../../redux/reducers/studentReducer'
 
+import './styles/TeacherAssignmentForms.css'
+
 class TeacherAssignmentForms extends React.Component{
     constructor(){
         super()
@@ -87,12 +89,11 @@ class TeacherAssignmentForms extends React.Component{
             } = this.state
 
         return(
-            <div>
+            <div className='new-assignment-form-container' >
                 <div>Add Assignment</div>
-
-                <div>
+                <div className='new-assignment-form' >
                     <select name='student_id' onChange={this.handelInputChange}>
-                            <option></option>
+                            <option>Select a Student</option>
                             {this.props.students.map((ele, i) => <option  key={i} value={ele.id}> {ele.first_name} {ele.last_name} </option>)}  
                     </select>
 

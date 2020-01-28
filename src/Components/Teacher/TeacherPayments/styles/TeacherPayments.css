@@ -1,0 +1,11 @@
+    .teacher-payments-container{
+        margin-left: 5vw;
+        margin-top: 10vh;
+    }
+
+
+
+    .invoice-container {
+        display: flex;
+        justify-content: space-evenly;
+    }

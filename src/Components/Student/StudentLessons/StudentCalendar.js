@@ -8,7 +8,14 @@ import interactionPlugin from '@fullcalendar/interaction'
 import '../../../../node_modules/@fullcalendar/core/main.css'
 import'../../../../node_modules/@fullcalendar/daygrid/main.css'
 import '../../../../node_modules/@fullcalendar/timegrid/main.css'
+import ReactDOM from 'react-dom'
+import { Link, withRouter } from 'react-router-dom'
+import {HashRouter} from 'react-router-dom'
 
+
+import './styles/Calendar.css'
+
+import { Button, Popover } from 'antd'
 
 var moment = require('moment')
 
@@ -39,6 +46,26 @@ class StudentCalendar extends React.Component{
         this.parseLessons()
     }
 
+    buttonPressed = ({event, el}) => {
+        let content = (
+            <HashRouter>
+                <div>
+                    <Popover title={`${event.title}`} trigger='click' content={
+                        <div>
+                            <p>{event.title} {`${moment(event.start).format('ddd, MMM D h:mm a')} - ${moment(event.end).format('h:mm a')}`}</p>
+                                <Link to={`/student/lessons/edit/${event.id}`} ><Button>Edit</Button></Link>
+                        </div>
+                    }>
+                        <span className="fc-time">{event.title} <br /> {moment(event.start).format('h:mm a')}</span>
+                    </Popover>
+                </div>
+            </HashRouter>
+          )
+          ReactDOM.render(content, el)
+
+          return el
+    }
+
 
 
     parseLessons = () => {
@@ -52,14 +79,13 @@ class StudentCalendar extends React.Component{
 
     render(){
         return(
-            <div>
-                <div>StudentCalendar</div>
                 <FullCalendar   defaultView='timeGridWeek' 
                                 header={{left: 'prev,next today' , center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay'}} 
-                                plugins={[ dayGridPlugin, interactionPlugin, timeGridPlugin ]} 
-                                events={[...this.state.lessons]} 
+                                plugins={[ dayGridPlugin, interactionPlugin, timeGridPlugin ]}
+                                eventRender={this.buttonPressed} 
+                                events={[...this.state.lessons]}
+                                height='parent'
                                 />
-            </div>
         )
     }
 }
@@ -71,4 +97,4 @@ const mapStateToProps = (reduxState) => {
     }
 }
 
-export default connect (mapStateToProps, {getAllLessons})(StudentCalendar)
+export default withRouter(connect (mapStateToProps, {getAllLessons})(StudentCalendar))

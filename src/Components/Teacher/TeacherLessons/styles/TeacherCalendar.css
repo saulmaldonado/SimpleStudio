@@ -1,0 +1,11 @@
+.calendar-container{
+    width: 50vw;
+    height: 90vh;
+
+}
+
+.calendar-container .fc-unthemed{
+    width: 100%;
+    height: 90vh;
+    float: right;
+}
