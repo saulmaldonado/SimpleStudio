@@ -8,6 +8,8 @@ import { withRouter } from 'react-router-dom'
 import {CreateNotificationForTeacher} from '../../redux/reducers/teacherReducer'
 import {getLesson} from '../../redux/reducers/lessonReducer'
 
+import './styles/PaymentPage.css'
+
 const moment = require('moment')
 
 class PaymentPage extends React.Component{
@@ -66,8 +68,8 @@ class PaymentPage extends React.Component{
 
                 </div>
                 <CardElement />
-                <button onClick={this.submit}>Pay ${this.props.payment.payment_amount}</button>
-                <button onClick={() => this.props.history.push('/student/payments')} >Back</button>
+                <button className='paymentpagebuttonsubmit' onClick={this.submit}>Pay ${this.props.payment.payment_amount}</button>
+                <button className='paymentpagebuttonback'  onClick={() => this.props.history.push('/student/payments')} >Back</button>
             </div>
         )
     }

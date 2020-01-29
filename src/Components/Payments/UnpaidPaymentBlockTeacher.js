@@ -45,7 +45,7 @@ class UnpaidPaymentBlock extends React.Component{
                     </div>
                 </div>
                 <div className='unpaid-payment-block-teacher-buttons' >
-                    <Link to={`/teacher/payments/edit/${this.props.paymentId}`}><button>Edit Invoice</button></Link>
+                    <Link to={`/teacher/payments/edit/${this.props.paymentId}`}><button className='unpaid-payment-block-teacher-buttons-edit' >Edit Invoice</button></Link>
                     <button onClick={this.deleteInvoice} >Delete Invoice</button>
                 </div>
             </div>

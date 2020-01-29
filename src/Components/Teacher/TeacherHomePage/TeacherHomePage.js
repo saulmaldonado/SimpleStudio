@@ -41,15 +41,21 @@ class TeacherHomePage extends React.Component{
         const startOfWeek = moment().startOf('isoWeek')
         const endOfWeek = moment().endOf('isoWeek')
 
-        let paymentsThisWeek = this.props.payments.filter(ele => {
-            return moment(ele.payment_duedate).isBetween(startOfWeek, endOfWeek)
-        })
+  
 
-        let totalRev = paymentsThisWeek.reduce((acc, current) => {
-            return acc + current.payment_amount
-       }, 0)
+            let paymentsThisWeek = this.props.payments.filter(ele => {
+                return moment(ele.payment_duedate).isBetween(startOfWeek, endOfWeek)
+            })
+    
+            let totalRev = paymentsThisWeek.reduce((acc, current) => {
+                return acc + current.payment_amount
+           }, 0)
+    
+           return totalRev
 
-       return totalRev
+
+        
+
      }
 
 

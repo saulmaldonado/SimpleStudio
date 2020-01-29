@@ -22,20 +22,6 @@ class StudentHomePage extends React.Component{
         this.props.getAllLogsForStudent(this.props.student.student_id)
     }
 
-    timePracticedThisWeek = () => {
-        const startOfWeek = moment().startOf('isoWeek')
-        const endOfWeek = moment().endOf('isoWeek')
- 
-        let logsThisWeek = this.props.logs.filter(ele => {
-            return moment(ele.log_date).isBetween(startOfWeek, endOfWeek)
-        })
- 
-        let totalMinPracticed = logsThisWeek.reduce((acc, current) => {
-             return acc + current.log_time
-        }, 0)
- 
-        return totalMinPracticed
-     }
 
         render(){
             return(
@@ -51,7 +37,6 @@ class StudentHomePage extends React.Component{
                                     <StudentScheduleForHP />
                                     <div className='student-stats'>
                                         <div>
-                                            <p>Minutes Practiced this week: <b>{this.timePracticedThisWeek()}</b>  </p>
                                         </div>
                                         <div>
                                             <NewPaymentsStudents /> 

@@ -1,0 +1,30 @@
+.paymentpagebuttonback{
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #1cc88a;
+    margin-left: 20px;
+    color: white;
+}
+
+.paymentpagebuttonback:hover{
+    background-color: blue;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.paymentpagebuttonsubmit{
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: red;
+    color: white;
+    
+
+}
+
+.paymentpagebuttonsubmit:hover{
+    background-color: rgb(255, 96, 96);
+    cursor: pointer;
+    transition: .5s;
+}

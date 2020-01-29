@@ -4,9 +4,12 @@
     height: 15vh;
     font-size: 14px;
     line-height: 16px;
-    background-color: blanchedalmond;
+    background-color: whitesmoke;
     padding: 10px;
     border-radius: 30px;
     margin-top: 10px;
     transition: 1.0s;
+    box-shadow: 5px 5px 5px grey;
+    color: black;
+
 }

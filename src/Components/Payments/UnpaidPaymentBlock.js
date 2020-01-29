@@ -23,7 +23,7 @@ export default class UnpaidPaymentBlock extends React.Component{
                         <p><b>NOT PAID ❌ </b></p>
                         <p>Due Date: <b>{moment(this.props.paymentDueDate).format('ll')}</b></p>
                         <p>Amount: <b>${this.props.paymentAmount}</b></p>
-                        <Link key={this.props.paymentId} to={`/student/payments/pay/${this.props.paymentId}`} ><button>Pay Now</button></Link> 
+                        <Link  key={this.props.paymentId} to={`/student/payments/pay/${this.props.paymentId}`} ><button className='unpaidpaymentstudent'>Pay Now</button></Link> 
                     </div>
                 </div>
             </div>
