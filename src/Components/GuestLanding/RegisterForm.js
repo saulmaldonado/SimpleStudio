@@ -87,7 +87,7 @@ import './styles/RegisterForm.css'
                         <input name='accountType' type='radio' value='Student' onChange={this.handleInputChange} required />Student
                         <input name='accountType' type='radio' value='Teacher' onChange={this.handleInputChange} />Teacher
                     </div>
-                    <input type='submit' value='Register' />
+                    <input type='submit' className='register-button' value='Register' />
                 </form>
             </div>
         )

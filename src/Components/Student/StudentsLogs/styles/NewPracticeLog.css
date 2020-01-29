@@ -13,6 +13,10 @@
     justify-content: space-evenly;
     height: 40%;
     width: 20vw;
+    border: black solid 2px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgb(189, 189, 189);
 
 }
 
@@ -20,3 +24,22 @@
     padding: 10px
 }
 
+.submit-practice-log{
+    height: 50px;
+    width: 175px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    background-color: #36b9cc;
+    border-radius: 5px;
+    padding: px;
+    color: whitesmoke;
+
+}
+
+.submit-practice-log:hover{
+    background-color: #1cc88a;
+    cursor: pointer;
+    transition: .4s;
+
+}

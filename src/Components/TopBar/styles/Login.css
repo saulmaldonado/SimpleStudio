@@ -25,6 +25,16 @@
 
 }
 
+#login-forms > input{
+    background-color:rgb(238, 238, 238);
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    color: black;
+}
+
+
+
 
 #login-radio {
     width: 70px;
@@ -41,6 +51,17 @@
     width: 100px;
     margin-top: auto;
     margin-bottom: auto;
+    border: none;
+    background-color: #36b9cc;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+
+    
+}
+#login-button:hover{
+    background-color: #5fc5d4;
+    transition: .5s;
 }
 
 .fa-music {
@@ -63,7 +84,27 @@
     margin-top: auto;
     margin-bottom: auto;
     height: 100%;
+
 }
+
+
+.logout > button{
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color:#f6c23e ;
+}
+
+.logout > button:hover{
+    background-color:#f5d78c ;
+    cursor: pointer;
+    transition: .5s;
+
+}
+
+
 
 #login-form-small{
     display: none;

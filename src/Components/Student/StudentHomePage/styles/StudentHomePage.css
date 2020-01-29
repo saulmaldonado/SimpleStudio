@@ -1,3 +1,8 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+
 .student-homepage{
     margin-left: 5vw;
     margin-top: 10vh;
@@ -5,7 +10,8 @@
 }
 
 .box-1{
-display: flex
+display: flex;
+
 }
 
 .student-hp-date{
@@ -26,6 +32,9 @@ display: flex
     width: 35vw;
     border: black solid 2px;
     border-radius: 10px;
+    font-size: 20px;
+    padding: 10px;
+    box-shadow: 10px 10px 10px;
 }
 
 .box-2{
@@ -33,4 +42,8 @@ display: flex
     max-width: 52vw;
     overflow-y: scroll;
     margin-left: 5px;
+    box-shadow: 10px 0px 5px;
+
+
+
 }

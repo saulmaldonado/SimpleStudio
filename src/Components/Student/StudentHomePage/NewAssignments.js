@@ -20,7 +20,7 @@ class NewAssignments extends React.Component{
     render(){
         return(
             <div>
-                <div className='new-assignments-title' >NewAssignments</div>
+                <div className='new-assignments-title' >New Assignments</div>
                 {!this.props.assignments.length ?<div>You have no assignments.</div> : this.props.assignments.map((ele, i) => {
                     return <AssignmentBlock key={i} assignmentTitle={ele.assignment_title} assignmentDueDate={ele.assignment_duedate} assignmentRequirements={ele.assignment_requirements}/>
                 })}

@@ -15,11 +15,11 @@ export default class AssignmentBlock extends React.Component{
         return(
             <div className='AssignmentBlock' >
                 <div>
-                    <p> <b>{this.props.assignmentTitle}</b> </p>
+                    <p>Title: <b>{this.props.assignmentTitle}</b> </p>
                     <p> Due : <b>{moment(this.props.assignmentDueDate).format('MMM Do')}</b> </p>
                 </div>
                 <div>
-                    <p> <b>{this.props.assignmentRequirements}</b> </p>
+                    <p>Requirements: <b>{this.props.assignmentRequirements}</b> </p>
                 </div>
 
             </div>

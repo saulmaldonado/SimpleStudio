@@ -1,7 +1,7 @@
 
 
 .AssignmentBlock {
-    border: solid black 2px;
+    border: solid #4e73df 2px;
     display: flex;
     justify-content: space-evenly;
     padding: 8px;
@@ -10,5 +10,9 @@
     margin-left: 14vw;
     border-radius: 10px;
     margin-top: 20px;
+    box-shadow: 10px 5px 10px rgb(185, 185, 185);
+
+
+
 }
 

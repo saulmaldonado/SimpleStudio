@@ -1,11 +1,14 @@
 .StudentAssignmentsContainer {
     margin-left: 5vw;
-    margin-top: 10vh;
+    margin-top: 5vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 95vw;
     height: 90vh;
+}
+.StudentAssignmentsContainer > h2 {
+    margin-right: 100px;
 }
 
 .student-assignments-container2{
@@ -15,4 +18,5 @@
     width: 50%;
     height: 90%;
     overflow-y: scroll;
+
 }
