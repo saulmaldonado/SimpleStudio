@@ -1,0 +1,33 @@
+.fa-bell{
+    font-size: 30px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: blue;
+}
+
+.notifications-list-closed{
+    display: none;
+}
+
+.notifications-list-open{
+    display: block;
+    position: fixed;
+    bottom: 70px;
+    right : 20px
+}
+
+.new-notifications{
+
+    font-size: 30px;
+    position: fixed;
+    bottom: 40px;
+    right: 15px;
+    color: crimson;
+
+}
+
+.no-notifications{
+    display: none;
+}
+

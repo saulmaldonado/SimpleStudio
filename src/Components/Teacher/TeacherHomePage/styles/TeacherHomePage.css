@@ -6,16 +6,18 @@
 }
 
 .teacherHP-box-1{
+    margin-top: 20px;
     display: flex;
     justify-content: space-evenly;
-    height: 42vh;
+    height: 35vh;
 
 
 }
 
 .teacherHP-box-2{
+    margin-top: 20px;
     display:flex;
-    height: 42vh;
+    height: 45vh;
     overflow: hidden;
     justify-content: space-evenly;
     

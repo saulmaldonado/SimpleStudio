@@ -1,0 +1,9 @@
+.individual-teacher-assignment-container{
+    border: black solid 2px;
+    width: 40vw;
+    height: 80vh;
+    overflow-y: scroll;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}

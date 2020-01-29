@@ -1,10 +1,10 @@
 import React from 'react'
 
-import TeacherAgenda from '../TeacherHomePage/TeacherAgenda'
 import LessonDisplay from './LessonDisplay'
 import { Route, Switch } from 'react-router-dom'
 import RescheduleLessonTeacher from './RescheduleLessonTeacher'
 import TeacherCalendar from './TeacherCalendar'
+import TeacherAgendaForCalendar from '../TeacherHomePage/TeacherAgendaForCalendar'
 
 import './styles/TeacherLessons.css'
 export default function TeacherLessons(){
@@ -20,7 +20,7 @@ export default function TeacherLessons(){
                 <Route path='/teacher/lessons' component={TeacherCalendar} />
             </Switch>
             
-            <TeacherAgenda />
+            <TeacherAgendaForCalendar />
         </div>
     )
 }

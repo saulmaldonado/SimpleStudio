@@ -4,6 +4,8 @@ import StudentBlock from './StudentBlock'
 import { connect } from 'react-redux'
 import {getStudentsForTeacher} from '../../../redux/reducers/teacherReducer'
 
+import './styles/StudentSelector.css'
+
 class StudentSelector extends React.Component{
     constructor(){
         super()
@@ -21,8 +23,7 @@ class StudentSelector extends React.Component{
     render(){
 
         return(
-            <div>
-                <div>StudentSelector</div>
+            <div className='student-selector-container' > 
 
                 {this.props.students.map((ele, i) => {
                     return <StudentBlock studentName={`${ele.first_name} ${ele.last_name}`} studentId={ele.id} key={i}/>

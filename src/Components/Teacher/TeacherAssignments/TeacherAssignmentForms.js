@@ -2,9 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {addAssignment} from '../../../redux/reducers/assignmentReducer'
 import {getStudentsForTeacher} from '../../../redux/reducers/teacherReducer'
-import {CreateNotificationForStudent} from '../../../redux/reducers/studentReducer'
+import {CreateNotificationForStudent, getAllAssignments} from '../../../redux/reducers/studentReducer'
 
 import './styles/TeacherAssignmentForms.css'
+import { DatePicker } from 'antd'
 
 class TeacherAssignmentForms extends React.Component{
     constructor(){
@@ -72,12 +73,23 @@ class TeacherAssignmentForms extends React.Component{
         })
 
         alert('Assignment has been created')
+
+        this.props.getAllAssignments(student_id)
+
+    }
+
+    onChange = (date) => {
+        this.setState({
+            assignment_duedate: date
+        })
     }
 
     
 
 
     render(){
+
+        console.log(this.state)
 
         const { 
             assignment_title, 
@@ -101,8 +113,8 @@ class TeacherAssignmentForms extends React.Component{
                     <input name='assignment_composer' value={assignment_composer} placeholder='Composer' onChange={this.handelInputChange}/>
                     <input name='assignment_source' value={assignment_source} placeholder='Source'  onChange={this.handelInputChange}/>
                     <input name='assignment_page' value={assignment_page} placeholder='Page Number' onChange={this.handelInputChange}/>
-                    <input name='assignment_requirements' value={assignment_requirements} placeholder='Assignment Requirements ' onChange={this.handelInputChange}/>
-                    <input name='assignment_duedate' value={assignment_duedate} placeholder='Due Date' onChange={this.handelInputChange}/>
+                    <textarea name='assignment_requirements' value={assignment_requirements} placeholder='Assignment Requirements ' onChange={this.handelInputChange}/>
+                    <DatePicker value={assignment_duedate|| null} format="MMM Do" name='assignment_duedate' onChange={this.onChange}/>
                     <button onClick={this.createNewAssignment}>Create New Assignment</button>
                 </div>
             </div>
@@ -117,4 +129,4 @@ const mapStateToProps = (reduxState) => {
     }
 }
 
-export default connect(mapStateToProps, {addAssignment, getStudentsForTeacher, CreateNotificationForStudent})(TeacherAssignmentForms)
+export default connect(mapStateToProps, {addAssignment, getStudentsForTeacher, CreateNotificationForStudent, getAllAssignments})(TeacherAssignmentForms)

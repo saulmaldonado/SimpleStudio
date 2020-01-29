@@ -1,11 +1,19 @@
 .teacher-agenda-container{
-    height: 42vh;
-    width: 30%
+    margin-top: -30px;
+    height:37vh;
+    width: 30%;
+    margin-left: -80px
 
 }
 
 .lesson-blocks{
-    overflow: scroll;
-    height: 40vh;
+    margin-top: 10px;
+    overflow-y: scroll;
+    height: 32vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+
 
 }

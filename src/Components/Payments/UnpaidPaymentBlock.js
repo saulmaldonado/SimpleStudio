@@ -1,5 +1,7 @@
 import React from 'react'
+import './styles/UnpaidPaymentBlock.css'
 const moment = require('moment')
+
 
 export default class UnpaidPaymentBlock extends React.Component{
     constructor(){
@@ -10,7 +12,7 @@ export default class UnpaidPaymentBlock extends React.Component{
     }
     render(){
         return(
-            <div>
+            <div className='unpaid-payment-block' >
                 <p>Invoice ID: {this.props.paymentId}</p>
                 <p>Invoice Date: {moment(this.props.paymentDate).format('llll')} </p>
                 <p>NOT PAID</p>

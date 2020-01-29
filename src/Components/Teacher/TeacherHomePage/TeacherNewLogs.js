@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {getAllLogsForTeacher} from '../../../redux/reducers/teacherReducer'
 import LogBlock from '../../LogBlock/LogBlock'
 
+import './styles/TeacherNewLogs.css'
+
 class TeacherNewLogs extends React.Component{
     constructor(){
         super()
@@ -18,12 +20,10 @@ class TeacherNewLogs extends React.Component{
 
     render(){
         return(
-            <div>
-                <div>NewLogs</div>
+            <div className='teacher-new-logs' >
                 {this.props.teacherInfo.map((ele, i) => {
                     return <LogBlock key={i} studentName={`${ele.student_first_name} ${ele.student_last_name}`} logDate={ele.log_date} logData={`Practiced: ${ele.log_time} minutes on ${ele.log_material}`}/>
                 })}
-
             </div>
         )
     }

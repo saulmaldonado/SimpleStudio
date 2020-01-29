@@ -1,0 +1,21 @@
+.newly-submitted-payments-container{
+    width: 30vw;
+}
+
+.newly-submitted-payments{
+    margin-top: 10px;
+    height: 42vh;
+    overflow-y: scroll;
+
+    margin-left: 40px ;
+}
+
+.payment-block{
+    border: black solid 2px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    font-size: 12px;
+    height: 10vh;
+    padding: 10px;
+}

@@ -1,7 +1,14 @@
-    .teacher-payments-container{
-        margin-left: 5vw;
-        margin-top: 10vh;
-    }
+.teacher-payments-title{
+    margin-left: -100px;
+    width: 100vw;
+}
+
+.teacher-payments-container{
+    margin-left: 5vw;
+    margin-top: 10vh;
+}
+    
+    
 
 
 

@@ -1,0 +1,12 @@
+.student-selector-block{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: black solid 2px ;
+    height: 50%;
+    width: 50vh;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 15px;
+    padding-top: 20px;
+}

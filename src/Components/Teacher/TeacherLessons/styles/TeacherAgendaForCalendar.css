@@ -1,0 +1,19 @@
+.teacher-agenda-container-calendar{
+    height: 80vh;
+    width: 40%;
+    margin-left: 20px;
+    margin-top: 20px;
+
+}
+
+.lesson-blocks-calendar{
+    margin-top: 20px;
+    overflow-y: scroll;
+    height: 72vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 100px;
+
+
+}

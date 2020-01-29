@@ -409,7 +409,7 @@ class TeacherCalendar extends React.Component{
                         onOk={this.rescheduleLessonButton}
                         onCancel={this.closeEditPopup}
                         >
-                            <div>
+                            <div className='edit-lesson-modal'>
                                 <DatePicker value={moment(this.state.lesson_time)} format="MMM Do, h:mm a" name='lesson_time' showTime={{ format: 'HH:mm', minuteStep: 15, use12Hours:true}} onChange={this.onChange} onOk={this.onOK} />
 
                                 <input type='number' name='lesson_length' step='15' min='15' placeholder='Lesson length in min.' value={lesson_length}  onChange={this.handelInputChange}  />
@@ -427,7 +427,7 @@ class TeacherCalendar extends React.Component{
                         onCancel={this.closePopup}
                         
                     >
-                        <div>
+                        <div className='new-lesson-modal' >
                             <DatePicker value={moment(this.state.lesson_time)} format="MMM Do, h:mm a" name='lesson_time' showTime={{ format: 'HH:mm', minuteStep: 15, use12Hours:true}} onChange={this.onChange} onOk={this.onOK} />
                             <input type='number' name='lesson_length' step='15' min='15' placeholder='Lesson length in minutes' value={this.state.lesson_length || ''} onChange={this.handelInputChange}  />
                             <input name='lesson_type' value={this.state.lesson_type} onChange={this.handelInputChange} placeholder='Lesson Type' />
@@ -453,6 +453,8 @@ class TeacherCalendar extends React.Component{
                                 select={this.selectTimeForNewLesson}
                                 eventRender={this.buttonPressed}
                                 slotDuration={'00:15'}
+                                height={'1'}
+                                scrollTime={'07:00:00'}
                                 minTime={'05:00:00'}
                                 maxTime={'23:00:00'}
                                 />

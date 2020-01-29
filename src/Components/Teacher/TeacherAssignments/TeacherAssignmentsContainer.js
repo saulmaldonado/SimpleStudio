@@ -6,6 +6,8 @@ import AssignmentEditBlock from './AssignmentEditBlock'
 import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 
+import './styles/TeacherAssignmentsContainer.css'
+
 class TeacherAssignmentsContainer extends React.Component{
         constructor(){
             super()
@@ -37,12 +39,12 @@ class TeacherAssignmentsContainer extends React.Component{
                         <Route path='/teacher/assignments/edit/:id' component={AssignmentEditBlock} />
                         <Route path={'/teacher/assignments/:id'} render={() => {
                             return (
-                                <div>
+                                <div className='individual-teacher-assignment-container' >
                                     <div> {this.props.student.first_name} {this.props.student.last_name}'s Assignments: </div>
 
                                     <div>
-                                        {!this.props.assignments.length ? <div>Students has no assignments</div> : this.props.assignments.map((ele, i) => {
-                                            return <AssignmentBlockDetailed updateAssignments={this.updateAssignments} id={ele.assignment_id} key={i} assignmentCount={i + 1} assignmentTitle={ele.assignment_title} assignmentSource={ele.assignment_source} assignmentComposer={ele.assignment_composer} assignmentPage={ele.assignment_page} assignmentRequirements={ele.assignment_requirements} assignmentDueDate={ele.assignment_duedate} assignmentCompleted={ele.assignment_completed}  /> 
+                                        {!this.props.assignments.length ? <div>Students has no assignments</div> : this.props.assignments.map((ele, i, arr) => {
+                                            return <AssignmentBlockDetailed updateAssignments={this.updateAssignments} id={ele.assignment_id} key={i} assignmentCount={arr.length - i} assignmentTitle={ele.assignment_title} assignmentSource={ele.assignment_source} assignmentComposer={ele.assignment_composer} assignmentPage={ele.assignment_page} assignmentRequirements={ele.assignment_requirements} assignmentDueDate={ele.assignment_duedate} assignmentCompleted={ele.assignment_completed}  /> 
                 
                                         })}
                                     </div>

@@ -3,6 +3,8 @@ import PaymentBlock from '../../Payments/PaymentBlock'
 import {connect} from 'react-redux'
 import {getAllPaymentsForTeacher} from '../../../redux/reducers/teacherReducer'
 
+import './styles/TeacherNewPayments.css'
+
 class TeacherNewPayments extends React.Component{
     constructor(){
         super()
@@ -19,11 +21,13 @@ class TeacherNewPayments extends React.Component{
         console.log(this.props)
         return(
         
-        <div>
+        <div className='newly-submitted-payments-container' >
             <div>Recently Submitted Payments</div>
-            {this.props.teacherInfo.map((ele, i ) => {
-                return <PaymentBlock key={i} paymentId={ele.payment_id} paymentDate={ele.payment_date} paymentAmount={ele.payment_amount} studentName={`${ele.student_first_name} ${ele.student_last_name}`}/>
-            })}
+            <div className='newly-submitted-payments' >
+                {this.props.teacherInfo.map((ele, i ) => {
+                    return <PaymentBlock key={i} paymentId={ele.payment_id} paymentDate={ele.payment_date} paymentAmount={ele.payment_amount} studentName={`${ele.student_first_name} ${ele.student_last_name}`}/>
+                })}
+            </div>
         </div>
         )
     }

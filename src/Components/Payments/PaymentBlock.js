@@ -10,14 +10,14 @@ export default class PaymentBlock extends React.Component{
     }
     render(){
         return(
-            <div>
+            <div className='payment-block' >
                 <div>
-                    <p>Payment ID: {this.props.paymentId}</p>
-                    <p>Student Name: {this.props.studentName}</p>
+                    <p>Invoice ID: <b>{this.props.paymentId}</b></p>
+                    <p>Student Name: <b>{this.props.studentName}</b></p>
                 </div>
                 <div>
-                    <p>Invoice Date: {moment(this.props.paymentDate).format('llll')}</p>
-                    <p>Invoice Total: {this.props.paymentAmount}</p>
+                    <p>Invoice Date: <b>{moment(this.props.paymentDate).format('llll')}</b></p>
+                    <p>Invoice Total: <b>${this.props.paymentAmount}</b></p>
                 </div>
             </div>
         )

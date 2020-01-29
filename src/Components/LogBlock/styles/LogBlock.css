@@ -1,0 +1,17 @@
+.log-block{
+    border: black solid 2px;
+    max-width: 350px;
+    display: flex;
+    font-size: 12px;
+    border-radius: 8px;
+    margin-top: 15px;
+    margin-left: 40px;
+    padding: 5px;
+    align-content: center;
+}
+
+.log-block-data{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 5px;
+}

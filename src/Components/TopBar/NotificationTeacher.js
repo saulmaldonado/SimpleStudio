@@ -6,6 +6,8 @@ import {getLesson, editLesson} from '../../redux/reducers/lessonReducer'
 import {getAllLessonsForTeacher} from '../../redux/reducers/teacherReducer'
 import {CreateNotificationForStudent} from '../../redux/reducers/studentReducer'
 
+import './styles/NotificationTeacher.css'
+
 const moment = require('moment')
 
 
@@ -65,7 +67,7 @@ class Notification extends React.Component{
         const {notification_type, notification_title, notification_body, teacher_id, student_id, notification_time, notification_id} = this.props
         if(notification_type === 'Assign student to Teacher'){
             return(
-                <div>
+                <div className='notification-block' >
                     <p>{notification_title}</p>
                     <p>{notification_body}</p>
                     <div>
@@ -77,7 +79,7 @@ class Notification extends React.Component{
             )
         } else if(notification_type === 'request_to_reschedule_lesson'){
             return (
-            <div>
+            <div className='notification-block'>
                 <p>{notification_title}</p>
                 <p>{notification_body}</p>
                 <div>
@@ -92,7 +94,7 @@ class Notification extends React.Component{
 
         } else {
             return (
-                <div>
+                <div className='notification-block'>
                     <p>{notification_title}</p>
                     <p>{notification_body}</p>
                     <div>

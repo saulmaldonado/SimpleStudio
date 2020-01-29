@@ -8,7 +8,7 @@ import './styles/TeacherPayments.css'
 export default function TeacherPayments(){
     return(
         <div className= 'teacher-payments-container' >
-            <h2>TeacherPayments</h2>
+            <h2 className='teacher-payments-title'>Invoicing</h2>
             <div className='invoice-container' >
                 <TeacherPaymentInvoiceForm />
                 <InvoicesPaid />

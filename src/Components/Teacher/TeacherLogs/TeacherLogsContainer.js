@@ -46,7 +46,7 @@ class TeacherLogsContainer extends React.Component{
                 <div>Time practiced this week: {typeof this.props.logs === 'string' ? 0: this.timePracticedThisWeek()}</div>
 
                 {typeof this.props.logs === 'string' ? <div>Student has not submitted a log</div> : this.props.logs.map((ele, i) => {
-                    return <LogBlock key={i} studentName={`${ele.student_first_name} ${ele.student_last_name}`} logDate={ele.log_date} logTime={ele.log_time} logData={ele.log_material} />
+                    return <LogBlock key={i} studentName={`${ele.student_first_name} ${ele.student_last_name}`} logDate={ele.log_date} logTime={ele.log_time} logData={`Practiced for ${ele.log_time} minutes on ${ele.log_material}`} />
                 })}
 
             </div>

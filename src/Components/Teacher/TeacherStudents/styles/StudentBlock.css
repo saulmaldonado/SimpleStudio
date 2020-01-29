@@ -1,0 +1,12 @@
+.student-block {
+    border: black solid 2px;
+    padding: 10px;
+    color: black;
+    margin-top: 10px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.student-block :hover{
+    color: black;
+}

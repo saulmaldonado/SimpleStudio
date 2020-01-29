@@ -24,8 +24,8 @@ class StudentSelectorLogs extends React.Component{
         console.log(this.props)
         return(
             <div className='student-selector-assignments' >
-                <p>Current Students:</p>
-                <div>
+                <h3 className='current-students-assignments' >Current Students:</h3>
+                <div className= 'student-selector-assignments-name' >
                     {this.props.students.map((ele, i) => {
                         return <StudentBlock key={i} studentName={`${ele.first_name} ${ele.last_name}`} studentId={ele.id}  />
                     })}

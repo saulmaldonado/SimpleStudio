@@ -16,11 +16,11 @@ export default class TeacherStudents extends React.Component{
     render(){
         return(
             <div className='teacher-students'>
-                <div>
-                    <p>TeacherStudents</p>
+                <div className='left-container-student-selector' >
+                    <h3 className='teacher-students-title' >Student Profiles</h3>
                     <StudentSelector />
                 </div>
-                <div>
+                <div className='right-container-student-selector' > 
 
                     <Switch>
                         <Route path={'/teacher/students/:id'} component={StudentProfile}/>

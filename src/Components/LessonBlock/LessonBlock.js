@@ -13,12 +13,12 @@ export default class LessonBlock extends React.Component{
         return(
             <div className='lesson-block'>
                 <div>
-                    <p>{this.props.lessonType} Lesson:</p>
-                    <p> {this.props.lessonTime}</p>
+                    <p>{this.props.lessonType} Lesson</p>
+                    <p> <b>{this.props.lessonTime}</b></p>
                 </div>
                 <div>
-                    <p>Student: {this.props.studentName}</p>
-                    <p>Length: {this.props.lessonLength} minutes</p>
+                    <p>Student: <b>{this.props.studentName}</b></p>
+                    <p>Length: <b>{this.props.lessonLength}</b> minutes</p>
                 </div>
             </div>
         )

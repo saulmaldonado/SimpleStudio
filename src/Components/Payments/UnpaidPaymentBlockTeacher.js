@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import {deletePayment} from '../../redux/reducers/paymentReducer'
 import {getAllUnpaidPaymentsForTeacher, getAllPaidPaymentsForTeacher} from '../../redux/reducers/teacherReducer'
 
+import './styles/UnpaidPaymentBlockTeacher.css'
+
 const moment = require('moment')
 
 class UnpaidPaymentBlock extends React.Component{
@@ -29,15 +31,23 @@ class UnpaidPaymentBlock extends React.Component{
         console.log(this.state)
         console.log(this.props)
         return(
-            <div>
-                <p>Invoice ID: {this.props.paymentId}</p>
-                <p>Student Name: {this.props.studentName} </p>
-                <p>Invoice Date: {moment(this.props.paymentDate).format('llll')} </p>
-                <p>NOT PAID</p>
-                <p>Due Date: {moment(this.props.paymentDueDate).format('ll')}</p>
-                <p>Amount: ${this.props.paymentAmount}</p>
-                <Link to={`/teacher/payments/edit/${this.props.paymentId}`}><button>Edit Invoice</button></Link>
-                <button onClick={this.deleteInvoice} >Delete Invoice</button>
+            <div className='unpaid-payment-block-teacher' >
+                <div className='unpaid-payment-block-teacher-info' >
+                    <div className='unpaid-payment-block-teacher-info-div1' >
+                        <p>Invoice ID: <b>{this.props.paymentId}</b></p>
+                        <p>Student Name: <b> {this.props.studentName}</b> </p>
+                        <p>Invoice Date: <br/><b>{moment(this.props.paymentDate).format('llll')}</b> </p>
+                    </div>
+                    <div>
+                        <p><b>NOT PAID</b></p>
+                        <p>Due Date: <b>{moment(this.props.paymentDueDate).format('ll')}</b></p>
+                        <p>Amount: <b>${this.props.paymentAmount}</b></p>
+                    </div>
+                </div>
+                <div className='unpaid-payment-block-teacher-buttons' >
+                    <Link to={`/teacher/payments/edit/${this.props.paymentId}`}><button>Edit Invoice</button></Link>
+                    <button onClick={this.deleteInvoice} >Delete Invoice</button>
+                </div>
             </div>
         )
     }

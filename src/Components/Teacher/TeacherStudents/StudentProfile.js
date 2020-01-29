@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getStudent } from '../../../redux/reducers/teacherReducer'
 
+import './styles/StudentProfile.css'
+
 
 class StudentProfile extends React.Component{
     constructor(){
@@ -27,15 +29,12 @@ class StudentProfile extends React.Component{
         return(
             <div>
                 <div>
-                    <p>StudentProfile</p>
-                </div>
-                <div>
                     <img src='http://www.diversegreen.org/wp-content/uploads/2015/09/photo-not-available-clip-art1.png' alt='default' width='200px' height='200px'></img>
                 </div>
-                <div>
-                    <p> {`${this.props.student.first_name} ${this.props.student.last_name}`} </p>
-                    <p> {this.props.student.email} </p>
-                    <p> {this.props.student.phone} </p>
+                <div className='students-profile-information' >
+                    <p> Full Name: <b> {`${this.props.student.first_name} ${this.props.student.last_name}`} </b> </p>
+                    <p> Email: <b> {this.props.student.email} </b> </p>
+                    <p> Phone Number: <b> {this.props.student.phone} </b> </p>
                 </div>
 
             </div>

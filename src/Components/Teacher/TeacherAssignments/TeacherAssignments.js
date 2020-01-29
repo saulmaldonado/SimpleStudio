@@ -16,7 +16,7 @@ export default class TeacherAssignments extends React.Component{
     render(){
         return(
             <div>
-                <h3 className='teacher-assignments-title' >TeacherAssignments</h3>
+                <h3 className='teacher-assignments-title' >Assignments</h3>
                 <div className='teacher-assignments' >
                     <Switch>
                         <Route path='/teacher/assignments/:id' component={TeacherAssignmentsContainer} />

@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import {getAllUnpaidPaymentsForTeacher} from '../../../redux/reducers/teacherReducer'
 import { withRouter } from 'react-router-dom'
 
+import './styles/InvoicesNotPaid.css'
+
 
 class InvoicesNotPaid extends React.Component{
     constructor(){
