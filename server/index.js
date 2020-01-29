@@ -18,7 +18,7 @@ const n = require('./Controllers/notificationsController')
 
 //middleware
 
-app.use( express.static( `${__dirname}/../build` )
+app.use( express.static( `${__dirname}/../build` ))
 
 
 app.use(require('body-parser').text())
