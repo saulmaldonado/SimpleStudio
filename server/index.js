@@ -4,7 +4,6 @@ const session = require('express-session')
 const massive = require('massive')
 const {CONNECTION_STRING, SESSION_SECRET, PORT_NUMBER} = process.env
 const app = express()
-const path = require('path'); // Usually moved to the start of file
 
 //Controllers
 const ac = require('./Controllers/authController')
@@ -19,9 +18,9 @@ const n = require('./Controllers/notificationsController')
 
 //middleware
 
-app.get('*', (req, res)=>{
-    res.sendFile(path.join(__dirname, '../build/index.html'));
-});
+app.use( express.static( `${__dirname}/../build` )
+
+
 app.use(require('body-parser').text())
 app.use(express.json())
 app.use(session({
