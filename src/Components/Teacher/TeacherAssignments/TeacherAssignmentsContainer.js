@@ -25,9 +25,11 @@ class TeacherAssignmentsContainer extends React.Component{
             this.props.getAllAssignments(this.props.match.params.id)
         }
 
-        componentDidUpdate(prevProps){
+        async componentDidUpdate(prevProps){
             if(prevProps.match.params.id !== this.props.match.params.id){
-                this.props.getAllAssignments(this.props.match.params.id)
+                await this.props.getAllAssignments(this.props.match.params.id)
+                this.props.getStudent(this.props.match.params.id)
+
             }
         }
     
@@ -40,7 +42,7 @@ class TeacherAssignmentsContainer extends React.Component{
                         <Route path={'/teacher/assignments/:id'} render={() => {
                             return (
                                 <div className='individual-teacher-assignment-container' >
-                                    <div> {this.props.student.first_name} {this.props.student.last_name}'s Assignments: </div>
+                                    <h3> {this.props.student.first_name} {this.props.student.last_name}'s Assignments: </h3>
 
                                     <div>
                                         {!this.props.assignments.length ? <div>Students has no assignments</div> : this.props.assignments.map((ele, i, arr) => {

@@ -6,5 +6,12 @@
 }
 
 .leftStudentLogContainer{
-    width: 50%;
+    margin-top: -80px;
+    text-align: center;
+    width: 40%;
+}
+
+.practice-logs-students-title{
+    width: 100%;
+    margin-left: 0px;
 }

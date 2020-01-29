@@ -84,7 +84,6 @@ class StudentCalendar extends React.Component{
                                 plugins={[ dayGridPlugin, interactionPlugin, timeGridPlugin ]}
                                 eventRender={this.buttonPressed} 
                                 events={[...this.state.lessons]}
-                                height='parent'
                                 />
         )
     }

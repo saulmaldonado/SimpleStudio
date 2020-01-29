@@ -22,7 +22,7 @@ class StudentSchedule extends React.Component{
 
     render(){
         return(
-            <div className='StudentSchedule'>
+            <div className='StudentScheduleForHP'>
                 {!this.props.lessons.length ? <div>You have no lessons scheduled</div> : this.props.lessons.map((ele, i) => {
                     return <Link key={i} to={`/student/lessons/${ele.lesson_id}`} ><LessonBlockForStudents  lessonType={ele.lesson_type} lessonDate={ele.lesson_time} lessonLength={ele.lesson_length} lessonNotes={ele.lesson_notes ? ele.lesson_notes : 'none.'}/> </Link> 
                 })}

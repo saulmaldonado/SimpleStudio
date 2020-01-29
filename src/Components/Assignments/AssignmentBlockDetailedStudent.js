@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import './styles/AssignmentBlockDetailed.css'
 
+const moment = require('moment')
+
 class AssignmentBlockDetailed extends React.Component{
     constructor(){
         super()
@@ -16,17 +18,17 @@ class AssignmentBlockDetailed extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className='assignment-block-detailed'> 
                 <div>
                     <div>Assignment #{this.props.assignmentCount} </div>
                 </div>
                 <div>
-                    <p> {this.props.assignmentTitle} </p>
-                    <p> Source: {this.props.assignmentSource} </p>
-                    {!this.props.assignmentComposer ? null : <p>Composer: {this.props.assignmentComposer} </p>}
-                    <p> {this.props.assignmentPage} </p>
-                    <p> Requirements: {this.props.assignmentRequirements} </p>
-                    <p> Due Date: {this.props.assignmentDueDate} </p>
+                    <p> <b>{this.props.assignmentTitle}</b> </p>
+                    <p> Source: <b>{this.props.assignmentSource}</b> </p>
+                    {!this.props.assignmentComposer ? null : <p>Composer: <b>{this.props.assignmentComposer}</b> </p>}
+                    <p> Page: <b>{this.props.assignmentPage}</b> </p>
+                    <p className='assignment-block-detailed-span' > Requirements: <br/> <b>{this.props.assignmentRequirements}</b> </p>
+                    <p> Due Date: <b>{moment(this.props.assignmentDueDate).format('ll')}</b> </p>
                     <p> {!this.props.assignmentCompleted ? 'Incomplete ❌' : 'Completed ✅'} </p>
                 </div>
             </div>

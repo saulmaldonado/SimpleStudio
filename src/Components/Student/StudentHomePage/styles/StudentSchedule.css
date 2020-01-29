@@ -1,14 +1,36 @@
 
 
 .StudentSchedule {
-    width: 50%;
+    width: 60%;
+    padding-top: 20px;
     margin-right: 100px;
     box-sizing: border-box;
-    overflow: scroll;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5vw;
+    
 
+}
+
+.StudentScheduleForHP{
+    width: 50%;
+    height: 40vh;
+    padding-top: 20px;
+    margin-right: 100px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5vw;
 }
 
 .fc-unthemed{
     width: 70%;
     height: 90vh;
+    margin-right: 100px;
+}
+
+.student-schedule-title{
+    text-align: center;
 }

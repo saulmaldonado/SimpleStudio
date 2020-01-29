@@ -3,6 +3,11 @@ import { connect } from 'react-redux'
 import {editAssignment, getAssignment} from '../../../redux/reducers/assignmentReducer'
 import {CreateNotificationForStudent} from '../../../redux/reducers/studentReducer'
 
+import './styles/AssignmentEditBlock.css'
+import { DatePicker } from 'antd'
+
+const moment = require('moment')
+
 class AssignmentEditBlock extends React.Component{
     constructor(){
         super()
@@ -18,7 +23,7 @@ class AssignmentEditBlock extends React.Component{
     }
 
     componentDidMount(){
-        this.props.getAssignment(this.props.match.params.id)
+        this.props.getAssignment(+this.props.match.params.id)
     }
 
     componentDidUpdate(prevProps){
@@ -74,11 +79,11 @@ class AssignmentEditBlock extends React.Component{
         let newNotification = {
                 notification_type: 'edited_assignment' ,
                 notification_title: 'An assignment has been edited' ,
-                notification_body: `An assignment due on ${assignment_duedate} has been edited. `,
+                notification_body: `An assignment due on ${moment(assignment_duedate).format('MMM Do')} has been edited. `,
                 teacher_id: this.props.teacher.teacher_id
         }
 
-        await this.props.CreateNotificationForStudent(this.props.assignments.student_id, newNotification)
+        await this.props.CreateNotificationForStudent(this.props.assignment[0].student_id, newNotification)
 
         alert('Assignment has been edited')
 
@@ -93,6 +98,12 @@ class AssignmentEditBlock extends React.Component{
         })
 
         this.props.history.push(`/teacher/assignments/${this.props.match.params.id}`)
+    }
+
+    onChange = (date) => {
+        this.setState({
+            assignment_duedate: date
+        })
     }
 
 
@@ -111,18 +122,18 @@ class AssignmentEditBlock extends React.Component{
 
 
         return(                    
-            <div>
+            <div className='assignment-edit-form'>
+                <h3>Edit Assignment</h3>
                 <input name='assignment_title' value={assignment_title} placeholder='Title' onChange={this.handelInputChange}/>
                 <input name='assignment_composer' value={assignment_composer} placeholder='Composer' onChange={this.handelInputChange}/>
                 <input name='assignment_source' value={assignment_source} placeholder='Source'  onChange={this.handelInputChange}/>
                 <input name='assignment_page' value={assignment_page} placeholder='Page Number' onChange={this.handelInputChange}/>
-                <input name='assignment_requirements' value={assignment_requirements} placeholder='Assignment Requirements ' onChange={this.handelInputChange}/>
-                <input name='assignment_duedate' value={assignment_duedate} placeholder='Due Date' onChange={this.handelInputChange}/>
+                <textarea name='assignment_requirements' value={assignment_requirements} placeholder='Assignment Requirements ' onChange={this.handelInputChange}/>
+                <DatePicker value={moment(assignment_duedate)|| null} format="MMM Do" name='assignment_duedate' onChange={this.onChange}/>
                 <select name='assignment_completed' value={assignment_completed} onChange={this.handelInputChange}>
                     <option value={true}>Complete</option>
                     <option value={false}>Incomplete</option>
                 </select>
-                <input name='assignment_completed' value={assignment_duedate} placeholder='Due Date' onChange={this.handelInputChange}/>
 
                 <button onClick={this.saveChanges}>Save Changes</button>
 
@@ -134,7 +145,8 @@ class AssignmentEditBlock extends React.Component{
 
 const mapStateToProps = (reduxState) => {
     return {
-        assignment: reduxState.assignmentReducer.assignments
+        assignment: reduxState.assignmentReducer.assignments,
+        teacher: reduxState.teacherAuthReducer
     }
 }
 

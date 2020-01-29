@@ -3,6 +3,8 @@ import AssignmentBlock from '../../Assignments/AssignmentBlock'
 import { connect } from 'react-redux'
 import {getAllAssignments} from '../../../redux/reducers/studentReducer'
 
+import './styles/NewAssignments.css'
+
 class NewAssignments extends React.Component{
     constructor(){
         super()
@@ -18,7 +20,7 @@ class NewAssignments extends React.Component{
     render(){
         return(
             <div>
-                <div>NewAssignments</div>
+                <div className='new-assignments-title' >NewAssignments</div>
                 {!this.props.assignments.length ?<div>You have no assignments.</div> : this.props.assignments.map((ele, i) => {
                     return <AssignmentBlock key={i} assignmentTitle={ele.assignment_title} assignmentDueDate={ele.assignment_duedate} assignmentRequirements={ele.assignment_requirements}/>
                 })}

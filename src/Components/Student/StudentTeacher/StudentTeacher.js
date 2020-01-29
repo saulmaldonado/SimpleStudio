@@ -47,7 +47,6 @@ class StudentTeacher extends React.Component{
         const {teacher_first_name, teacher_last_name, teacher_email, teacher_phone} = this.props.teacher
         return(
             <div className='StudentTeacher'>
-                <div>Your Teacher's Profile:</div>
                 <div className='teacher-view'>
                     {typeof this.props.teacher === 'string' ? <div>{this.props.teacher}</div> : <TeacherProfile teacherName={`${teacher_first_name} ${teacher_last_name}`} 
                                                                                                                 teacherEmail={teacher_email} 
@@ -55,7 +54,7 @@ class StudentTeacher extends React.Component{
                     <FullCalendar className='teacher-calendar-for-student'   defaultView='timeGridWeek' 
                         header={{left: 'prev,next today' , center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay'}} 
                         plugins={[ dayGridPlugin, timeGridPlugin ]} 
-                        events={[...this.state.lessons]} 
+                        events={[...this.state.lessons]}
                         // eventRender={this.buttonPressed}
                         slotDuration={'00:15'}
                         minTime={'05:00:00'}
@@ -72,7 +71,7 @@ const mapStateToProps = (reduxState) => {
         student: reduxState.studentAuthReducer,
         lessons: reduxState.teacherReducer.lessons,
         teacher: reduxState.studentReducer.teacher,
-        students: reduxState.teacherReducer.students
+        students: reduxState.teacherReducer.students,
      
     }
 }

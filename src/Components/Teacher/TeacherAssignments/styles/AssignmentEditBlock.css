@@ -1,0 +1,12 @@
+.assignment-edit-form{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width: 15vw;
+    height: 50vh;
+    justify-content: space-evenly;
+}
+
+.assignment-edit-form input{
+    padding: 5px
+}

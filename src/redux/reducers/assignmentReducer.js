@@ -23,6 +23,7 @@ export function addAssignment(newAssignment){
     return {
         type: NEW_ASSIGNMENT,
         payload: axios.post('api/assignment', newAssignment)
+                        .then(res => res.data)
     }
 }
 
@@ -30,6 +31,7 @@ export function editAssignment(assignment_id, editedAssignment){
     return {
         type: EDIT_ASSIGNMENT,
         payload: axios.put(`/api/assignment/${assignment_id}`, editedAssignment)
+                      .then(res => res.data)
     }
 }
 

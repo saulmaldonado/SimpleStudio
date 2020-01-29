@@ -12,12 +12,12 @@ export default class LessonBlockDetailed extends React.Component{
     render(){
         return(
             <div className='LessonBlockDetailed' >
-                <div>Lesson Details:</div>
                 <div className='lesson-info'>
-                    <p> {this.props.lessonType} Lesson </p>
-                    <p> Time: {this.props.lessonTime} </p>
-                    <p> Length: {this.props.lessonLength} minutes </p>
-                    <p> Notes: {this.props.lessonNotes} </p>
+                <div>Lesson Details:</div>
+                    <p> <b>{this.props.lessonType} Lesson</b> </p>
+                    <p> <b>Time: {this.props.lessonTime}</b> </p>
+                    <p> <b>Length: {this.props.lessonLength}</b> minutes </p>
+                    <p> <b>Notes: {this.props.lessonNotes}</b> </p>
                 </div>
             </div>
         )

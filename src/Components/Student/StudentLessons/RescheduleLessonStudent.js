@@ -96,10 +96,10 @@ class RescheduleLessonStudent extends React.Component{
                 </div>
 
                 <div className='lesson-info-edit'>
-                    <p>{this.state.lesson_type} Lesson:</p>
-                    <p> {moment(this.state.lesson_time).format('MMM Do, h:mm a')}</p>
-                    <p>Length: {this.state.lesson_length} mins</p>
-                    <p>Notes: {!this.state.lesson_notes ? 'none.' : this.state.lesson_notes} </p>
+                    <p><b>{this.state.lesson_type} Lesson</b></p>
+                    <p> <b>{moment(this.state.lesson_time).format('MMM Do, h:mm a')}</b></p>
+                    <p>Length: <b>{this.state.lesson_length}</b> mins</p>
+                    <p>Notes: <b>{!this.state.lesson_notes ? 'none.' : this.state.lesson_notes}</b> </p>
                 </div>
 
             </div>

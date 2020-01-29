@@ -5,6 +5,10 @@
     flex-direction: column;
 }
 
+.TeacherHomePage > h1{
+    text-align: center;
+}
+
 .teacherHP-box-1{
     margin-top: 20px;
     display: flex;
@@ -21,4 +25,18 @@
     overflow: hidden;
     justify-content: space-evenly;
     
+}
+
+.weekly-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.weekly-data > p{
+    border: solid black 2px;
+    padding: 10px;
+    font-size: large;
+    border-radius: 12px;
+
 }

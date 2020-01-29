@@ -8,7 +8,7 @@
 
 .teacher-profile-image{
     margin-left: auto;
-    margin-right: 20px;
+    margin-right: 150px;
 }
 
 .teacher-profile-info {
@@ -20,5 +20,5 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin-left: 15px;
+    margin-left: 100px;
 }

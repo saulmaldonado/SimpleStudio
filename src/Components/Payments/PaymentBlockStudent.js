@@ -1,6 +1,9 @@
 import React from 'react'
 
+import './styles/UnpaidPaymentBlockTeacher.css'
+
 const moment = require('moment')
+
 
 export default class PaymentBlock extends React.Component{
     constructor(){
@@ -11,14 +14,17 @@ export default class PaymentBlock extends React.Component{
     }
     render(){
         return(
-            <div>
-                <div>
-                    <p>Payment ID: {this.props.paymentId}</p>
-                    <p>Lesson Date: {moment(this.props.paymentDate).format('llll')}</p>
-                </div>
-                <div>
-                    <p>Due Date: {moment(this.props.paymentDueDate).format('ll')}</p>
-                    <p>Payment Total: ${this.props.paymentAmount}</p>
+            <div className='unpaid-payment-block-teacher' >
+                <div className='unpaid-payment-block-teacher-info' >
+                    <div className='unpaid-payment-block-teacher-info-div1' >
+                        <p>Invoice ID: <b>{this.props.paymentId}</b></p>
+                        <p>Invoice Date: <br/><b>{moment(this.props.paymentDate).format('llll')}</b> </p>
+                    </div>
+                    <div>
+                        <p><b> PAID ✅ </b></p>
+                        <p>Due Date: <b>{moment(this.props.paymentDueDate).format('ll')}</b></p>
+                        <p>Amount: <b>${this.props.paymentAmount}</b></p>
+                    </div>
                 </div>
             </div>
         )

@@ -1,0 +1,14 @@
+
+
+.AssignmentBlock {
+    border: solid black 2px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 8px;
+    height: 8vh;
+    width: 57%;
+    margin-left: 14vw;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+

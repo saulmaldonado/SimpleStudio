@@ -3,6 +3,8 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import {deleteNotificationForStudent} from '../../redux/reducers/studentReducer'
 
+import './styles/NotificationStudent.css'
+
 const moment = require('moment')
 
 
@@ -27,7 +29,7 @@ class Notification extends React.Component{
         const {notification_type, notification_title, notification_body, teacher_id, student_id, notification_time, notification_id} = this.props
         if(notification_type === 'Assign student to Teacher'){
             return(
-                <div>
+                <div className='notification-block'>
                     <p>{notification_title}</p>
                     <p>{notification_body}</p>
                     <div>
@@ -39,7 +41,7 @@ class Notification extends React.Component{
             )
         } else {
             return (
-                <div>
+                <div className='notification-block'>
                     <p>{notification_title}</p>
                     <p>{notification_body}</p>
                     <div>

@@ -1,0 +1,22 @@
+.lesson-block-for-students{
+    border: black solid 2px;
+    height: 10vh;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.student-lesson-title{
+    border: black solid 2px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    position: relative;
+    bottom: 15px;
+    right:30px;
+    background-color: white;
+}

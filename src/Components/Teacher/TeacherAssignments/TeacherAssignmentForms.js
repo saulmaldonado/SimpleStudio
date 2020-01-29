@@ -7,6 +7,9 @@ import {CreateNotificationForStudent, getAllAssignments} from '../../../redux/re
 import './styles/TeacherAssignmentForms.css'
 import { DatePicker } from 'antd'
 
+const moment = require('moment')
+
+
 class TeacherAssignmentForms extends React.Component{
     constructor(){
         super()
@@ -57,7 +60,7 @@ class TeacherAssignmentForms extends React.Component{
         let newNotification = {
             notification_type: 'new_assignment' ,
             notification_title: 'You have a new assignment' ,
-            notification_body: `You have a new assignment to ${assignment_title}. It is due on ${assignment_duedate}. `,
+            notification_body: `You have a new assignment to ${assignment_title}. It is due on ${moment(assignment_duedate).format('MMM Do')}. `,
             teacher_id: this.props.teacher.teacher_id
         }
 
@@ -102,7 +105,7 @@ class TeacherAssignmentForms extends React.Component{
 
         return(
             <div className='new-assignment-form-container' >
-                <div>Add Assignment</div>
+                <h3 style={{textAlign:"center"}} >Add Assignment</h3>
                 <div className='new-assignment-form' >
                     <select name='student_id' onChange={this.handelInputChange}>
                             <option>Select a Student</option>
@@ -114,6 +117,7 @@ class TeacherAssignmentForms extends React.Component{
                     <input name='assignment_source' value={assignment_source} placeholder='Source'  onChange={this.handelInputChange}/>
                     <input name='assignment_page' value={assignment_page} placeholder='Page Number' onChange={this.handelInputChange}/>
                     <textarea name='assignment_requirements' value={assignment_requirements} placeholder='Assignment Requirements ' onChange={this.handelInputChange}/>
+                    <label for='assignment_duedate'>Due Date:</label>
                     <DatePicker value={assignment_duedate|| null} format="MMM Do" name='assignment_duedate' onChange={this.onChange}/>
                     <button onClick={this.createNewAssignment}>Create New Assignment</button>
                 </div>

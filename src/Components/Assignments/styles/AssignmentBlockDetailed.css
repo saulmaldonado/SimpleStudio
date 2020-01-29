@@ -1,10 +1,15 @@
 .assignment-block-detailed{
     border: solid black 2px;
     border-radius: 10px;
+    width: 100%;
     margin-top: 15px;
     margin-bottom: 20px;
-    max-width: 20vw;
-    padding: 10px;
+    max-width: 18vw;
+    padding: 15px;
+}
+
+.assignment-block-detailed-span{
+    word-wrap:break-word;
 }
 
 

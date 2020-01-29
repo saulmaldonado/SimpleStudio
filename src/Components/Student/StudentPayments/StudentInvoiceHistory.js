@@ -21,7 +21,7 @@ class StudentInvoiceHistory extends React.Component{
     render(){
         return(
             <div>
-                <div>Invoice History</div>
+                <h3 style={{textAlign: "center"}} >Invoice History</h3>
                 {this.props.payments.map((ele, i) => {
                     return <PaymentBlockStudent key={i} paymentId={ele.payment_id} paymentDate={ele.payment_date} paymentDueDate={ele.payment_duedate} paymentAmount={ele.payment_amount} />
                 })}

@@ -1,6 +1,22 @@
+.NewPracticeLog{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 50px;
+
+}
+
 .new-log-form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 50%;
+    height: 40%;
+    width: 20vw;
+
 }
+
+.new-log-form > input {
+    padding: 10px
+}
+

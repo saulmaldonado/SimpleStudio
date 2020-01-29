@@ -42,7 +42,6 @@ class TeacherLogsContainer extends React.Component{
         
         return(
             <div>
-                <div>TeacherLogsContainer</div>
                 <div>Time practiced this week: {typeof this.props.logs === 'string' ? 0: this.timePracticedThisWeek()}</div>
 
                 {typeof this.props.logs === 'string' ? <div>Student has not submitted a log</div> : this.props.logs.map((ele, i) => {

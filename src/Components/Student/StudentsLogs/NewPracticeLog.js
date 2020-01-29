@@ -5,6 +5,7 @@ import {getAllLogsForStudent} from '../../../redux/reducers/studentReducer'
 import {CreateNotificationForTeacher} from '../../../redux/reducers/teacherReducer'
 
 import './styles/NewPracticeLog.css'
+import { DatePicker } from 'antd'
 
 const moment = require('moment')
 
@@ -12,7 +13,7 @@ class NewPracticeLog extends React.Component{
     constructor(){
         super()
         this.state={
-            log_date: moment().format(moment.HTML5_FMT.DATETIME_LOCAL),
+            log_date: moment(),
             log_time: '',
             log_material: ''
         }
@@ -62,12 +63,20 @@ class NewPracticeLog extends React.Component{
         }
     }
 
+    onChange = (date) => {
+        this.setState({
+            log_date: date
+        })
+    }
+
     render(){
         return(
-            <div>
+            <div className='NewPracticeLog' >
                 <div>NewPracticeLog</div>
                 <form className='new-log-form' onChange={this.handelInputChange} onSubmit={this.submitLog}>
-                    <input name='log_date' value={this.state.log_date} onChange={this.handelInputChange} type='datetime-local' placeholder='Date' require='true'/>
+                    <DatePicker value={this.state.log_date || null} format="MMM Do, h:mm a" name='log_date' showTime={{ format: 'HH:mm', minuteStep: 15, use12Hours:true}} onChange={this.onChange} />
+
+                    {/* <input name='log_date' value={this.state.log_date} onChange={this.handelInputChange} type='datetime-local' placeholder='Date' require='true'/> */}
                     <input type='number' name='log_time' min='5' step='5' value={this.state.log_time} onChange={this.handelInputChange} placeholder='Minutes Practiced' require='true'/>
                     <textarea name='log_material' value={this.state.log_material} onChange={this.handelInputChange} placeholder='What did you practice?' require='true'/>
                     <input type='submit' value='Submit Practice Log'/>

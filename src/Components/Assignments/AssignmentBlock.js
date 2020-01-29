@@ -1,5 +1,9 @@
 import  React from 'react'
 
+import './styles/AssignmentBlock.css'
+
+const moment = require('moment')
+
 export default class AssignmentBlock extends React.Component{
     constructor(){
         super()
@@ -9,14 +13,13 @@ export default class AssignmentBlock extends React.Component{
     }
     render(){
         return(
-            <div>
-                <div>Assignment:</div>
+            <div className='AssignmentBlock' >
                 <div>
-                    <p> {this.props.assignmentTitle} </p>
-                    <p> {this.props.assignmentDueDate} </p>
+                    <p> <b>{this.props.assignmentTitle}</b> </p>
+                    <p> Due : <b>{moment(this.props.assignmentDueDate).format('MMM Do')}</b> </p>
                 </div>
                 <div>
-                    <p> {this.props.assignmentRequirements} </p>
+                    <p> <b>{this.props.assignmentRequirements}</b> </p>
                 </div>
 
             </div>

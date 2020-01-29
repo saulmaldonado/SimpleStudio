@@ -6,3 +6,9 @@
     top: 0px;
 }
 
+.main-title{
+    position: fixed;
+    top: 15px;
+    left: 100px;
+}
+

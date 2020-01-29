@@ -24,7 +24,7 @@ class StudentAssignmentsContainer extends React.Component{
         return(
             <div className='StudentAssignmentsContainer' >
                 <p> {this.props.student.student_first_name}'s Assignments </p>
-                <div>
+                <div className='student-assignments-container2' >
                     {!this.props.assignments.length ? <div>You do not have any assignments.</div> : this.props.assignments.map((ele, i) => {
                         return <AssignmentBlockDetailedStudent key={i} assignmentCount={i + 1} assignmentTitle={ele.assignment_title} assignmentSource={ele.assignment_source} assignmentComposer={ele.assignment_composer} assignmentPage={ele.assignment_page} assignmentRequirements={ele.assignment_requirements} assignmentDueDate={ele.assignment_duedate} assignmentCompleted={ele.assignment_completed}  />
                     })}

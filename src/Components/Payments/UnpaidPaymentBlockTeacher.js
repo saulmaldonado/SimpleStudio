@@ -39,7 +39,7 @@ class UnpaidPaymentBlock extends React.Component{
                         <p>Invoice Date: <br/><b>{moment(this.props.paymentDate).format('llll')}</b> </p>
                     </div>
                     <div>
-                        <p><b>NOT PAID</b></p>
+                        <p><b>NOT PAID ❌</b></p>
                         <p>Due Date: <b>{moment(this.props.paymentDueDate).format('ll')}</b></p>
                         <p>Amount: <b>${this.props.paymentAmount}</b></p>
                     </div>

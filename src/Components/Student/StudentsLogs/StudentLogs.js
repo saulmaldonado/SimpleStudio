@@ -12,7 +12,7 @@ export default class StudentLogs extends React.Component{
         return(
             <div className='StudentLogs'>
                 <div className='leftStudentLogContainer' >
-                    <p>StudentLogs</p>
+                    <h2 className='practice-logs-students-title' >Practice Logs</h2>
                     <StudentLogsContainer />
                 </div>
                     <Switch>

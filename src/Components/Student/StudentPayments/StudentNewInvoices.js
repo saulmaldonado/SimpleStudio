@@ -30,10 +30,10 @@ class StudentNewInvoices extends React.Component{
         console.log(this.props)
         return(
             <div>
-                <div>StudentNewInvoices</div>
+                <h3 style={{textAlign: "center"}} >New Invoices</h3>
 
                 { typeof this.props.payments === 'string' ? <div>No payments are due</div> : this.props.payments.map((ele, i) => {
-                return <Link key={i} to={`/student/payments/pay/${ele.payment_id}`} ><UnpaidPaymentBlock key={i} paymentId={ele.payment_id} paymentDueDate={ele.payment_duedate} paymentAmount={ele.payment_amount}/></Link>
+                return <UnpaidPaymentBlock key={i} paymentId={ele.payment_id} paymentDueDate={ele.payment_duedate} paymentAmount={ele.payment_amount}/>
                 })}
             </div>
         )

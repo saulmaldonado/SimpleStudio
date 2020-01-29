@@ -1,0 +1,12 @@
+.notification-block{
+    border: black solid 2px;
+    width: 20vw;
+    height: 15vh;
+    font-size: 14px;
+    line-height: 16px;
+    background-color: blanchedalmond;
+    padding: 10px;
+    border-radius: 30px;
+    margin-top: 10px;
+    transition: 1.0s;
+}

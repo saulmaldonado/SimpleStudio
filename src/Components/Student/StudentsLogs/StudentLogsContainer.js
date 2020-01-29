@@ -21,7 +21,7 @@ class StudentLogsContainer extends React.Component{
     render(){
         return(
             <div className='StudentLogsContainer' >
-                <p>{this.props.student.student_first_name}'s Practice Logs:</p>
+                <h3>{this.props.student.student_first_name}'s Practice Logs:</h3>
                 <div className='Student-Logs'>
                     {typeof this.props.logs === 'string' ? <div>{this.props.logs}</div> : this.props.logs.map((ele, i) => {
                         return <Link key={i} to={`/student/logs/edit/${ele.log_id}`}><LogBlockStudent  logCount={i + 1} logDate={ele.log_date} logTime={ele.log_time} logData={ele.log_material} /> </Link>

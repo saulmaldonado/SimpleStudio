@@ -1,18 +1,20 @@
 import React from 'react'
 
+import './styles/LogBlock.css'
+
 const moment = require('moment')
 
 export default class LogBlock extends React.Component{
     render(){
         return(
-            <div>
+            <div className='log-block'>
                 <div>
                     <p>Practice Log #{this.props.logCount}:</p>
-                    <p>{moment(this.props.logDate).format('llll')}</p>
+                    <p> <b> {moment(this.props.logDate).format('llll')} </b> </p>
                 </div>
-                <div>
-                    <p> Practiced for {this.props.logTime} minutes </p>
-                    <p> What I practiced: {this.props.logData} </p>
+                <div  className='log-block-data'>
+                    <p> Practiced for <b>{this.props.logTime}</b> minutes </p>
+                    <p> What I practiced:<b> {this.props.logData}</b> </p>
                 </div>
 
             </div>
