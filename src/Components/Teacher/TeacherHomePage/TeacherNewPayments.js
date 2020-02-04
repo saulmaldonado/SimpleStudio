@@ -22,7 +22,7 @@ class TeacherNewPayments extends React.Component{
         return(
         
         <div className='newly-submitted-payments-container' >
-            <div>Recently Submitted Payments</div>
+            <h3>Recently Submitted Payments</h3>
             <div className='newly-submitted-payments' >
                 {this.props.teacherInfo.map((ele, i ) => {
                     return <PaymentBlock key={i} paymentId={ele.payment_id} paymentDate={ele.payment_date} paymentAmount={ele.payment_amount} studentName={`${ele.student_first_name} ${ele.student_last_name}`}/>

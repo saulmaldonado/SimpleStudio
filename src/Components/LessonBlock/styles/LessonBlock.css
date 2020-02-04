@@ -7,7 +7,10 @@
     display: block;
     padding: 5px;
     margin-top: 10px;
-    margin-left: 20px
+    margin-left: 20px;
+    box-shadow: 5px 5px 5px grey;
+    max-height: 30vh;
+    overflow: hidden;
 
 }
 
@@ -16,4 +19,3 @@
     margin-bottom: auto;
     line-height: 25px;
 }
-

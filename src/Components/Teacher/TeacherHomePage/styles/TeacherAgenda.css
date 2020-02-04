@@ -1,18 +1,69 @@
 .teacher-agenda-container{
-    margin-top: 0px;
     height:50vh;
-    width: 30%;
+    width: 40%;
     border: black solid 2px;
+    border-radius: 10px;
     padding:35px;
     border-radius: 8px;
+    overflow: hidden;
+
 }
 
 .lesson-blocks{
     margin-top: 15px;
-    overflow-y: scroll;
-    height:50vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+    height:31vh;
+    width: 80%;
+    padding-right: 10px;
+    overflow: scroll;
+    margin-left: auto ;
+    margin-right: auto ;
+    padding-bottom: 10px;
+
+
+
+}
+
+@media (max-width: 1000px){
+
+    .teacher-agenda-container{
+        width: 90%;
+        padding:10px
+    }
+
+
+
+}
+
+@media (max-width: 500px){
+    .lesson-blocks{
+        width: 100%;
+    }
+}
+
+
+
+@media (max-width: 420px){
+
+    .teacher-agenda-container{
+        padding:10px;
+
+    }
+
+
+    .lesson-blocks{
+        width: 100%;
+
+
+    }
+}
+
+@media (max-width: 600px){
+    .teacher-agenda-container{
+        font-size: 12px;
+    }
+
+    .lesson-blocks{
+        margin-top: 0px;
+    }
 
 }

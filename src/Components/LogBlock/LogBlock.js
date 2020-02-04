@@ -13,12 +13,13 @@ export default class LogBlock extends React.Component{
     render(){
         return(
             <div className='log-block' > 
-                <div>
-                    <p>Student: <b> {this.props.studentName} </b> </p>
-                    <p> <b> {moment(this.props.logDate).format('llll')} </b> </p>
+                <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center'}} >
+                    <img src={require('../../instrumentIcons/log.png')} style={{height: '25px', width: '30px', marginRight: '2px'}} />
+                    <p style={{lineHeight: '15px'}} > Student: <b> {this.props.studentName} </b> </p>
+                    <p style={{color: 'grey', lineHeight: '15px'}} > {moment(this.props.logDate).format('ddd, MMM DD, h:mm A')} </p>
                 </div>
                 <div className='log-block-data' >
-                    <p> {this.props.logData} </p>
+                    <p style={{lineHeight: '15px'}} > Practiced: <b>{this.props.logData}</b> </p>
                 </div>
 
             </div>

@@ -6,6 +6,7 @@
     padding: 8px;
     font-size: 12px;
     margin-top:10px;
+    width: 70%;
     box-shadow: 5px 5px 5px grey;
 }
 
@@ -62,3 +63,15 @@
 
 
 
+@media (max-width: 800px){
+
+    .unpaid-payment-block-teacher{
+        width: 90%;
+    }
+
+
+
+
+
+
+}

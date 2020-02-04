@@ -1,21 +1,49 @@
 .newly-submitted-payments-container{
-    width: 30vw;
+    width: 40%;
+    border: solid black 2px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
 }
 
 .newly-submitted-payments{
-    margin-top: 10px;
     height: 42vh;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
 
-    margin-left: 40px ;
+}
+
+.newly-submitted-payments-container > h3 {
+    margin-top: 20px;
+    width: 80%;
+
+
 }
 
 .payment-block{
     border: black solid 2px;
     border-radius: 5px;
-    margin-bottom: 15px;
     display: flex;
     font-size: 12px;
     height: 10vh;
-    padding: 10px;
+}
+
+@media (max-width: 1000px){
+
+    .newly-submitted-payments-container{
+        width: 90%;
+        margin-top: 20px;
+        padding-bottom: 10px;
+    }
+
+
+
+
+
+
 }

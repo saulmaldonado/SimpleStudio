@@ -177,5 +177,10 @@
 
 
 
+@media (max-width: 400px){
 
+    .logout > button{
+        padding: 5px
+    }
+}
 

@@ -21,9 +21,12 @@ class TeacherNewLogs extends React.Component{
     render(){
         return(
             <div className='teacher-new-logs' >
-                {this.props.teacherInfo.map((ele, i) => {
-                    return <LogBlock key={i} studentName={`${ele.student_first_name} ${ele.student_last_name}`} logDate={ele.log_date} logData={`Practiced: ${ele.log_time} minutes on ${ele.log_material}`}/>
-                })}
+                <h3>Submitted Practice Logs</h3>
+                <div className='teacher-new-logs-container' >
+                    {this.props.teacherInfo.map((ele, i) => {
+                        return <LogBlock key={i} studentName={`${ele.student_first_name} ${ele.student_last_name}`} logDate={ele.log_date} logData={`${ele.log_time} minutes on ${ele.log_material}`}/>
+                    })}
+                </div>
             </div>
         )
     }
