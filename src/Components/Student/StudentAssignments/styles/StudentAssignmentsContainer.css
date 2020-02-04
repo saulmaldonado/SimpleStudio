@@ -12,11 +12,11 @@
 }
 
 .student-assignments-container2{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 80%;
     height: 90%;
     overflow-y: scroll;
+    padding: 50px;
 
 }

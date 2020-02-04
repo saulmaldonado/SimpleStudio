@@ -2,6 +2,9 @@ import React from 'react'
 
 import './styles/LessonBlock.css'
 
+
+const moment = require('moment')
+
 export default class LessonBlock extends React.Component{
     constructor(){
         super()
@@ -12,14 +15,8 @@ export default class LessonBlock extends React.Component{
     render(){
         return(
             <div className='lesson-block'>
-                <div>
-                    <p>{this.props.lessonType} Lesson</p>
-                    <p> <b>{this.props.lessonTime}</b></p>
-                </div>
-                <div>
-                    <p>Student: <b>{this.props.studentName}</b></p>
-                    <p>Length: <b>{this.props.lessonLength}</b> minutes</p>
-                </div>
+                    <p> <img style={{height: '30px', width: '30px'}} src={require(`../../instrumentIcons/${this.props.lessonType.toLowerCase()}.png`)} /> <b>{this.props.lessonType} Lesson </b> with <b>{this.props.studentName}</b></p>
+                    <p style={{color: 'grey', marginLeft: '35px'}} >{this.props.lessonTime} - {moment(this.props.lessonTime).add(this.props.lessonLength, 'minutes').format('LT')}</p>
             </div>
         )
     }

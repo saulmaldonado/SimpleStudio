@@ -52,15 +52,14 @@
     margin-top: auto;
     margin-bottom: auto;
     border: none;
-    background-color: #36b9cc;
+    background-color: #33a8b9;
     border-radius: 5px;
     padding: 5px;
     cursor: pointer;
-
-    
+    color: white;
 }
 #login-button:hover{
-    background-color: #5fc5d4;
+    background-color: #76bfca;
     transition: .5s;
 }
 
@@ -117,8 +116,16 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 100%
-
+        height: 40vh;
+        margin-bottom: 10px;
+        justify-content: space-between;
+    }
+    #login-forms{
+        height: 50%;
+        width: 70%;
+    }
+    #login-forms > input{
+        padding: 10px;
     }
 
     #login-form{
@@ -156,12 +163,12 @@
 
 @media (max-height: 568px){
     #hamburger{
-        font-size: 20px;
+        font-size: 30px;
         margin-top:10px
     }
 
     .fa-music{
-        font-size: 20px;
+        font-size: 30px;
         margin-top:13px
 
     }

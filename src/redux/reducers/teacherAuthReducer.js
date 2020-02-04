@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 const initialState = {
-    teacher_id: null,
-    teacher_first_name: '',
-    teacher_last_name: '',
-    teacher_email: '',
-    teacher_phone: '',
+    teacher_id: 4,
+    teacher_first_name: 'Ryan',
+    teacher_last_name: 'Espinosa',
+    teacher_email: 'ryanespinosa@music.com',
+    teacher_phone: '1234567891',
     loading: false
 }
 

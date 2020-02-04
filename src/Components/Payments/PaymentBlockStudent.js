@@ -21,7 +21,7 @@ export default class PaymentBlock extends React.Component{
                         <p>Invoice Date: <br/><b>{moment(this.props.paymentDate).format('llll')}</b> </p>
                     </div>
                     <div>
-                        <p><b> PAID ✅ </b></p>
+                        <p><b></b></p>
                         <p>Due Date: <b>{moment(this.props.paymentDueDate).format('ll')}</b></p>
                         <p>Amount: <b>${this.props.paymentAmount}</b></p>
                     </div>

@@ -4,24 +4,37 @@
     flex-direction: column;
     justify-content: center;
     margin-bottom: 50px;
+    height: 50vh;
 
 }
+
+
+
 
 .new-log-form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 40%;
+    height: 60%;
     width: 20vw;
     border: black solid 2px;
-    padding: 10px;
     border-radius: 10px;
     box-shadow: 10px 10px 10px rgb(189, 189, 189);
 
 }
 
-.new-log-form > input {
-    padding: 10px
+.new-log-form {
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.new-log-form input {
+    padding:5px;
+    border-radius: 10px;
+}
+.new-log-form textarea {
+    padding:5px;
+    border-radius: 10px;
 }
 
 .submit-practice-log{

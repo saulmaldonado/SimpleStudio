@@ -72,11 +72,13 @@ class NewPracticeLog extends React.Component{
     render(){
         return(
             <div className='NewPracticeLog' >
-                <div>New Practice Log</div>
+                <h3>New Practice Log</h3>
                 <form className='new-log-form' onChange={this.handelInputChange} onSubmit={this.submitLog}>
+                    <label>Date and Time</label>
                     <DatePicker value={this.state.log_date || null} format="MMM Do, h:mm a" name='log_date' showTime={{ format: 'HH:mm', minuteStep: 15, use12Hours:true}} onChange={this.onChange} />
 
                     {/* <input name='log_date' value={this.state.log_date} onChange={this.handelInputChange} type='datetime-local' placeholder='Date' require='true'/> */}
+                    <label>Minutes Practiced</label>
                     <input type='number' name='log_time' min='5' step='5' value={this.state.log_time} onChange={this.handelInputChange} placeholder='Minutes Practiced' require='true'/>
                     <textarea name='log_material' value={this.state.log_material} onChange={this.handelInputChange} placeholder='What did you practice?' require='true'/>
                     <input className='submit-practice-log' type='submit' value='Submit Practice Log'/>

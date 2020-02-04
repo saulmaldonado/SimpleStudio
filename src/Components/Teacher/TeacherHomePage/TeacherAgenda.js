@@ -26,10 +26,10 @@ class TeacherAgenda extends React.Component{
     render(){
         return(
             <div className='teacher-agenda-container'>
-                <div>Your Agenda:</div>
-                <div> 
+                <h3>Your Agenda:</h3>
+                <h3> 
                 {moment().format('llll')}
-                </div>
+                </h3>
                 <div className='lesson-blocks' >
                     {this.props.teacherInfo.lessons.map((ele, i) => {
                         return <LessonBlock key={i} lessonType={ele.lesson_type} lessonTime={moment(ele.lesson_time).format('llll')} lessonLength={ele.lesson_length} studentName={`${ele.student_first_name} ${ele.student_last_name}`} /> 

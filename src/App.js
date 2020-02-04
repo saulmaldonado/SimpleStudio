@@ -13,8 +13,8 @@ function App() {
   return (
     <div className="App">
       <TopBar />
-      <Switch>
-        <Route exact path='/' component={GuestLanding} />
+      <Switch >
+        <Route className='body'  exact path='/' component={GuestLanding} />
         <Route  path='/teacher' component={TeacherHomePage} />
         <Route  path='/student' component={StudentHomePage} />
         <Route component={NotFound} />

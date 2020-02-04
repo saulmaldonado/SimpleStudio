@@ -19,3 +19,21 @@
     left: 100px;
 }
 
+@media (max-height: 700px){
+    .main-title{
+        position: absolute;
+        top: 10px;
+        left: 100px;
+    }
+
+}
+
+@media (max-height: 568px){
+    .main-title{
+        position: absolute;
+        top: 10px;
+        left: 85px;
+        font-size: 25px;
+    }
+}
+

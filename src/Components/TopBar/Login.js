@@ -103,9 +103,9 @@ class Name extends React.Component{
             <div id='login' >
                 <Redirect to='/' />
                 <div id='hamburger' >
-                    <i onClick={this.showModal} class="fas fa-bars"></i>
+                    <i onClick={this.showModal} className="fas fa-bars"></i>
                     <div>
-                        <Modal onCancel={this.showModal} visible={this.state.showModal} title='Login' >
+                        <Modal onCancel={this.showModal} visible={this.state.showModal} footer={null} title='Login' >
                             <form id='login-form-mini' autoComplete='on' onSubmit={this.state.accountType === 'Teacher' ? this.handleLoginTeacher : this.handleLoginStudent} >
                                 <div id='login-forms' >
                                     <input  type='email'  label='Email' autoComplete='on' placeholder='Email' name='email' onChange={this.handleInputChange} value={email} required/>

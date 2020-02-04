@@ -25,7 +25,7 @@ class StudentHomePage extends React.Component{
 
         render(){
             return(
-                <div>
+                <div >
                 <NavBarStudent />
                 <Switch>
                     <Route exact path='/student' render={() =>{

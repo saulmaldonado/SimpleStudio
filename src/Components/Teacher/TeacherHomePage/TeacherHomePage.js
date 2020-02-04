@@ -77,10 +77,10 @@ class TeacherHomePage extends React.Component{
                                         <p>This weeks estimated revenue: <b>${this.revThisWeek()}</b></p>
                                     </div>
                                 </div>
-                                <div className='teacherHP-box-2' >
+                                {/* <div className='teacherHP-box-2' >
                                     <TeacherNewLogs />
                                     <TeacherNewPayments />
-                                </div>
+                                </div> */}
                             </div>
                         )
                     }} />
