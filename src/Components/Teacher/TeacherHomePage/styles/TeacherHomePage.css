@@ -1,5 +1,4 @@
 .TeacherHomePage{
-    margin-left: 2.5vw;
     margin-top: 10vh;
     width: 100%;
     display: flex;
@@ -13,6 +12,7 @@
     width: 80%;
     border: solid black 2px;
     border-radius: 10px;
+    margin-left: 40px;
 
 
 }
@@ -22,6 +22,7 @@
     justify-content: space-around;
     height: 60vh;
     width: 80%;
+    margin-left: 40px;
 }
 
 .teacherHP-box-2{
@@ -32,8 +33,7 @@
     overflow: hidden;
     justify-content: space-around;
     width: 80%;
-
-    
+    margin-left: 40px;
 }
 
 .weekly-data{
@@ -42,7 +42,6 @@
     justify-content: space-evenly;
     align-items: center;
     height: 70%;
-    margin-bottom: auto;
     margin-top: 20px;
     width: 40%;
     padding: 10px;
@@ -68,6 +67,8 @@
     .teacherHP-box-1{
         flex-direction: column;
         height: 100%;
+        width: 80%;
+
         align-items: center;
         height: 70vh;
 
@@ -75,6 +76,8 @@
     .teacherHP-box-2{
         flex-direction: column;
         height: 100%;
+        width: 80%;
+
         align-items: center;
 
     }
@@ -95,6 +98,7 @@
         height: 40%;
         width: 90%;
         margin-top: 10px;
+        display: block;
     }
 
     .weekly-data > p {
@@ -129,11 +133,15 @@
     .weekly-data{
         width: 90%;
         display: block;
+        padding: 3px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
     }
 
     .weekly-data > p {
-        width: 90%;
         padding: 2px;
+        width: 90%;
         padding-left: 5px;
     }
 

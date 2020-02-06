@@ -1,7 +1,4 @@
 .TeacherLessons{
     margin-left: 5vw;
-    margin-top: 10vh;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
+    margin-top: 8vh;
 }

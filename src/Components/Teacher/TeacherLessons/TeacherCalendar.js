@@ -254,16 +254,19 @@ class TeacherCalendar extends React.Component{
     }
 
     buttonPressed = ({event, el}) => {
+        console.log(event)
         let content = (
-            <div>
+            <div style={{height: '90%'}} >
                 <Popover title={`${event.title}`} trigger='click' content={
-                    <div>
-                        <p>{event.title} {`${moment(event.start).format('ddd, MMM D h:mm a')} - ${moment(event.end).format('h:mm a')}`}</p>
+                    <div >
+                        <p  >{event.title} {`${moment(event.start).format('ddd, MMM D h:mm a')} - ${moment(event.end).format('h:mm a')}`}</p>
                             <Button onClick={() => this.editButton(event)} >Edit</Button>
                             <Button onClick={() => this.cancelLesson(event)} >Delete</Button>
                     </div>
                 }>
-                    <span className="fc-time">{event.title} <br /> {moment(event.start).format('h:mm a')}</span>
+                    <div style={{height: '100%', padding: '5px'}}>
+                        <span className='event-time'>{event.title} <br /> {moment(event.start).format('h:mm a')}</span>
+                    </div>
                 </Popover>
             </div>
           )
@@ -400,6 +403,8 @@ class TeacherCalendar extends React.Component{
     render(){
         const { lesson_length, lesson_type, lesson_notes} = this.state
 
+        console.log(this.state.lessons)
+
         return(
             
             <div className='calendar-container'>
@@ -453,10 +458,11 @@ class TeacherCalendar extends React.Component{
                                 select={this.selectTimeForNewLesson}
                                 eventRender={this.buttonPressed}
                                 slotDuration={'00:15'}
-                                height={'1'}
+                                height={'2'}
                                 scrollTime={'07:00:00'}
                                 minTime={'05:00:00'}
                                 maxTime={'23:00:00'}
+                                nowIndicator={true}
                                 />
             </div>
 

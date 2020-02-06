@@ -6,8 +6,10 @@
     border-radius: 8px;
     display: block;
     padding: 5px;
-    margin-top: 10px;
-    margin-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+
     box-shadow: 5px 5px 5px grey;
     max-height: 30vh;
     overflow: hidden;

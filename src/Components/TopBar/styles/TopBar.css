@@ -1,16 +1,21 @@
 .TopBar{
     width: 100%;
-    height: 10vh;
-    position: absolute;
+    height: 8vh;
+    position: fixed;
     top: 0px;
     background-color: #4e73df;
     color: whitesmoke;
+    z-index: 1000;
 }
 
 .TopBar h1{
     color: whitesmoke;
 }
 
+.fa-music{
+    position: absolute;
+    top: 0px;
+}
 
 
 .main-title{
@@ -24,6 +29,11 @@
         position: absolute;
         top: 10px;
         left: 100px;
+        
+    }
+    .fa-music{
+        position: absolute;
+        top:10px
     }
 
 }
@@ -35,11 +45,15 @@
         left: 85px;
         font-size: 25px;
     }
+    .fa-music{
+        position: absolute;
+        top:-5px
+    }
 }
 
 @media (max-width: 400px){
     .TopBar h1{
-        font-size: 25px;
+        font-size: 20px;
     }
 }
 

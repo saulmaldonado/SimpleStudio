@@ -20,7 +20,7 @@ export default function TeacherLessons(){
                 <Route path='/teacher/lessons' component={TeacherCalendar} />
             </Switch>
             
-            <TeacherAgendaForCalendar />
+            {/* <TeacherAgendaForCalendar /> */}
         </div>
     )
 }

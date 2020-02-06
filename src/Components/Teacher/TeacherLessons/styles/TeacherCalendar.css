@@ -1,15 +1,22 @@
 .calendar-container{
-    width: 45vw;
-    height: 80vh;
-
+    position: relative;
+    z-index: 0;
+    width: 50%;
+    float: right;
+    margin: 20px;
+    border: black solid 2px
 }
 
 .calendar-container .fc-unthemed{
-    width: 100%;
-    height: 80vh;
-    margin-top: 80px;
-    margin-right: 50px;
-    float: right;
+    width: 100%
+}
+
+.event-time{
+    font-size: 14px;
+}
+
+.calendar-container .fc-highlight{
+    background: black;
 }
 
 .edit-lesson-modal{
