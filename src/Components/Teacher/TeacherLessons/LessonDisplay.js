@@ -30,7 +30,6 @@ class LessonDisplay extends React.Component{
 
 
     render(){
-        console.log(this.props)
         return(
             <div className='teachers-lessons' >
 

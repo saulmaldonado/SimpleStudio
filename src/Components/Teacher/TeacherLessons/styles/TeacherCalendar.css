@@ -4,11 +4,14 @@
     width: 50%;
     float: right;
     margin: 20px;
-    border: black solid 2px
+    border: rgba(128, 128, 128, 0.5) solid 2px ;
+    border-radius: 10px;    
+    padding: 10px;
+    box-shadow: 5px 5px 5px grey;
 }
 
 .calendar-container .fc-unthemed{
-    width: 100%
+    width: 100%;
 }
 
 .event-time{
@@ -16,7 +19,7 @@
 }
 
 .calendar-container .fc-highlight{
-    background: black;
+    background: green;
 }
 
 .edit-lesson-modal{
@@ -39,16 +42,43 @@
 .new-lesson-modal{
     display: flex;
     flex-direction: column;
-    max-width: 55%;
+    justify-content: space-evenly;
+    width: 50%;
+    height: 40vh;
     margin-left: auto;
+    padding:10px;
     margin-right: auto;
     margin-bottom: 10px;
 }
-
-.new-lesson-modal input {
-    margin-bottom: 10px;
+.new-lesson-modal > input[type=number] {
+    width: 30%;
+    margin-right: auto;
+}
+.new-lesson-modal>  input[name=lesson_type] {
+    width: 50%;
+    margin-right: auto;
 }
 
-.new-lesson-modal button{
-    margin-top: 10px;
+.new-lesson-modal>  input {
+    margin-bottom: 0px;
+}
+
+.new-lesson-modal > button{
+    margin-top: 0px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    padding: 7px;
+    background-color: rgb(86, 86, 255);
+    color:white;
+    transition: .2s;
+}
+
+.new-lesson-modal > button:hover{
+    cursor: pointer;
+    background-color: rgb(131, 131, 255);
+}
+.new-lesson-modal > select {
+    width: 60%;
 }

@@ -24,14 +24,15 @@ class TeacherAgenda extends React.Component{
 
 
     render(){
+        let lessonsForWeek = this.props.teacherInfo.lessons.filter(ele => moment(ele.lesson_time).week() === moment().week())
         return(
             <div className='teacher-agenda-container-calendar'>
-                <div>Your Agenda:</div>
-                <div> 
-                {moment().format('llll')}
-                </div>
+                <h1>Your Agenda:</h1>
+                <h3> 
+                Week: {moment().day(0).format('MMM D')} - {moment().day(6).format('MMM D, YYYY')} 
+                </h3>
                 <div className='lesson-blocks-calendar' >
-                    {this.props.teacherInfo.lessons.map((ele, i) => {
+                    {lessonsForWeek.map((ele, i) => {
                         return <LessonBlock key={i} lessonType={ele.lesson_type} lessonTime={moment(ele.lesson_time).format('llll')} lessonLength={ele.lesson_length} studentName={`${ele.student_first_name} ${ele.student_last_name}`} /> 
                     })}
                 </div>

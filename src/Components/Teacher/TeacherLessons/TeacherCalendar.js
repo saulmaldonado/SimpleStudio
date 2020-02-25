@@ -12,12 +12,10 @@ import'../../../../node_modules/@fullcalendar/daygrid/main.css'
 import '../../../../node_modules/@fullcalendar/timegrid/main.css'
 import { connect } from 'react-redux'
 import ReactDOM from "react-dom";
-
 import './styles/TeacherCalendar.css'
-
 import 'antd/dist/antd.css'
-
 import { Popover, Button, Modal, DatePicker } from 'antd';
+import clarinet from '../../../instrumentIcons/clarinet.png'
 
 
 
@@ -254,9 +252,8 @@ class TeacherCalendar extends React.Component{
     }
 
     buttonPressed = ({event, el}) => {
-        console.log(event)
         let content = (
-            <div style={{height: '90%'}} >
+            <div style={{height: '50%'}} >
                 <Popover title={`${event.title}`} trigger='click' content={
                     <div >
                         <p  >{event.title} {`${moment(event.start).format('ddd, MMM D h:mm a')} - ${moment(event.end).format('h:mm a')}`}</p>
@@ -264,7 +261,10 @@ class TeacherCalendar extends React.Component{
                             <Button onClick={() => this.cancelLesson(event)} >Delete</Button>
                     </div>
                 }>
-                    <div style={{height: '100%', padding: '5px'}}>
+                    <div style={{height: '100%', padding: '2px', display:'flex'}}>
+                        <div style={{marginRight: '5px'}}>
+                            <img src={clarinet} height='20px' width='20px' />
+                        </div>
                         <span className='event-time'>{event.title} <br /> {moment(event.start).format('h:mm a')}</span>
                     </div>
                 </Popover>
@@ -383,23 +383,12 @@ class TeacherCalendar extends React.Component{
 
     }
 
-
-
      onChange = (date, dateString) => {
          this.setState({
              lesson_time: date
          })
       }
 
-
-
-
-
-
-
-    
-    
-    
     render(){
         const { lesson_length, lesson_type, lesson_notes} = this.state
 
@@ -433,8 +422,11 @@ class TeacherCalendar extends React.Component{
                         
                     >
                         <div className='new-lesson-modal' >
+                            <span>Lesson date and start time:</span>
                             <DatePicker value={moment(this.state.lesson_time)} format="MMM Do, h:mm a" name='lesson_time' showTime={{ format: 'HH:mm', minuteStep: 15, use12Hours:true}} onChange={this.onChange} onOk={this.onOK} />
+                            <span>Lesson length in minutes:</span>
                             <input type='number' name='lesson_length' step='15' min='15' placeholder='Lesson length in minutes' value={this.state.lesson_length || ''} onChange={this.handelInputChange}  />
+                            <span>Lesson Type: (ex. Clarinet) </span>
                             <input name='lesson_type' value={this.state.lesson_type} onChange={this.handelInputChange} placeholder='Lesson Type' />
                             <textarea  name='lesson_notes' value={this.state.lesson_notes} onChange={this.handelInputChange} placeholder='Notes' />
                             <select  name='student_id' onChange={this.handelInputChange}>

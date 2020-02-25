@@ -74,26 +74,32 @@
 }
 
 .logout {
-    display: flex;
-    flex-direction: row-reverse;
-    float: right;
-    align-items: center;
-    justify-content: space-around;
-    width: 40%;
-    margin-top: auto;
-    margin-bottom: auto;
     height: 100%;
+    width: 20%;
+    float: right;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+    align-items: center;
+    
 
 }
+.logout > h1{
+    margin: 0px;
+}
+
+
 
 
 .logout > button{
     border: none;
     border-radius: 5px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
     background-color:#f6c23e ;
+    width: 20%;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 10px;
+
 }
 
 .logout > button:hover{

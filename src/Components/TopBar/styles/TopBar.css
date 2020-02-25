@@ -12,16 +12,25 @@
     color: whitesmoke;
 }
 
+.title-and-logo{
+    float: left;
+    display: flex;
+    height: 100%;
+    width: 15%;
+    align-items: center;
+    margin-left: 25px;
+    justify-content: space-between;
+}
 .fa-music{
-    position: absolute;
-    top: 0px;
+text-align: center;
+margin: 0px;
 }
 
 
+
+
 .main-title{
-    position: absolute;
-    top: 15px;
-    left: 100px;
+    margin: 0px;
 }
 
 @media (max-height: 700px){

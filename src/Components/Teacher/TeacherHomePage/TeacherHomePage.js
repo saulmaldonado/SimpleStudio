@@ -68,12 +68,12 @@ class TeacherHomePage extends React.Component{
                     <Route exact path='/teacher' render={() => {
                         return(
                             <div className='TeacherHomePage' >
-                            <h1>Welcome, {`${this.props.teacher.teacher_first_name} ${this.props.teacher.teacher_last_name}! `} </h1>
                                 <div className='teacherHP-box-1' >
                                     <TeacherAgenda />
                                     <div className='weekly-data'>
+                                        <h2>Weekly Stats</h2>
                                         <p>Lessons this week: <b>{this.lessonsThisWeek()}</b></p>
-                                        <p>Active Students: <b>{this.props.students.length}</b></p>
+                                        <p>Minutes practice this week: <b>{this.props.students.length}</b></p>
                                         <p>This weeks estimated revenue: <b>${this.revThisWeek()}</b></p>
                                     </div>
                                 </div>

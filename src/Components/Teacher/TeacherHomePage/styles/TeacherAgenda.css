@@ -1,5 +1,5 @@
 .teacher-agenda-container{
-    height:50vh;
+    height:85%;
     width: 40%;
     border: black solid 2px;
     border-radius: 10px;
@@ -9,6 +9,8 @@
 
 
 }
+
+
 
 .lesson-blocks{
     margin-top: 15px;

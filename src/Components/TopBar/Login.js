@@ -92,6 +92,7 @@ class Name extends React.Component{
         } else if(this.props.teacher.teacher_id){
             return (
                 <div className='logout'>
+                    <h1>Welcome, {this.props.teacher.teacher_first_name}!</h1>
                     <button onClick={this.handleTeacherLogout}>Logout</button>
                     <NotificationFeedTeacher />
                     <Redirect to='/teacher' />

@@ -29,7 +29,7 @@ class StudentProfile extends React.Component{
         return(
             <div>
                 <div>
-                    <img src='http://www.diversegreen.org/wp-content/uploads/2015/09/photo-not-available-clip-art1.png' alt='default' width='200px' height='200px'></img>
+                    <img src='http://getdrawings.com/cliparts/clarinet-clipart-18.gif' alt='clarinet-student-image' width='200px' height='200px'></img>
                 </div>
                 <div className='students-profile-information' >
                     <p> Full Name: <b> {`${this.props.student.first_name} ${this.props.student.last_name}`} </b> </p>
