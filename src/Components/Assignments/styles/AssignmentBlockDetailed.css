@@ -2,7 +2,7 @@
     border: solid black 2px;
     color: black;
     border-radius: 10px;
-    width: 50%;
+    width:100%;
     margin-top: 15px;
     margin-bottom: 20px;
     margin-left: auto;
@@ -11,6 +11,7 @@
     padding: 15px;
     box-shadow: 5px 5px 5px grey;
     height: 50%;
+    overflow-y: scroll;
 }
 
 .assignment-block-detailed-span{

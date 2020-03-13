@@ -35,7 +35,7 @@ class InvoicesNotPaid extends React.Component{
     render(){
         return(
             <div>
-                <div>InvoicesNotPaid</div>
+                <h3>Invoices Not Paid</h3>
 
                 <div>
                     {typeof this.props.payments === 'string' ? <div>Teacher has no unpaid invoices</div> : this.props.payments.map((ele, i) => {

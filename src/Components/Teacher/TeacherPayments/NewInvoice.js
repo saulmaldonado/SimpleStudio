@@ -93,7 +93,7 @@ class NewInvoice extends React.Component{
             lesson_id } = this.state
         return(
             <div className='new-invoice-form' >
-                <p>Create Invoice</p>
+                <h3>Create Invoice</h3>
                 <input placeholder='Amount' type='number' min='0' name='payment_amount' value={payment_amount || ''} onChange={this.handelInputChange} />
                 <DatePicker value={payment_duedate|| null} format="MMM Do" name='payment_duedate' onChange={this.onChange}/>
                 <select name='lesson_id' value={lesson_id||''} onChange={this.handelInputChange}>

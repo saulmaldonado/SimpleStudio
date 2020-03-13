@@ -2,13 +2,29 @@
     border: none;
     border-radius: 5px;
     padding: 5px;
-    background-color: #1cc88a;
-    margin-left: 20px;
+    background-color: red;
     color: white;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.checkout{
+    padding: 10px;
+    border: black 2px solid;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px;
+    height: 20vh;
+    width: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
 }
 
 .paymentpagebuttonback:hover{
-    background-color: blue;
+    background-color: rgb(179, 0, 0);
     cursor: pointer;
     transition: .5s;
 }
@@ -17,14 +33,16 @@
     border: none;
     border-radius: 5px;
     padding: 5px;
-    background-color: red;
+    background-color: #1cc88a;
     color: white;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
     
-
 }
 
 .paymentpagebuttonsubmit:hover{
-    background-color: rgb(255, 96, 96);
+    background-color: #18996a;
     cursor: pointer;
     transition: .5s;
 }

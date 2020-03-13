@@ -36,8 +36,7 @@ class StudentHomePage extends React.Component{
                                 <div className='box-1'>
                                     <StudentScheduleForHP />
                                     <div className='student-stats'>
-                                        <div>
-                                        </div>
+
                                         <div>
                                             <NewPaymentsStudents /> 
                                         </div>

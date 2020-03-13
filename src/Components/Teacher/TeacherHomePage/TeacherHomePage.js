@@ -73,7 +73,7 @@ class TeacherHomePage extends React.Component{
                                     <div className='weekly-data'>
                                         <h2>Weekly Stats</h2>
                                         <p>Lessons this week: <b>{this.lessonsThisWeek()}</b></p>
-                                        <p>Minutes practice this week: <b>{this.props.students.length}</b></p>
+                                        <p>Active Students: <b>{this.props.students.length}</b></p>
                                         <p>This weeks estimated revenue: <b>${this.revThisWeek()}</b></p>
                                     </div>
                                 </div>

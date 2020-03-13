@@ -35,10 +35,10 @@ class InvoicesPaid extends React.Component{
     render(){
         return(
             <div>
-                <div>Invoices Paid</div>
+                <h3>Invoices Paid</h3>
                 <div>
                     {typeof this.props.payments === 'string' ? <div>Teacher has no payments</div> : this.props.payments.map((ele, i) => {
-                        return <PaymentBlock key={i} paymentId={ele.payment_id} studentName={`${ele.student_first_name} ${ele.student_last_name} `} paymentDate={ele.payment_date} paymentAmount={ele.payment_amount} />
+                        return <PaymentBlock key={i} paymentId={ele.payment_id} studentName={`${ele.student_first_name} ${ele.student_last_name} `}paymentDueDate={ele.payment_duedate} paymentDate={ele.payment_date} paymentAmount={ele.payment_amount} />
                     })}
                     
 
